@@ -104,6 +104,29 @@ footer{
 }
 footer p{margin-bottom:5px;font-size:15px;}
 footer small{opacity:0.7;font-size:13px;}
+
+/* تعديلات الهاتف */
+@media (max-width:600px){
+  header{
+    padding:30px 15px 60px 15px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+  }
+  header h1{font-size:28px;margin-bottom:8px;}
+  header p{font-size:15px;}
+  .nav a{padding:6px 12px;font-size:14px;}
+
+  .container{padding:20px 12px;}
+
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+  .card{padding:18px 10px;border-radius:14px;}
+  .card span{font-size:36px;margin-bottom:8px;}
+  .card a{font-size:16px;}
+  .card p{font-size:12px;margin-top:8px;}
+}
 </style>
 </head>
 <body>

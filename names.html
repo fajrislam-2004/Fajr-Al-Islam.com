@@ -182,12 +182,37 @@ footer p {margin-bottom:5px;font-size:15px;}
 footer small {opacity:0.7;font-size:13px;}
 
 /* تجاوب الهاتف */
-@media screen and (max-width:768px){
-  header h1 {font-size:30px;}
-  header p {font-size:16px;}
-  .search-bar {max-width:300px;}
-  .name-card h3 {font-size:18px;}
-  .name-card p {font-size:14px;}
+@media screen and (max-width:600px){
+  header{
+    padding:30px 15px 50px 15px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+  }
+  header h1 {font-size:26px;margin-bottom:8px;}
+  header p {font-size:14px;}
+
+  .nav{gap:6px;margin-top:15px;}
+  .nav a{padding:5px 10px;font-size:12px;}
+
+  .container{padding:20px 12px;}
+
+  .search-bar{max-width:100%;margin:20px auto;}
+  .search-bar input{padding:8px 12px;font-size:14px;}
+
+  .names-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+  .name-card{
+    padding:16px 10px;
+    border-radius:14px;
+  }
+  .name-card h3{font-size:14px;margin-bottom:6px;}
+  .name-card p{font-size:11px;}
+
+  .page-share{padding:20px 15px;margin-top:30px;border-radius:18px;}
+  .page-share p{font-size:15px;}
+  .page-share .share-buttons a{padding:8px 12px;font-size:13px;}
 }
 </style>
 </head>
