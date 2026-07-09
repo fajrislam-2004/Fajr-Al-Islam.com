@@ -13,6 +13,7 @@ body{
   background:linear-gradient(to bottom,#e8f5e9,#ffffff);
   color:#2f4f4f;
   line-height:1.6;
+  overflow-x:hidden;
 }
 a{text-decoration:none;color:inherit;}
 
@@ -60,7 +61,7 @@ header p{font-size:18px;opacity:0.9;}
 .card{
   background:linear-gradient(145deg,#66bb6a,#2e7d32);
   border-radius:50%;
-  height:160px;width:160px;
+  width:100%;max-width:160px;aspect-ratio:1/1;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
   box-shadow:inset 0 0 15px rgba(0,0,0,0.1),0 10px 25px rgba(0,0,0,0.2);
@@ -149,7 +150,8 @@ footer{
 @media(min-width:1200px){.cards{grid-template-columns:repeat(5,1fr);}}
 @media(min-width:992px) and (max-width:1199px){.cards{grid-template-columns:repeat(4,1fr);}}
 @media(min-width:768px) and (max-width:991px){.cards{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:767px){.cards{grid-template-columns:repeat(3,1fr);}.card{width:140px;height:140px;}}
+@media(max-width:767px){.cards{grid-template-columns:repeat(3,1fr);}.card{font-size:13px;}.card i{font-size:28px;}}
+@media(max-width:480px){.cards{grid-template-columns:repeat(2,1fr);gap:15px;}.card{max-width:140px;font-size:13px;}}
 </style>
 </head>
 <body>

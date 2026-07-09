@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Cairo',sans-serif;background:linear-gradient(to bottom,#0d2b12,#1b3a20 40%,#f0fff4 40%,#ffffff);color:#2f4f4f;line-height:1.6;}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(to bottom,#0d2b12,#1b3a20 40%,#f0fff4 40%,#ffffff);color:#2f4f4f;line-height:1.6;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 
 header{background:linear-gradient(135deg,#0d2b12,#1b5e20 60%,#2e7d32);color:#f5deb3;padding:55px 20px 100px 20px;text-align:center;border-bottom-left-radius:60px;border-bottom-right-radius:60px;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.4);}
@@ -138,11 +138,23 @@ footer{background:#0d2b12;color:#f4d160;text-align:center;padding:20px;margin-to
 footer p{margin-bottom:5px;font-size:15px;}
 footer small{opacity:0.75;font-size:13px;color:#e8f5e9;}
 
-@media screen and (max-width:768px){
+@media screen and (max-width:768px) and (min-width:401px){
   header h1{font-size:28px;}
-  .timeline::before{right:22px;transform:none;}
-  .tl-item, .tl-item.left, .tl-item.right{width:100%;right:0;text-align:right;padding:0 20px 45px 60px;}
-  .tl-item.left .tl-marker, .tl-item.right .tl-marker{left:0;right:auto;}
+  .timeline::before{width:3px;}
+  .tl-item{padding:0 15px 40px 15px;}
+  .tl-marker{width:34px;height:34px;font-size:14px;}
+  .tl-item.left .tl-marker{right:-17px;}
+  .tl-item.right .tl-marker{left:-17px;}
+  .tl-card{padding:14px 12px;}
+  .tl-card h3{font-size:14px;}
+  .tl-year, .tl-outcome{font-size:10px;padding:3px 8px;}
+  .tl-more{font-size:11px;}
+}
+@media screen and (max-width:400px){
+  header h1{font-size:26px;}
+  .timeline::before{right:22px;left:auto;transform:none;}
+  .tl-item, .tl-item.left, .tl-item.right{width:100%;right:0;text-align:right;padding:0 60px 45px 20px;}
+  .tl-item.left .tl-marker, .tl-item.right .tl-marker{right:0;left:auto;width:40px;height:40px;}
   .tl-item.right .tl-more{justify-content:flex-start;}
 }
 </style>
@@ -371,7 +383,7 @@ footer small{opacity:0.75;font-size:13px;color:#e8f5e9;}
 </div>
 
 <div class="story-box" id="storyBox">
-<button class="close-btn" onclick="closeStory()">إغلاق</button>
+<button class="close-btn" onclick="closeStory()">✖</button>
 <h2 id="storyTitle"></h2>
 <p id="storyContent"></p>
 <div class="share-buttons" id="shareButtons"></div>
