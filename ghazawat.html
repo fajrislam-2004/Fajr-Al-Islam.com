@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المعارك والغزوات - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(to bottom,#0d2b12,#1b3a20 40%,#f0fff4 40%,#ffffff);color:#2f4f4f;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+header{background:linear-gradient(135deg,#0d2b12,#1b5e20 60%,#2e7d32);color:#f5deb3;padding:55px 20px 100px 20px;text-align:center;border-bottom-left-radius:60px;border-bottom-right-radius:60px;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.4);}
+header::after{content:"";background:url('header-bg.png') center/cover no-repeat;opacity:0.18;top:0;left:0;bottom:0;right:0;position:absolute;z-index:0;filter:grayscale(0.3) contrast(1.1);}
+header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 40px,rgba(212,175,55,0.05) 40px,rgba(212,175,55,0.05) 80px);z-index:0;}
+header h1, header p, .nav, .stats-bar{position:relative; z-index:1;}
+header h1{font-size:40px;margin-bottom:10px;color:#f4d160;text-shadow:0 2px 10px rgba(0,0,0,0.5);letter-spacing:1px;}
+header p{font-size:17px;opacity:0.9;color:#e8f5e9;}
+
+.nav{margin-top:20px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
+.nav a{background:rgba(244,209,96,0.15);border:1px solid rgba(244,209,96,0.3);color:#f4d160;font-weight:bold;padding:8px 16px;border-radius:25px;transition:0.3s;}
+.nav a:hover{background:#f4d160;color:#1b3a20;}
+
+.stats-bar{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px;
+}
+.stats-bar .stat{
+  background:rgba(0,0,0,0.25);
+  border:1px solid rgba(244,209,96,0.4);
+  color:#f4d160;
+  padding:8px 18px;
+  border-radius:14px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.container{max-width:900px;margin:auto;padding:50px 20px 40px 20px;}
+.search-bar{max-width:400px;margin:0 auto 50px;display:flex;border-radius:25px;overflow:hidden;box-shadow:0 5px 18px rgba(0,0,0,0.15);}
+.search-bar input{flex:1;padding:12px 15px;border:none;font-size:16px;background:#fff;}
+.search-bar button{background:#1b5e20;color:#f4d160;border:none;padding:0 18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:0.3s;}
+.search-bar button:hover{background:#2e7d32;}
+
+/* الخط الزمني */
+.timeline{position:relative;padding:20px 0;}
+.timeline::before{
+  content:"";
+  position:absolute;
+  right:50%;
+  top:0;bottom:0;
+  width:4px;
+  background:linear-gradient(to bottom,#d4af37,#1b5e20);
+  transform:translateX(50%);
+  border-radius:5px;
+}
+.tl-item{
+  position:relative;
+  width:50%;
+  padding:0 40px 55px 40px;
+}
+.tl-item.left{right:0;text-align:left;}
+.tl-item.right{right:50%;text-align:right;}
+.tl-marker{
+  position:absolute;
+  top:0;
+  width:46px;height:46px;
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  border:4px solid #d4af37;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#f4d160;
+  font-size:18px;
+  z-index:2;
+  box-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+.tl-item.left .tl-marker{right:-23px;}
+.tl-item.right .tl-marker{left:-23px;}
+
+.tl-card{
+  background:linear-gradient(145deg,#ffffff,#f1f8e9);
+  border-radius:20px;
+  padding:20px 22px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  cursor:pointer;
+  transition:transform 0.3s, box-shadow 0.3s;
+  border-top:4px solid #d4af37;
+  position:relative;
+}
+.tl-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 30px rgba(0,0,0,0.25);}
+.tl-year{
+  display:inline-block;
+  background:#1b5e20;
+  color:#f4d160;
+  font-size:12px;
+  font-weight:bold;
+  padding:3px 12px;
+  border-radius:10px;
+  margin-bottom:8px;
+}
+.tl-card h3{color:#1b3a20;font-size:18px;margin-bottom:8px;}
+.tl-outcome{
+  display:inline-block;
+  font-size:12px;
+  font-weight:bold;
+  padding:4px 12px;
+  border-radius:10px;
+  color:white;
+}
+.outcome-victory .tl-outcome{background:#2e7d32;}
+.outcome-treaty .tl-outcome{background:#d4af37;color:#3a2e00;}
+.outcome-lesson .tl-outcome{background:#e65100;}
+.outcome-withdrawal .tl-outcome{background:#546e7a;}
+.tl-more{
+  margin-top:10px;
+  font-size:13px;
+  color:#1b5e20;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.tl-item.right .tl-more{justify-content:flex-end;}
+
+.story-box{display:none;margin-top:30px;background:white;border-radius:30px;padding:30px;box-shadow:0 8px 25px rgba(0,0,0,0.15);position:fixed;top:50%;left:50%;transform:translate(-50%, -150%);width:90%;max-width:600px;z-index:100;transition:transform 0.5s ease, opacity 0.5s ease;opacity:0;}
+.story-box.active{transform:translate(-50%, -50%);opacity:1;display:block;}
+.story-box h2{color:#1b3a20;text-align:center;margin-bottom:20px;}
+.story-box p{margin-bottom:15px;font-size:16px;line-height:1.7;}
+.story-box .close-btn{position:absolute;top:15px;left:15px;background:#e53935;color:white;border:none;padding:8px 15px;border-radius:15px;font-weight:bold;cursor:pointer;transition:0.3s;}
+.story-box .close-btn:hover{background:#ef5350;}
+.share-buttons{display:flex;justify-content:center;gap:10px;margin-top:15px;flex-wrap:wrap;}
+.share-buttons a{color:white;padding:8px 12px;border-radius:12px;font-size:14px;display:flex;align-items:center;gap:6px;text-decoration:none;}
+#share-whatsapp{background:#25D366;}
+#share-facebook{background:#3b5998;}
+#share-instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.share-buttons a:hover{opacity:0.8;}
+
+footer{background:#0d2b12;color:#f4d160;text-align:center;padding:20px;margin-top:50px;border-top-left-radius:30px;border-top-right-radius:30px;}
+footer p{margin-bottom:5px;font-size:15px;}
+footer small{opacity:0.75;font-size:13px;color:#e8f5e9;}
+
+@media screen and (max-width:768px){
+  header h1{font-size:28px;}
+  .timeline::before{right:22px;transform:none;}
+  .tl-item, .tl-item.left, .tl-item.right{width:100%;right:0;text-align:right;padding:0 20px 45px 60px;}
+  .tl-item.left .tl-marker, .tl-item.right .tl-marker{left:0;right:auto;}
+  .tl-item.right .tl-more{justify-content:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>⚔️ المعارك والغزوات</h1>
+<p>معارك خلّدها التاريخ، شاهدة على عزّة الإسلام وثباته</p>
+<div class="stats-bar">
+  <span class="stat">⚔️ 21 معركة وغزوة</span>
+  <span class="stat">📅 من 2هـ إلى 9هـ</span>
+  <span class="stat">👑 بقيادة النبي ﷺ</span>
+</div>
+<nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="container">
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="ابحث عن غزوة...">
+<button onclick="searchCompanion()"><i class="fas fa-magnifying-glass"></i></button>
+</div>
+
+<div class="timeline" id="cardsContainer">
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-handshake"></i></div>
+    <div class="tl-card outcome-treaty" data-key="alabwa" onclick="showStory('alabwa')">
+      <span class="tl-year">٢ هـ</span>
+      <h3>غزوة ودان (الأبواء) (2 هـ)</h3>
+      <span class="tl-outcome">صلح بلا قتال</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-route"></i></div>
+    <div class="tl-card outcome-treaty" data-key="ushayrah" onclick="showStory('ushayrah')">
+      <span class="tl-year">٢ هـ</span>
+      <h3>غزوة العشيرة (2 هـ)</h3>
+      <span class="tl-outcome">صلح بلا قتال</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-khanda"></i></div>
+    <div class="tl-card outcome-victory" data-key="badr" onclick="showStory('badr')">
+      <span class="tl-year">٢ هـ</span>
+      <h3>غزوة بدر الكبرى (2 هـ)</h3>
+      <span class="tl-outcome">نصر ساحق</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-mountain"></i></div>
+    <div class="tl-card outcome-lesson" data-key="uhud" onclick="showStory('uhud')">
+      <span class="tl-year">٣ هـ</span>
+      <h3>غزوة أُحد (3 هـ)</h3>
+      <span class="tl-outcome">ابتلاء ودرس</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-fire"></i></div>
+    <div class="tl-card outcome-victory" data-key="hamra_alasad" onclick="showStory('hamra_alasad')">
+      <span class="tl-year">٣ هـ</span>
+      <h3>غزوة حمراء الأسد (3 هـ)</h3>
+      <span class="tl-outcome">ردع نفسي</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-door-open"></i></div>
+    <div class="tl-card outcome-victory" data-key="banunadir" onclick="showStory('banunadir')">
+      <span class="tl-year">٤ هـ</span>
+      <h3>غزوة بني النضير (4 هـ)</h3>
+      <span class="tl-outcome">إجلاء بلا قتال كبير</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-mosque"></i></div>
+    <div class="tl-card outcome-lesson" data-key="dhatriqa" onclick="showStory('dhatriqa')">
+      <span class="tl-year">٤ هـ</span>
+      <h3>غزوة ذات الرقاع (4 هـ)</h3>
+      <span class="tl-outcome">تشريع صلاة الخوف</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-map-location-dot"></i></div>
+    <div class="tl-card outcome-treaty" data-key="dawmatjandal" onclick="showStory('dawmatjandal')">
+      <span class="tl-year">٥ هـ</span>
+      <h3>غزوة دومة الجندل (5 هـ)</h3>
+      <span class="tl-outcome">انسحاب العدو</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-users"></i></div>
+    <div class="tl-card outcome-victory" data-key="mustaliq" onclick="showStory('mustaliq')">
+      <span class="tl-year">٥ هـ</span>
+      <h3>غزوة بني المصطلق - المريسيع (5 هـ)</h3>
+      <span class="tl-outcome">نصر وتبرئة</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-water"></i></div>
+    <div class="tl-card outcome-victory" data-key="khandaq" onclick="showStory('khandaq')">
+      <span class="tl-year">٥ هـ</span>
+      <h3>غزوة الخندق - الأحزاب (5 هـ)</h3>
+      <span class="tl-outcome">نصر بلا قتال</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-scale-balanced"></i></div>
+    <div class="tl-card outcome-lesson" data-key="banuqurayzah" onclick="showStory('banuqurayzah')">
+      <span class="tl-year">٥ هـ</span>
+      <h3>غزوة بني قريظة (5 هـ)</h3>
+      <span class="tl-outcome">قضاء وحكم</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-mountain-sun"></i></div>
+    <div class="tl-card outcome-withdrawal" data-key="banulihyan" onclick="showStory('banulihyan')">
+      <span class="tl-year">٦ هـ</span>
+      <h3>غزوة بني لحيان (6 هـ)</h3>
+      <span class="tl-outcome">انسحاب العدو</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-horse"></i></div>
+    <div class="tl-card outcome-victory" data-key="dhiqarad" onclick="showStory('dhiqarad')">
+      <span class="tl-year">٦ هـ</span>
+      <h3>غزوة ذي قَرَد - الغابة (6 هـ)</h3>
+      <span class="tl-outcome">استرداد ناجح</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-dove"></i></div>
+    <div class="tl-card outcome-treaty" data-key="hudaybiyyah" onclick="showStory('hudaybiyyah')">
+      <span class="tl-year">٦ هـ</span>
+      <h3>صلح الحديبية (6 هـ)</h3>
+      <span class="tl-outcome">صلح استراتيجي</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-fort-awesome"></i></div>
+    <div class="tl-card outcome-victory" data-key="khaybar" onclick="showStory('khaybar')">
+      <span class="tl-year">٧ هـ</span>
+      <h3>غزوة خيبر (7 هـ)</h3>
+      <span class="tl-outcome">فتح الحصون</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-dove"></i></div>
+    <div class="tl-card outcome-treaty" data-key="umratqada" onclick="showStory('umratqada')">
+      <span class="tl-year">٧ هـ</span>
+      <h3>عمرة القضاء (7 هـ)</h3>
+      <span class="tl-outcome">عمرة سلمية</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-shield-halved"></i></div>
+    <div class="tl-card outcome-lesson" data-key="mutah" onclick="showStory('mutah')">
+      <span class="tl-year">٨ هـ</span>
+      <h3>غزوة مؤتة (8 هـ)</h3>
+      <span class="tl-outcome">صمود واستشهاد</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-kaaba"></i></div>
+    <div class="tl-card outcome-treaty" data-key="fathmakkah" onclick="showStory('fathmakkah')">
+      <span class="tl-year">٨ هـ</span>
+      <h3>فتح مكة (8 هـ)</h3>
+      <span class="tl-outcome">فتح سلمي</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-users"></i></div>
+    <div class="tl-card outcome-victory" data-key="hunayn" onclick="showStory('hunayn')">
+      <span class="tl-year">٨ هـ</span>
+      <h3>غزوة حنين (8 هـ)</h3>
+      <span class="tl-outcome">نصر بعد ابتلاء</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item right">
+    <div class="tl-marker"><i class="fas fa-city"></i></div>
+    <div class="tl-card outcome-withdrawal" data-key="taif" onclick="showStory('taif')">
+      <span class="tl-year">٨ هـ</span>
+      <h3>غزوة الطائف (8 هـ)</h3>
+      <span class="tl-outcome">انسحاب استراتيجي</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+  <div class="tl-item left">
+    <div class="tl-marker"><i class="fas fa-flag"></i></div>
+    <div class="tl-card outcome-treaty" data-key="tabuk" onclick="showStory('tabuk')">
+      <span class="tl-year">٩ هـ</span>
+      <h3>غزوة تبوك (9 هـ)</h3>
+      <span class="tl-outcome">هيبة بلا قتال</span>
+      <div class="tl-more">التفاصيل <i class="fas fa-arrow-left"></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="story-box" id="storyBox">
+<button class="close-btn" onclick="closeStory()">إغلاق</button>
+<h2 id="storyTitle"></h2>
+<p id="storyContent"></p>
+<div class="share-buttons" id="shareButtons"></div>
+</div>
+</div>
+
+<footer>
+<p>صدقة جارية لكل مسلم</p>
+<small>المصدر: البداية والنهاية لابن كثير، الرحيق المختوم للمباركفوري، زاد المعاد لابن القيم</small>
+</footer>
+
+<script>
+const companions={alabwa:{title:"غزوة ودان (الأبواء) (2 هـ)",content:"أول غزوة خرج فيها النبي ﷺ بنفسه على رأس جيش من المسلمين، خرج فيها لاعتراض قافلة لقريش، لكن لم يقع فيها قتال.\n\nعقد النبي ﷺ خلالها حلفاً مع بني ضمرة يقضي بعدم اعتداء أي طرف على الآخر، وكانت بداية لسلسلة من الحلفاء الذين أمّنوا طرق المدينة من الأخطار المحيطة بها.",year:"٢ هـ",outcome:"صلح بلا قتال",cls:"treaty"},ushayrah:{title:"غزوة العشيرة (2 هـ)",content:"خرج النبي ﷺ لاعتراض قافلة كبيرة لقريش قادمة من الشام، لكن القافلة كانت قد مرّت قبل وصوله بأيام قليلة فلم يحدث قتال.\n\nعقد النبي ﷺ في هذه الغزوة حلفاً مع بني مُدلِج، وفيها دار حوار مشهور بين علي بن أبي طالب وعمار بن ياسر رضي الله عنهما وهما يعملان معاً، يدل على تواضع الصحابة وتعاونهم رغم قلة الإمكانات.",year:"٢ هـ",outcome:"صلح بلا قتال",cls:"treaty"},badr:{title:"غزوة بدر الكبرى (2 هـ)",content:"أول معركة فاصلة بين المسلمين والمشركين، وقعت في السنة الثانية للهجرة حين خرج المسلمون لاعتراض قافلة تجارية لقريش، فعلم أبو سفيان بذلك وغيّر مسار القافلة، وخرجت قريش بجيش كبير لحماية تجارتها والانتقام.\n\nالتقى الجيشان عند بئر بدر، وكان عدد المسلمين نحو 313 مقاتلاً مقابل نحو ألف من المشركين، فدعا النبي ﷺ ربه بإلحاح طلباً للنصر، فأنزل الله الملائكة لتثبيت المؤمنين، وانتصر المسلمون انتصاراً ساحقاً وقُتل كثير من صناديد قريش كأبي جهل، وسُميت بيوم الفرقان لأن الله فرّق فيها بين الحق والباطل.",year:"٢ هـ",outcome:"نصر ساحق",cls:"victory"},uhud:{title:"غزوة أُحد (3 هـ)",content:"جاءت رداً على هزيمة قريش في بدر، حيث خرجت قريش بجيش كبير للثأر، فخرج المسلمون لملاقاتهم عند جبل أُحد قرب المدينة، وأمر النبي ﷺ الرماة بالبقاء على جبل الرماة مهما حدث لحماية ظهور المسلمين.\n\nفي بداية المعركة كان النصر حليف المسلمين، لكن حين ظن بعض الرماة أن المعركة انتهت نزلوا من الجبل طمعاً بالغنائم، فاستغل خالد بن الوليد (وكان لا يزال مشركاً حينها) الثغرة والتفّ بفرسانه على المسلمين، فانقلبت الدفة وأصيب النبي ﷺ واستشهد سبعون من الصحابة منهم حمزة بن عبدالمطلب رضي الله عنه. كانت المعركة درساً عظيماً في أهمية طاعة أوامر القيادة.",year:"٣ هـ",outcome:"ابتلاء ودرس",cls:"lesson"},hamra_alasad:{title:"غزوة حمراء الأسد (3 هـ)",content:"عقب انصراف قريش من أُحد مباشرة، أمر النبي ﷺ من شارك في المعركة بالخروج لملاحقة قريش رغم جراحهم وتعبهم، إظهاراً لقوة المسلمين وأنهم لم يُهزموا نهائياً.\n\nلما سمعت قريش بخروج المسلمين خلفهم خافت من الرجوع لقتال جديد، فتابعت طريقها إلى مكة دون أن تعاود الهجوم، وكانت رسالة نفسية قوية أعادت هيبة المسلمين بعد محنة أُحد.",year:"٣ هـ",outcome:"ردع نفسي",cls:"victory"},banunadir:{title:"غزوة بني النضير (4 هـ)",content:"يهود بني النضير كانوا حلفاء للمسلمين بمعاهدة، لكنهم حاولوا اغتيال النبي ﷺ غدراً بإلقاء صخرة عليه أثناء زيارته لهم، فعلم بمكرهم فانصرف سالماً.\n\nحاصر النبي ﷺ حصونهم لنقضهم العهد، حتى استسلموا وقَبِلوا الجلاء عن المدينة، فحمّلوا ما استطاعوا من أموالهم على الإبل وتركوا ديارهم وحصونهم للمسلمين دون قتال كبير.",year:"٤ هـ",outcome:"إجلاء بلا قتال كبير",cls:"victory"},dhatriqa:{title:"غزوة ذات الرقاع (4 هـ)",content:"غزوة ضد بعض قبائل نجد التي كانت تخطط لمهاجمة المدينة، فخرج إليها النبي ﷺ ولم يقع قتال كبير إذ تفرق المشركون قبل المواجهة.\n\nسُميت بذات الرقاع لأن أقدام الصحابة تقرّحت من طول المسير الشاق فلفّوا عليها الخِرَق، وفيها شُرعت صلاة الخوف لأول مرة، وهي الصلاة التي يؤديها المسلمون في حال الخطر مقسّمين إلى مجموعتين تتناوبان الحراسة والصلاة.",year:"٤ هـ",outcome:"تشريع صلاة الخوف",cls:"lesson"},dawmatjandal:{title:"غزوة دومة الجندل (5 هـ)",content:"بلغ النبي ﷺ أن بعض القبائل عند دومة الجندل قرب حدود الشام تتجمع بنية غزو المدينة أو قطع طرق التجارة، فخرج إليهم بجيش من المسلمين.\n\nلما اقترب المسلمون من دومة الجندل، فرّ أهلها خوفاً دون قتال، فأقام النبي ﷺ هناك أياماً ثم عاد إلى المدينة، وكانت الغزوة درساً في تأمين حدود الدولة الإسلامية الناشئة دون الحاجة لمواجهة فعلية.",year:"٥ هـ",outcome:"انسحاب العدو",cls:"treaty"},mustaliq:{title:"غزوة بني المصطلق - المريسيع (5 هـ)",content:"بلغ النبي ﷺ أن قبيلة بني المصطلق تستعد لغزو المدينة، فبادر بغزوهم قبل أن يجتمع أمرهم، فانتصر المسلمون عليهم انتصاراً سريعاً وسبوا منهم عدداً، وفيها تزوج النبي ﷺ جويرية بنت الحارث سيدة القوم مما كان سبباً في إسلام قومها جميعاً.\n\nوقعت في هذه الغزوة حادثة الإفك المشهورة، حين اتُّهمت أم المؤمنين عائشة رضي الله عنها زوراً وبهتاناً، فنزلت آيات من سورة النور تبرئها براءة قاطعة من فوق سبع سماوات، وهي من أعظم الدروس في خطورة الشائعات وحرمة أعراض المؤمنين.",year:"٥ هـ",outcome:"نصر وتبرئة",cls:"victory"},khandaq:{title:"غزوة الخندق - الأحزاب (5 هـ)",content:"تحالفت قريش مع قبائل غطفان واليهود وأحزاب أخرى لغزو المدينة بجيش ضخم يقارب عشرة آلاف مقاتل، فاستشار النبي ﷺ الصحابة، فاقترح سلمان الفارسي رضي الله عنه حفر خندق حول المدينة، وهي خطة عسكرية لم تكن معروفة عند العرب.\n\nحفر المسلمون الخندق في أيام قليلة، فلما وصل الأحزاب فوجئوا بالخندق فعجزوا عن اقتحام المدينة، وحاصروها لأيام طويلة وسط برد شديد، حتى أرسل الله ريحاً عاصفة قلبت خيامهم وأطفأت نيرانهم، فتفرقوا وانسحبوا دون قتال يُذكر، وكانت من أعظم علامات نصر الله لعباده المؤمنين.",year:"٥ هـ",outcome:"نصر بلا قتال",cls:"victory"},banuqurayzah:{title:"غزوة بني قريظة (5 هـ)",content:"بعد انتهاء غزوة الخندق مباشرة، أمر النبي ﷺ بالتوجه إلى بني قريظة، وهم يهود نقضوا العهد مع المسلمين وتآمروا مع الأحزاب أثناء الحصار رغم ميثاقهم السابق مع المسلمين.\n\nحاصر المسلمون حصونهم أياماً حتى استسلموا وقبلوا حكم سعد بن معاذ رضي الله عنه فيهم، فحكم بقتل المقاتلين منهم لنقضهم العهد وخيانتهم في وقت الشدة، وهو حكم وافق ما ورد في التوراة لمن ينقض العهد وقت الحرب.",year:"٥ هـ",outcome:"قضاء وحكم",cls:"lesson"},banulihyan:{title:"غزوة بني لحيان (6 هـ)",content:"خرج النبي ﷺ لأخذ الثأر من قبيلة بني لحيان الذين غدروا بأصحاب بئر معونة وأصحاب الرجيع من الصحابة وقتلوهم غدراً في وقت سابق.\n\nلما علم بنو لحيان بخروج النبي ﷺ إليهم، هربوا إلى رؤوس الجبال ولم يتمكن المسلمون من إدراكهم، فعاد النبي ﷺ دون قتال كبير، لكن الغزوة أظهرت للقبائل المحيطة أن المسلمين لن يتركوا دماء إخوانهم دون محاسبة.",year:"٦ هـ",outcome:"انسحاب العدو",cls:"withdrawal"},dhiqarad:{title:"غزوة ذي قَرَد - الغابة (6 هـ)",content:"أغار غطفان على إبل النبي ﷺ الراعية في منطقة الغابة قرب المدينة، فقتلوا راعيها واستاقوا الإبل، فلحق بهم بعض الصحابة سريعاً بقيادة سلمة بن الأكوع رضي الله عنه.\n\nاشتهر سلمة بن الأكوع في هذه الغزوة بسرعته العجيبة في الجري خلف المغيرين وحده قبل وصول بقية المسلمين، حتى استرد جزءاً من الإبل، ثم لحق به النبي ﷺ ببقية الجيش فاسترجعوا الباقي، وفرّ المغيرون تاركين بعض متاعهم.",year:"٦ هـ",outcome:"استرداد ناجح",cls:"victory"},hudaybiyyah:{title:"صلح الحديبية (6 هـ)",content:"خرج النبي ﷺ ومعه أكثر من ألف من الصحابة معتمرين لا يريدون قتالاً، فمنعتهم قريش من دخول مكة، فتفاوض الطرفان وتم عقد صلح الحديبية الذي بدا في ظاهره مجحفاً بحق المسلمين (كتأجيل العمرة لعام قادم وشروط أخرى).\n\nلكن الله سماه في القرآن «فتحاً مبيناً»، لأنه أوقف الحرب عشر سنوات وأتاح للدعوة الإسلامية الانتشار بحرية، فدخل في الإسلام خلال هذه الفترة أضعاف من دخلوا فيه من قبل، وهو درس عظيم في أن ظاهر الأمور قد يخالف حقيقتها عند الله.",year:"٦ هـ",outcome:"صلح استراتيجي",cls:"treaty"},khaybar:{title:"غزوة خيبر (7 هـ)",content:"خيبر كانت حصوناً منيعة ليهود في شمال المدينة، كانوا يحرّضون القبائل المجاورة على حرب المسلمين، فخرج إليهم النبي ﷺ لإنهاء خطرهم بعد صلح الحديبية.\n\nحاصر المسلمون الحصون واحداً تلو الآخر، وفي هذه الغزوة أعطى النبي ﷺ الراية لعلي بن أبي طالب رضي الله عنه الذي فتح الله على يديه أعظم حصونها، وانتهت الغزوة بفتح خيبر وغنم المسلمون منها غنائم كثيرة، وتزوج النبي ﷺ فيها من صفية بنت حيي رضي الله عنها.",year:"٧ هـ",outcome:"فتح الحصون",cls:"victory"},umratqada:{title:"عمرة القضاء (7 هـ)",content:"تنفيذاً لبنود صلح الحديبية الذي أجّل عمرة المسلمين لعام قادم، خرج النبي ﷺ ومعه المسلمون معتمرين في العام التالي، فأخلت قريش مكة ثلاثة أيام كما اتُّفق ليؤدي المسلمون عمرتهم بأمان.\n\nدخل المسلمون مكة بلا قتال ولا خوف، وتأثر كثير من مشركي مكة بمظهر المسلمين وتماسكهم، حتى أسلم بعدها بفترة قصيرة قائدان عسكريان بارزان هما خالد بن الوليد وعمرو بن العاص رضي الله عنهما، وكان لإسلامهما أثر كبير في الفتوحات اللاحقة.",year:"٧ هـ",outcome:"عمرة سلمية",cls:"treaty"},mutah:{title:"غزوة مؤتة (8 هـ)",content:"أول مواجهة بين المسلمين والروم (الدولة البيزنطية)، حين أرسل النبي ﷺ رسالة إلى حاكم بصرى فقتل الرسول، فجهّز النبي ﷺ جيشاً من ثلاثة آلاف مقاتل بقيادة زيد بن حارثة، فإن استشهد فجعفر بن أبي طالب، فإن استشهد فعبدالله بن رواحة.\n\nواجه المسلمون جيشاً رومياً ضخماً يفوقهم عدداً بأضعاف مضاعفة، واستشهد القادة الثلاثة تباعاً كما أخبر النبي ﷺ، فأخذ الراية خالد بن الوليد رضي الله عنه وأظهر مهارة عسكرية فائقة في الانسحاب المنظم بأقل الخسائر، فلُقّب من يومها بسيف الله المسلول.",year:"٨ هـ",outcome:"صمود واستشهاد",cls:"lesson"},fathmakkah:{title:"فتح مكة (8 هـ)",content:"بعد أن نقضت قريش صلح الحديبية بمهاجمة حلفاء المسلمين، خرج النبي ﷺ بجيش عظيم يقارب عشرة آلاف مقاتل نحو مكة، وتم الفتح بأقل قدر من إراقة الدماء تقريباً بلا قتال يُذكر.\n\nدخل النبي ﷺ مكة متواضعاً خاشعاً لله، وعفا عن كل من آذاه وأخرجه من مكة قائلاً: اذهبوا فأنتم الطلقاء، وهو أعظم موقف عفو وتسامح في التاريخ. طهّر النبي ﷺ الكعبة من الأصنام (كان حولها 360 صنماً) وأعاد بناء البيت الحرام مركزاً للتوحيد كما أراده إبراهيم عليه السلام.",year:"٨ هـ",outcome:"فتح سلمي",cls:"treaty"},hunayn:{title:"غزوة حنين (8 هـ)",content:"بعد فتح مكة مباشرة، جمعت قبيلتا هوازن وثقيف جيشاً كبيراً لمواجهة المسلمين خشية انتشار الإسلام في جزيرة العرب، فخرج النبي ﷺ بجيش من اثني عشر ألف مقاتل، وهو أكبر جيش خرج به المسلمون حتى ذلك الوقت.\n\nفي بداية المعركة انهزم بعض المسلمين مؤقتاً بسبب كثرة عددهم واغترارهم بها، ففرّ كثيرون، لكن النبي ﷺ ثبت مع نفر قليل ونادى الأنصار، فعادوا للقتال وانتصر المسلمون انتصاراً حاسماً، وهي عبرة أن النصر بيد الله لا بكثرة العدد.",year:"٨ هـ",outcome:"نصر بعد ابتلاء",cls:"victory"},taif:{title:"غزوة الطائف (8 هـ)",content:"بعد هزيمة هوازن في حنين، فرّ الكثير منهم إلى مدينة الطائف المُحصّنة، فتبعهم النبي ﷺ وحاصر المدينة بمنجنيق لأول مرة عند المسلمين، لكن الحصون كانت منيعة جداً.\n\nلما طال الحصار دون جدوى، أشار بعض الصحابة بالانصراف، فقَبِل النبي ﷺ المشورة ورفع الحصار، وفيها قال النبي ﷺ كلمته المشهورة حين عُرض عليه الدعاء على ثقيف: اللهم اهد ثقيفاً وائت بهم، وبالفعل أسلمت ثقيف بعد ذلك بفترة قصيرة طواعية دون قتال.",year:"٨ هـ",outcome:"انسحاب استراتيجي",cls:"withdrawal"},tabuk:{title:"غزوة تبوك (9 هـ)",content:"آخر غزوة خرج فيها النبي ﷺ بنفسه، حين بلغه أن الروم يحشدون جيشاً كبيراً لغزو المدينة، فدعا النبي ﷺ المسلمين للخروج في وقت شدة الحر وقلة الزاد، فتخلّف بعض المنافقين، بينما تسابق الصحابة في الإنفاق والجهاد.\n\nسار النبي ﷺ بجيش من ثلاثين ألف مقاتل حتى وصل تبوك، فلم يجد جيش الروم الذي تراجع، فعقد النبي ﷺ معاهدات مع حكام المنطقة وعاد إلى المدينة دون قتال. أظهرت هذه الغزوة قوة الدولة الإسلامية الجديدة وهيبتها أمام أعظم قوتين في ذلك العصر.",year:"٩ هـ",outcome:"هيبة بلا قتال",cls:"treaty"}};
+
+function showStory(key){
+  if(!companions[key]) return alert("هذه القصة غير موجودة!");
+  const box = document.getElementById('storyBox');
+  const title = document.getElementById('storyTitle');
+  const content = document.getElementById('storyContent');
+  const shareDiv = document.getElementById('shareButtons');
+
+  title.innerText = companions[key].title;
+  content.innerText = companions[key].content;
+
+  const shareHTML = `
+    <a id="share-whatsapp" href="https://wa.me/?text=${encodeURIComponent(companions[key].title + ' - ' + companions[key].content + ' ' + location.href)}" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+    <a id="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}&quote=${encodeURIComponent(companions[key].title + ' - ' + companions[key].content)}" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+    <a id="share-instagram" href="javascript:void(0)" onclick="shareInstagram(companions[key].title + ' - ' + companions[key].content)"><i class="fab fa-instagram"></i> انستقرام</a>
+  `;
+  shareDiv.innerHTML = shareHTML;
+
+  box.style.display='block'; 
+  setTimeout(()=> box.classList.add('active'), 50);
+}
+
+function closeStory(){
+  const box = document.getElementById('storyBox');
+  box.classList.remove('active');
+  setTimeout(()=> box.style.display='none', 500);
+}
+
+function searchCompanion(){
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  const keys = Object.keys(companions);
+  const found = keys.find(k => companions[k].title.toLowerCase().includes(query));
+  if(found){
+    showStory(found);
+  } else { alert("لم يتم العثور على الغزوة المطلوبة!"); }
+}
+
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('click',()=>showStory(c.dataset.key));
+});
+
+// مشاركة موحّدة عبر انستقرام
+function shareInstagram(text){
+  if(navigator.share){
+    navigator.share({text:text}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('تم نسخ النص 📋 افتح تطبيق انستقرام والصقه في قصة أو منشور جديد');
+      window.open('https://www.instagram.com/','_blank');
+    }).catch(()=>{
+      window.open('https://www.instagram.com/','_blank');
+    });
+  }
+}
+
+</script>
+
+</body>
+</html>

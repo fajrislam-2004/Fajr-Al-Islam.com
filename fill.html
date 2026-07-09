@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أكمل الآية - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Cairo',sans-serif;
+  background:linear-gradient(to bottom,#f0fff4,#e8f5e9);
+  color:#2f4f4f;
+}
+header{
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:50px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  background:url('header-bg.png') center/cover no-repeat;
+  opacity:0.15;
+  top:0; left:0; bottom:0; right:0;
+  position:absolute;
+  z-index:0;
+}
+header h1, header p, .nav{position:relative; z-index:1;}
+header h1{font-size:40px;margin-bottom:10px;}
+header p{font-size:18px;opacity:0.9;}
+
+.nav{margin-top:15px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.nav a{background:rgba(255,255,255,0.2);color:white;padding:8px 16px;border-radius:25px;text-decoration:none;font-weight:bold;}
+
+.motivation{
+  text-align:center;
+  margin:30px auto 10px auto;
+  font-size:19px;
+  color:#1b5e20;
+  font-weight:bold;
+}
+
+.container{
+  max-width:800px;
+  margin:auto;
+  padding:20px 20px 40px 20px;
+}
+
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.timer-circle{
+  width:80px;height:80px;border-radius:50%;
+  border:6px solid #1b5e20;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:bold;
+  background:#e8f5e9;
+}
+.timer-circle.danger{border-color:red;color:red;animation:shake 0.4s infinite;}
+@keyframes shake{0%{transform:rotate(0deg);}25%{transform:rotate(3deg);}50%{transform:rotate(0deg);}75%{transform:rotate(-3deg);}100%{transform:rotate(0deg);}}
+
+.score-bar{
+  background:#1b5e20;color:white;padding:10px 20px;
+  border-radius:15px;font-weight:bold;
+}
+.progress-bar{
+  background:#c8e6c9;border-radius:15px;
+  padding:8px 20px;font-weight:bold;color:#1b5e20;
+}
+
+.ayah-card{
+  background:white;
+  border-radius:25px;
+  padding:35px 25px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  text-align:center;
+}
+.ayah-card h3{
+  color:#1b5e20;
+  margin-bottom:20px;
+  font-size:18px;
+}
+.ayah-text{
+  font-family:'Amiri', serif;
+  font-size:26px;
+  line-height:2.2;
+  color:#1b5e20;
+  margin-bottom:25px;
+}
+.blank{
+  display:inline-block;
+  min-width:90px;
+  border-bottom:3px dashed #4caf50;
+  color:#e53935;
+  font-weight:bold;
+}
+
+.options{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:20px;
+}
+.option-btn{
+  padding:14px;
+  border:none;
+  border-radius:20px;
+  background:#e0f2f1;
+  cursor:pointer;
+  font-size:17px;
+  font-family:'Amiri', serif;
+  transition:0.25s;
+}
+.option-btn:hover{background:#c8e6c9;transform:translateY(-2px);}
+.option-btn.correct{background:#4caf50;color:white;}
+.option-btn.wrong{background:#f44336;color:white;}
+
+.result{
+  margin-top:18px;
+  font-size:19px;
+  font-weight:bold;
+  min-height:26px;
+}
+.level-badge{background:#7b1fa2;color:white;padding:8px 16px;border-radius:15px;font-weight:bold;font-size:14px;}
+.level-up-banner{
+  background:linear-gradient(135deg,#7b1fa2,#ab47bc);
+  color:white;
+  text-align:center;
+  padding:12px;
+  border-radius:15px;
+  margin-bottom:15px;
+  font-weight:bold;
+  font-size:18px;
+  animation:popIn 0.5s;
+}
+@keyframes popIn{0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
+
+.final-card{
+  background:linear-gradient(135deg,#e8f5e9,#ffffff);
+  border-radius:25px;
+  padding:35px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  text-align:center;
+}
+.final-score{font-size:42px;color:#1b5e20;margin:15px 0;}
+
+.share-box{margin-top:20px;display:flex;justify-content:center;gap:15px;}
+.share-box a{font-size:22px;color:white;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;text-decoration:none;}
+.whatsapp{background:#25D366;}
+.facebook{background:#1877f2;}
+.copy{background:#4caf50;}
+
+.restart-btn,.exit-btn{
+  margin-top:15px;
+  padding:13px 26px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  font-size:16px;
+  margin-inline:5px;
+}
+.restart-btn{background:#1b5e20;color:white;}
+.exit-btn{background:#f44336;color:white;}
+
+@media(max-width:600px){
+  .options{grid-template-columns:1fr;}
+  header h1{font-size:28px;}
+  .ayah-text{font-size:21px;}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="soundCorrect" src="correct.mp3"></audio>
+<audio id="soundWrong" src="wrong.mp3"></audio>
+<audio id="soundWin" src="win.mp3"></audio>
+<audio id="soundLose" src="lose.mp3"></audio>
+
+<header>
+<h1>✍️ أكمل الآية</h1>
+<p>اختر الكلمة الصحيحة لتكملة الآية الكريمة</p>
+<nav class="nav">
+<a href="games.html">🏠 عالم المعرفة</a>
+<a href="fill.html">✍️ أكمل الآية</a>
+<a href="puzzle.html">🧩 رتّب الآية</a>
+<a href="daily.html">💚 نبض التحدي</a>
+</nav>
+</header>
+
+<div class="motivation">📖 ركّز في الآية واختر الكلمة الناقصة الصحيحة</div>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="score-bar">النقاط: <span id="score">0</span></div>
+    <div class="level-badge">🎯 المستوى <span id="level">1</span></div>
+    <div class="timer-circle" id="time">20</div>
+    <div class="progress-bar">السؤال <span id="qNum">1</span>/<span id="qTotal">10</span></div>
+  </div>
+
+  <div class="ayah-card" id="gameCard"></div>
+</div>
+
+<script>
+const siteLink = window.location.origin;
+const soundCorrect=document.getElementById("soundCorrect");
+const soundWrong=document.getElementById("soundWrong");
+const soundWin=document.getElementById("soundWin");
+const soundLose=document.getElementById("soundLose");
+
+// كل آية فيها نص مقسوم لجزء قبل الفراغ، الكلمة الصحيحة، جزء بعد الفراغ، وخيارات
+const originalQuestions=[
+
+{before:"﴿قَدْ أَفْلَحَ",after:"﴾",missing:"الْمُؤْمِنُونَ",options:["الْمُؤْمِنُونَ","الصَّالِحُونَ","الْمُتَّقُونَ","الْمُخْلِصُونَ"],surah:"سورة المؤمنون",ayah:1,difficulty:"easy"},
+
+{before:"﴿فَإِنَّ مَعَ الْعُسْرِ",after:"﴾",missing:"يُسْرًا",options:["يُسْرًا","فَرَجًا","خَيْرًا","نَصْرًا"],surah:"سورة الشرح",ayah:5,difficulty:"easy"},
+
+{
+    before: "﴿فَاسْتَجَبْنَا لَهُ وَنَجَّيْنَاهُ مِنَ الْغَمِّ وَكَذَٰلِكَ نُنْجِي",
+    after: "﴾",
+    missing: "الْمُؤْمِنِينَ",
+    options: ["الْمُؤْمِنِينَ", "الصَّابِرِينَ", "الْمُتَّقِينَ", "الْمُحْسِنِينَ"],
+    surah: "سورة الأنبياء",
+    ayah: 88,
+    difficulty: "easy"
+  },
+
+{before:"﴿أَلَا بِذِكْرِ اللَّهِ",after:"الْقُلُوبُ﴾",missing:"تَطْمَئِنُّ",options:["تَطْمَئِنُّ","تَخْشَعُ","تَسْكُنُ","تَفْرَحُ"],surah:"سورة الرعد",ayah:28,difficulty:"easy"},
+
+{before:"﴿إِنَّ أَكْرَمَكُمْ عِنْدَ اللَّهِ",after:"﴾",missing:"أَتْقَاكُمْ",options:["أَتْقَاكُمْ","أَعْلَمُكُمْ","أَغْنَاكُمْ","أَقْوَاكُمْ"],surah:"سورة الحجرات",ayah:13,difficulty:"easy"},
+
+{
+    before: "﴿وَلَا تَحْسَبَنَّ الَّذِينَ قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا بَلْ أَحْيَاءٌ عِنْدَ رَبِّهِمْ",
+    after: "﴾",
+    missing: "يُرْزَقُونَ",
+    options: ["يُرْزَقُونَ", "يَفْرَحُونَ", "يَخْلُدُونَ", "يَنْعَمُونَ"],
+    surah: "سورة آل عمران",
+    ayah: 169,
+    difficulty: "easy"
+  },
+
+{before:"﴿ وَقَالَ رَبُّكُمُ ادْعُونِي",after:"لَكُمْ﴾",missing:"أَسْتَجِبْ",options:["أَسْتَجِبْ","أُجِبْ","أُعْطِ","أَرْحَمْ"],surah:"سورة غافر",ayah:60,difficulty:"easy"},
+
+{before:"﴿وَالْعَصْرِ ۝ إِنَّ الْإِنْسَانَ",after:"﴾",missing:"لَفِي خُسْرٍ",options:["لَفِي خُسْرٍ","لَفِي غَفْلَةٍ","لَفِي ضَلَالٍ","لَفِي حَيْرَةٍ"],surah:"سورة العصر",ayah:2,difficulty:"easy"},
+
+{before:"﴿وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنْتُمُ",after:"إِن كُنتُم مُّؤْمِنِينَ﴾",missing:"الْأَعْلَوْنَ",options:["الْأَعْلَوْنَ","الْمُنْتَصِرُونَ","الْأَقْوِيَاءُ","الْغَالِبُونَ"],surah:"سورة آل عمران",ayah:139,difficulty:"easy"},
+
+{before:"﴿إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّى يُغَيِّرُوا",after:"﴾",missing:"مَا بِأَنْفُسِهِمْ",options:["مَا بِأَخْلَاقِهِمْ","مَا فِي سَرَائِرِهِمْ","مَا بِدَوَاخِلِهِمْ","مَا بِأَنْفُسِهِمْ"],surah:"سورة الرعد",ayah:11,difficulty:"easy"},
+{
+    before: "﴿وَاصْبِرْ لِحُكْمِ رَبِّكَ فَإِنَّكَ بِأَعْيُنِنَا وَسَبِّحْ بِحَمْدِ رَبِّكَ حِينَ",
+    after: "﴾",
+    missing: "تَقُومُ",
+    options: ["تَقُومُ", "تَنَامُ", "تُمْسِي", "تُصْبِحُ"],
+    surah: "سورة الطور",
+    ayah: 48,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿وَعِبَادُ الرَّحْمَٰنِ الَّذِينَ يَمْشُونَ عَلَى الْأَرْضِ",
+    after: "وَإِذَا خَاطَبَهُمُ الْجَاهِلُونَ قَالُوا سَلَامًا﴾",
+    missing: "هَوْنًا",
+    options: ["خُشُوعًا", "هَوْنًا", "رُوَيْدًا", "لِينًا"],
+    surah: "سورة الفرقان",
+    ayah: 63,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ إِنَّ اللَّهَ يُحِبُّ",
+    after: "﴾",
+    missing: "الْمُتَوَكِّلِينَ",
+    options: ["الصَّابِرِينَ", "الصَّادِقِينَ", "الْمُتَوَكِّلِينَ", "الْمُحْسِنِينَ"],
+    surah: "سورة آل عمران",
+    ayah: 159,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا",
+    after: "﴾",
+    missing: "مَوْقُوتًا",
+    options: ["مَفْرُوضًا", "مَوْقُوتًا", "مَشْهُودًا", "مَكْتُوبًا"],
+    surah: "سورة النساء",
+    ayah: 103,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿ظَهَرَ الْفَسَادُ فِي الْبَرِّ وَالْبَحْرِ بِمَا كَسَبَتْ أَيْدِي النَّاسِ لِيُذِيقَهُم بَعْضَ الَّذِي عَمِلُوا لَعَلَّهُمْ",
+    after: "﴾",
+    missing: "يَرْجِعُونَ",
+    options: ["يَرْجِعُونَ", "يَحْذَرُونَ", "يَتَّقُونَ", "يَشْكُرُونَ"],
+    surah: "سورة الروم",
+    ayah: 41,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِ عِلْمٌ إِنَّ السَّمْعَ وَالْبَصَرَ وَالْفُؤَادَ كُلُّ أُولَٰئِكَ كَانَ عَنْهُ",
+    after: "﴾",
+    missing: "مَسْؤُولًا",
+    options: ["مَسْؤُولًا", "مَكْتُوبًا", "مَعْلُومًا", "حَسِيبًا"],
+    surah: "سورة الإسراء",
+    ayah: 36,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ إِنَّ اللَّهَ مَعَ",
+    after: "﴾",
+    missing: "الصَّابِرِينَ",
+    options: ["الْمُتَّقِينَ", "الْمُؤْمِنِينَ", "الصَّابِرِينَ", "الصَّادِقِينَ"],
+    surah: "سورة البقرة",
+    ayah: 153,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿وَقُل رَّبِّ زِدْنِي",
+    after: "﴾",
+    missing: "عِلْمًا",
+    options: ["عِلْمًا", "حِكْمَةً", "فَقْهًا", "هُدًى"],
+    surah: "سورة طه",
+    ayah: 114,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ",
+    after: "أَفَلَا يُؤْمِنُونَ﴾",
+    missing: "حَيٍّ",
+    options: ["حَيٍّ", "نَابِتٍ", "مُبَارَكٍ", "طَاهِرٍ"],
+    surah: "سورة الأنبياء",
+    ayah: 30,
+    difficulty: "medium"
+  },
+  {
+    before: "﴿وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ وَاللَّهُ يُحِبُّ",
+    after: "﴾",
+    missing: "الْمُحْسِنِينَ",
+    options: ["التَّوَّابِينَ", "الْمُطَّهِّرِينَ", "الْمُحْسِنِينَ", "الصَّابِرِينَ"],
+    surah: "سورة آل عمران",
+    ayah: 134,
+    difficulty: "medium"
+  },
+
+{
+    before: "﴿وَمَا كَانَ اللَّهُ لِيُعْذِبَهُمْ وَأَنتَ فِيهِمْ وَمَا كَانَ اللَّهُ مُعَذِّبَهُمْ وَهُمْ",
+    after: "﴾",
+    missing: "يَسْتَغْفِرُونَ",
+    options: ["يَؤْمِنُونَ", "يَسْتَغْفِرُونَ", "يَتَّقُونَ", "يَصْلِحُونَ"],
+    surah: "سورة الأنفال",
+    ayah: 33,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿ذَٰلِكَ وَمَن يُعَظِّمْ شَعَائِرَ اللَّهِ فَإِنَّهَا مِن",
+    after: "الْقُلُوبِ﴾",
+    missing: "تَقْوَى",
+    options: ["صَلَاحِ", "صِدْقِ", "تَقْوَى", "طَهَارَةِ"],
+    surah: "سورة الحج",
+    ayah: 32,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿إِنَّ الَّذِينَ آمَنُوا وَالَّذِينَ هَادُوا وَالنَّصَارَىٰ وَالصَّابِئِينَ مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَعَمِلَ صَالِحًا فَلَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ",
+    after: "﴾",
+    missing: "يَحْزَنُونَ",
+    options: ["يَحْزَنُونَ", "يَنْدَمُونَ", "يَشْقَوْنَ", "يَخَافُونَ"],
+    surah: "سورة البقرة",
+    ayah: 62,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿قَالُوا سُبْحَانَكَ لَا عِلْمَ لَنَا إِلَّا مَا عَلَّمْتَنَا إِنَّكَ أَنتَ الْعَلِيمُ",
+    after: "﴾",
+    missing: "الْحَكِيمُ",
+    options: ["الْخَبِيرُ", "الْعَزِيزُ", "الْحَكِيمُ", "الْقَدِيرُ"],
+    surah: "سورة البقرة",
+    ayah: 32,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿وَمَنْ يَتَّقِ اللَّهَ يَجْعَلْ لَهُ مَخْرَجًا * وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ وَمَنْ يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ إِنَّ اللَّهَ",
+    after: "أَمْرِهِ قَدْ جَعَلَ اللَّهُ لِكُلِّ شَيْءٍ قَدْرًا﴾",
+    missing: "بَالِغُ",
+    options: ["بَالِغُ", "قَاضِي", "نَافِذُ", "مُتِمُّ"],
+    surah: "سورة الطلاق",
+    ayah: 3,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ وَجَادِلْهُم بِالَّتِي هِيَ أَحْسَنُ إِنَّ رَبَّكَ هُوَ أَعْلَمُ بِمَن ضَلَّ عَن سَبِيلِهِ وَهُوَ أَعْلَمُ",
+    after: "﴾",
+    missing: "بِالْمُهْتَدِينَ",
+    options: ["بِالْمُهْتَدِينَ", "بِالْمُتَّقِينَ", "بِالصَّابِرِينَ", "بِالْمُحْسِنِينَ"],
+    surah: "سورة النحل",
+    ayah: 125,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَلْتَنظُرْ نَفْسٌ مَّا قَدَّمَتْ لِغَدٍ وَاتَّقُوا اللَّهَ إِنَّ اللَّهَ",
+    after: "بِمَا تَعْمَلُونَ﴾",
+    missing: "خَبِيرٌ",
+    options: ["عَلِيمٌ", "بَصِيرٌ", "خَبِيرٌ", "سَمِيعٌ"],
+    surah: "سورة الحشر",
+    ayah: 18,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿وَقُلِ الْحَمْدُ لِلَّهِ الَّذِي لَمْ يَتَّخِذْ وَلَدًا وَلَمْ يَكُن لَّهُ شَرِيكٌ فِي الْمُلْكِ وَلَمْ يَكُن لَّهُ وَلِيٌّ مِّنَ",
+    after: "وَكَبِّرْهُ تَكْبِيرًا﴾",
+    missing: "الذُّلِّ",
+    options: ["الضَّعْفِ", "الذُّلِّ", "الْفَقْرِ", "الْعَجْزِ"],
+    surah: "سورة الإسراء",
+    ayah: 111,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿مَّا كَانَ مُحَمَّدٌ أَبَا أَحَدٍ مِّن رِّجَالِكُمْ وَلَٰكِن رَّسُولَ اللَّهِ وَخَاتَمَ النَّبِيِّينَ وَكَانَ اللَّهُ بِكلِّ شَيْءٍ",
+    after: "﴾",
+    missing: "عَلِيمًا",
+    options: ["عَلِيمًا", "خَبِيرًا", "بَصِيرًا", "شَهِيدًا"],
+    surah: "سورة الأحزاب",
+    ayah: 40,
+    difficulty: "hard"
+  },
+  {
+    before: "﴿مَا عِندَكُمْ يَنفَدُ وَمَا عِندَ اللَّهِ بَاقٍ وَلَنَجْزِيَنَّ الَّذِينَ صَبَرُوا أَجْرَهُم بِأَحْسَنِ مَا كَانُوا",
+    after: "﴾",
+    missing: "يَعْمَلُونَ",
+    options: ["يَعْمَلُونَ", "يَصْنَعُونَ", "يَكْسِبُونَ", "يَفْعَلُونَ"],
+    surah: "سورة النحل",
+    ayah: 96,
+    difficulty: "hard"
+  }
+
+];
+
+let questions=[],current=0,score=0,timeLeft=20,timer,totalQuestions=30,level=1;
+
+function getLevelConfig(qIndex){
+
+// الأسئلة 1 - 10
+if(qIndex < 10){
+  return {
+    level:1,
+    time:20,
+    points:10
+  };
+}
+
+// الأسئلة 11 - 20
+if(qIndex < 20){
+  return {
+    level:2,
+    time:15,
+    points:15
+  };
+}
+
+// الأسئلة 21 - 30
+return {
+  level:3,
+  time:10,
+  points:20
+};
+}
+
+function shuffle(a){return a.sort(()=>Math.random()-0.5);}
+
+function startGame(){
+  const easyQ = shuffle(originalQuestions.filter(q => q.difficulty === "easy"));
+  const mediumQ = shuffle(originalQuestions.filter(q => q.difficulty === "medium"));
+  const hardQ = shuffle(originalQuestions.filter(q => q.difficulty === "hard"));
+
+  questions = [
+    ...easyQ.slice(0, 10),
+    ...mediumQ.slice(0, 10),
+    ...hardQ.slice(0, 10)
+  ];
+
+  current=0;score=0;level=1;
+  document.getElementById("qTotal").textContent=questions.length;
+  showQuestion();
+}
+
+function renderCard(){
+  document.getElementById("gameCard").innerHTML=`
+    <h3 id="surahName"></h3>
+    <div class="ayah-text" id="ayahText"></div>
+    <div class="options" id="options"></div>
+    <div class="result" id="result"></div>
+  `;
+}
+
+function showQuestion(){
+  if(current>=questions.length){endGame();return;}
+  renderCard();
+  const cfg=getLevelConfig(current);
+  const levelChanged = cfg.level!==level;
+  level=cfg.level;
+  timeLeft=cfg.time;
+  document.getElementById("time").classList.remove("danger");
+  document.getElementById("time").textContent=timeLeft;
+  document.getElementById("score").textContent=score;
+  document.getElementById("qNum").textContent=current+1;
+  document.getElementById("level").textContent=level;
+
+  const q=questions[current];
+  document.getElementById("surahName").textContent =
+`📍 ${q.surah} • الآية ${q.ayah}` +
+(levelChanged ? " — 🎯 مستوى جديد! سرعة أكبر ونقاط أعلى" : "");
+  document.getElementById("ayahText").innerHTML=
+    q.before+' <span class="blank">؟؟؟؟</span> '+q.after;
+
+  const optDiv=document.getElementById("options");
+  optDiv.innerHTML="";
+  shuffle([...q.options]).forEach(o=>{
+    const b=document.createElement("button");
+    b.textContent=o;
+    b.className="option-btn";
+    b.onclick=()=>checkAnswer(o,b);
+    optDiv.appendChild(b);
+  });
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timer);
+  timer=setInterval(()=>{
+    timeLeft--;
+    document.getElementById("time").textContent=timeLeft;
+    if(timeLeft<=5) document.getElementById("time").classList.add("danger");
+    if(timeLeft<=0){clearInterval(timer);checkAnswer(null,null);}
+  },1000);
+}
+
+function checkAnswer(selected,btnEl){
+  clearInterval(timer);
+  const q=questions[current];
+  const btns=document.querySelectorAll(".option-btn");
+  btns.forEach(b=>{
+    b.disabled=true;
+    if(b.textContent===q.missing) b.classList.add("correct");
+  });
+  if(selected===q.missing){
+    score+=getLevelConfig(current).points;
+    soundCorrect.play();
+    document.getElementById("result").textContent="✅ إجابة صحيحة!";
+    document.getElementById("ayahText").innerHTML = q.before+' <span class="blank" style="color:#1b5e20;">'+q.missing+'</span> '+q.after;
+  }else{
+    if(btnEl) btnEl.classList.add("wrong");
+    soundWrong.play();
+    document.getElementById("result").textContent="❌ الإجابة الصحيحة: "+q.missing;
+    document.getElementById("ayahText").innerHTML = q.before+' <span class="blank" style="color:#1b5e20;">'+q.missing+'</span> '+q.after;
+  }
+  document.getElementById("score").textContent=score;
+  setTimeout(()=>{current++;showQuestion();},1800);
+}
+
+function endGame(){
+  let max=0;
+  for(let i=0;i<questions.length;i++) max+=getLevelConfig(i).points;
+  let msg="";
+  if(score>=max*0.8){msg="🌟 ما شاء الله! حفظ رائع للآيات!";soundWin.play();}
+  else if(score>=max*0.5){msg="👏 أداء جيد، واصل المراجعة!";soundWin.play();}
+  else{msg="🌱 حاول مرة أخرى وستتحسن بإذن الله!";soundLose.play();}
+
+  document.getElementById("gameCard").innerHTML=`
+  <div class="final-card">
+    <h2>🎉 انتهت اللعبة</h2>
+    <div class="final-score">${score} / ${max}</div>
+    <p>${msg}</p>
+    <div class="share-box">
+      <a class="whatsapp" target="_blank" href="https://wa.me/?text=حصلت على ${score}/${max} في لعبة أكمل الآية 📖 جربها: ${siteLink}"><i class="fab fa-whatsapp"></i></a>
+      <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=${siteLink}"><i class="fab fa-facebook-f"></i></a>
+      <a class="copy" onclick="copyResult(${score},${max})"><i class="fa fa-link"></i></a>
+    </div>
+    <div>
+      <button class="restart-btn" onclick="startGame()">🔄 إعادة اللعبة</button>
+      <button class="exit-btn" onclick="location.href='games.html'">🚪 الخروج للألعاب</button>
+    </div>
+  </div>`;
+}
+
+function copyResult(score,max){
+  navigator.clipboard.writeText(`حصلت على ${score}/${max} في لعبة أكمل الآية 📖 جربها الآن: ${siteLink}`);
+  alert("تم النسخ ✔");
+}
+
+startGame();
+</script>
+
+</body>
+</html>

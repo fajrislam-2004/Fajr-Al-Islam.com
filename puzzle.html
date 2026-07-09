@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رتّب الآية - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Cairo',sans-serif;
+  background:linear-gradient(to bottom,#f0fff4,#e8f5e9);
+  color:#2f4f4f;
+}
+header{
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:50px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  background:url('header-bg.png') center/cover no-repeat;
+  opacity:0.15;
+  top:0; left:0; bottom:0; right:0;
+  position:absolute;
+  z-index:0;
+}
+header h1, header p, .nav{position:relative; z-index:1;}
+header h1{font-size:40px;margin-bottom:10px;}
+header p{font-size:18px;opacity:0.9;}
+.nav{margin-top:15px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.nav a{background:rgba(255,255,255,0.2);color:white;padding:8px 16px;border-radius:25px;text-decoration:none;font-weight:bold;}
+
+.motivation{text-align:center;margin:30px auto 10px auto;font-size:19px;color:#1b5e20;font-weight:bold;}
+
+.container{max-width:800px;margin:auto;padding:20px 20px 40px 20px;}
+
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
+.timer-circle{width:80px;height:80px;border-radius:50%;border:6px solid #1b5e20;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold;background:#e8f5e9;}
+.timer-circle.danger{border-color:red;color:red;animation:shake 0.4s infinite;}
+@keyframes shake{0%{transform:rotate(0deg);}25%{transform:rotate(3deg);}50%{transform:rotate(0deg);}75%{transform:rotate(-3deg);}100%{transform:rotate(0deg);}}
+.score-bar{background:#1b5e20;color:white;padding:10px 20px;border-radius:15px;font-weight:bold;}
+.progress-bar{background:#c8e6c9;border-radius:15px;padding:8px 20px;font-weight:bold;color:#1b5e20;}
+
+.puzzle-card{
+  background:white;
+  border-radius:25px;
+  padding:35px 25px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  text-align:center;
+}
+.puzzle-card h3{color:#1b5e20;margin-bottom:20px;font-size:18px;}
+
+.answer-slot{
+  min-height:70px;
+  background:#f1f8e9;
+  border:3px dashed #81c784;
+  border-radius:15px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  margin-bottom:25px;
+}
+.word-tile{
+  font-family:'Amiri', serif;
+  font-size:20px;
+  background:linear-gradient(135deg,#4caf50,#81c784);
+  color:white;
+  padding:10px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.25s;
+  box-shadow:0 4px 8px rgba(0,0,0,0.15);
+  user-select:none;
+}
+.word-tile:hover{transform:translateY(-3px);}
+.word-bank{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:20px;
+}
+.word-bank .word-tile{
+  background:linear-gradient(135deg,#ffffff,#e0f2f1);
+  color:#1b5e20;
+  border:2px solid #4caf50;
+}
+
+.check-btn{
+  padding:12px 30px;
+  background:#1b5e20;
+  color:white;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
+.check-btn:hover{background:#4caf50;}
+.reset-btn{
+  padding:12px 22px;
+  background:#78909c;
+  color:white;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  font-size:15px;
+  margin-inline-start:8px;
+}
+
+.result{margin-top:18px;font-size:19px;font-weight:bold;min-height:26px;}
+.level-badge{background:#7b1fa2;color:white;padding:8px 16px;border-radius:15px;font-weight:bold;font-size:14px;}
+
+.final-card{background:linear-gradient(135deg,#e8f5e9,#ffffff);border-radius:25px;padding:35px;box-shadow:0 8px 20px rgba(0,0,0,0.15);text-align:center;}
+.final-score{font-size:42px;color:#1b5e20;margin:15px 0;}
+.share-box{margin-top:20px;display:flex;justify-content:center;gap:15px;}
+.share-box a{font-size:22px;color:white;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;text-decoration:none;}
+.whatsapp{background:#25D366;}
+.facebook{background:#1877f2;}
+.copy{background:#4caf50;}
+.restart-btn,.exit-btn{margin-top:15px;padding:13px 26px;border:none;border-radius:25px;cursor:pointer;font-size:16px;margin-inline:5px;}
+.restart-btn{background:#1b5e20;color:white;}
+.exit-btn{background:#f44336;color:white;}
+
+@media(max-width:600px){
+  header h1{font-size:28px;}
+  .word-tile{font-size:16px;padding:8px 12px;}
+}
+
+/* --- ستايل زر التراجع (نمط مريح باللون الأزرق النيلي الهادئ) --- */
+.undo-btn {
+  background-color: #ebf3fe; /* خلفية زرقاء فاتحة جداً وباردة */
+  color: #2b6cb0; /* نص بلون أزرق نيلي متناسق */
+  border: 1px solid #cee0fc; /* حد خارجي خفيف جداً لتحديد الزر */
+  padding: 8px 18px;
+  border-radius: 20px; /* حواف دائرية ناعمة وحديثة */
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.undo-btn:hover {
+  background-color: #2b6cb0; /* ينعكس اللون بالكامل عند تمرير الماوس */
+  color: #ffffff;
+  border-color: #2b6cb0;
+  box-shadow: 0 4px 10px rgba(43, 108, 176, 0.15);
+}
+
+/* --- ستايل زر المساعدة (نمط دافئ باللون الخوخي/البيج الناعم) --- */
+.hint-btn {
+  background-color: #fff6eb; /* خلفية مشمشية أو خوخية فاتحة وناعمة */
+  color: #dd6b20; /* نص بلون برتقالي خوخي داكن */
+  border: 1px solid #ffe7cc; /* حد خارجي ناعم */
+  padding: 8px 18px;
+  border-radius: 20px; /* حواف دائرية متناسقة مع زر التراجع */
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hint-btn:hover {
+  background-color: #dd6b20; /* ينعكس اللون عند تمرير الماوس */
+  color: #ffffff;
+  border-color: #dd6b20;
+  box-shadow: 0 4px 10px rgba(221, 107, 32, 0.15);
+}
+
+/* حالة زر المساعدة عندما يصبح معطلاً بعد الاستخدام */
+.hint-btn:disabled {
+  background-color: #f7fafc !important; /* لون رمادي بارد خفيف جداً */
+  color: #a0aec0 !important; /* نص رمادي باهت */
+  border-color: #edf2f7 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  opacity: 0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="soundCorrect" src="correct.mp3"></audio>
+<audio id="soundWrong" src="wrong.mp3"></audio>
+<audio id="soundWin" src="win.mp3"></audio>
+<audio id="soundLose" src="lose.mp3"></audio>
+
+<header>
+<h1>🧩 رتّب الآية</h1>
+<p>رتّب كلمات الآية بالترتيب الصحيح</p>
+<nav class="nav">
+<a href="games.html">🏠 عالم المعرفة</a>
+<a href="fill.html">✍️ أكمل الآية</a>
+<a href="puzzle.html">🧩 رتّب الآية</a>
+<a href="daily.html">💚نبض التحدي</a>
+</nav>
+</header>
+
+<div class="motivation"> اضغط على الكلمات بالترتيب الصحيح لتكوين الآية</div>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="score-bar">النقاط: <span id="score">0</span></div>
+    <div class="level-badge">🎯 المستوى <span id="level">1</span></div>
+    <div class="timer-circle" id="time">45</div>
+    <div class="progress-bar">السؤال <span id="qNum">1</span>/<span id="qTotal">6</span></div>
+  </div>
+
+  <div class="puzzle-card" id="gameCard"></div>
+</div>
+
+<script>
+const siteLink = window.location.origin;
+const soundCorrect=document.getElementById("soundCorrect");
+const soundWrong=document.getElementById("soundWrong");
+const soundWin=document.getElementById("soundWin");
+const soundLose=document.getElementById("soundLose");
+
+const originalPuzzles = [
+  {
+    words: ["الْمَوْتِ", "ذَائِقَةُ", "كُلُّ", "نَفْسٍ"],
+    correct: ["كُلُّ", "نَفْسٍ", "ذَائِقَةُ", "الْمَوْتِ"],
+    surah: "سورة آل عمران"
+  },
+  {
+    words: ["مَعَ", "إِنَّ", "الْعُسْرِ", "يُسْرًا"],
+    correct: ["إِنَّ", "مَعَ", "الْعُسْرِ", "يُسْرًا"],
+    surah: "سورة الشرح"
+  },
+  {
+    words: ["الْقُلُوبُ", "بِذِكْرِ", "تَطْمَئِنُّ", "اللَّهِ", "أَلَا"],
+    correct: ["أَلَا", "بِذِكْرِ", "اللَّهِ", "تَطْمَئِنُّ", "الْقُلُوبُ"],
+    surah: "سورة الرعد"
+  },
+  {
+    words: ["زِدْنِي", "عِلْمًا", "رَبِّ", "وَقُلْ"],
+    correct: ["وَقُلْ", "رَبِّ", "زِدْنِي", "عِلْمًا"],
+    surah: "سورة طه"
+  },
+  {
+    words: ["إِنَّ", "أَتْقَاكُمْ", "أَكْرَمَكُمْ", "عِنْدَ", "اللَّهِ"],
+    correct: ["إِنَّ", "أَكْرَمَكُمْ", "عِنْدَ", "اللَّهِ", "أَتْقَاكُمْ"],
+    surah: "سورة الحجرات"
+  },
+  {
+    words: ["لَأَزِيدَنَّكُمْ", "وَإِذْ", "رَبُّكُمْ", "لَئِنْ", "شَكَرْتُمْ", "تَأَذَّنَ"],
+    correct: ["وَإِذْ", "تَأَذَّنَ", "رَبُّكُمْ", "لَئِنْ", "شَكَرْتُمْ", "لَأَزِيدَنَّكُمْ"],
+    surah: "سورة إبراهيم"
+  },
+  {
+    words: ["وَمَا", "وَالْإِنْسَ", "لِيَعْبُدُونِ", "خَلَقْتُ", "الْجِنَّ", "إِلَّا"],
+    correct: ["وَمَا", "خَلَقْتُ", "الْجِنَّ", "وَالْإِنْسَ", "إِلَّا", "لِيَعْبُدُونِ"],
+    surah: "سورة الذاريات"
+  },
+  {
+    words: ["وَإِذَا", "عِبَادِي", "فَإِنِّي", "سَأَلَكَ", "عَنِّي", "قَرِيبٌ"],
+    correct: ["وَإِذَا", "سَأَلَكَ", "عِبَادِي", "عَنِّي", "فَإِنِّي", "قَرِيبٌ"],
+    surah: "سورة البقرة"
+  },
+  {
+    words: ["ادْعُونِي", "أَسْتَجِبْ", "رَبُّكُمُ", "لَكُمْ", "وَقَالَ"],
+    correct: ["وَقَالَ", "رَبُّكُمُ", "ادْعُونِي", "أَسْتَجِبْ", "لَكُمْ"],
+    surah: "سورة غافر"
+  },
+  {
+    words: ["عَشْرُ", "مَنْ", "أَمْثَالِهَا", "فَلَهُ", "بِالْحَسَنَةِ", "جَاءَ"],
+    correct: ["مَنْ", "جَاءَ", "بِالْحَسَنَةِ", "فَلَهُ", "عَشْرُ", "أَمْثَالِهَا"],
+    surah: "سورة الأنعام"
+  },
+  {
+    words: ["الصَّابِرِينَ", "إِنَّ", "اللَّهَ", "مَعَ"],
+    correct: ["إِنَّ", "اللَّهَ", "مَعَ", "الصَّابِرِينَ"],
+    surah: "سورة البقرة"
+  },
+  {
+    words: ["جَاءَ", "الْحَقُّ", "وَزَهَقَ", "الْبَاطِلُ", "وَقُلْ"],
+    correct: ["وَقُلْ", "جَاءَ", "الْحَقُّ", "وَزَهَقَ", "الْبَاطِلُ"],
+    surah: "سورة الإسراء"
+  },
+  {
+    words: ["تُوعَدُونَ", "السَّمَاءِ", "وَمَا", "رِزْقُكُمْ", "وَفِي"],
+    correct: ["وَفِي", "السَّمَاءِ", "رِزْقُكُمْ", "وَمَا", "تُوعَدُونَ"],
+    surah: "سورة الذاريات"
+  },
+  {
+    words: ["السَّيِّئَاتِ", "إِنَّ", "الْحَسَنَاتِ", "يُذْهِبْنَ"],
+    correct: ["إِنَّ", "الْحَسَنَاتِ", "يُذْهِبْنَ", "السَّيِّئَاتِ"],
+    surah: "سورة هود"
+  },
+  {
+    words: ["وَأَحْسِنُوا", "الْمُحْسِنِينَ", "إِنَّ", "اللَّهَ", "يُحِبُّ"],
+    correct: ["وَأَحْسِنُوا", "إِنَّ", "اللَّهَ", "يُحِبُّ", "الْمُحْسِنِينَ"],
+    surah: "سورة البقرة"
+  },
+  {
+    words: ["إِنَّ", "فَاصْبِرْ", "اللَّهِ", "حَقٌّ", "وَعْدَ"],
+    correct: ["فَاصْبِرْ", "إِنَّ", "وَعْدَ", "اللَّهِ", "حَقٌّ"],
+    surah: "سورة الروم"
+  },
+  {
+    words: ["ضَعِيفًا", "وَخُلِقَ", "الْإِنْسَانُ"],
+    correct: ["وَخُلِقَ", "الْإِنْسَانُ", "ضَعِيفًا"],
+    surah: "سورة النساء"
+  },
+  {
+    words: ["إِنَّ", "اللَّهَ", "رَحِيمٌ", "غَفُورٌ"],
+    correct: ["إِنَّ", "اللَّهَ", "غَفُورٌ", "رَحِيمٌ"],
+    surah: "سورة البقرة"
+  },
+  {
+    words: ["إِلَّا", "جَزَاءُ", "الْإِحْسَانِ", "الْإِحْسَانُ", "هَلْ"],
+    correct: ["هَلْ", "جَزَاءُ", "الْإِحْسَانِ", "إِلَّا", "الْإِحْسَانُ"],
+    surah: "سورة الرحمن"
+  },
+  {
+    words: ["وَالتَّقْوَى", "وَتَعَاوَنُوا", "الْبِرِّ", "عَلَى"],
+    correct: ["وَتَعَاوَنُوا", "عَلَى", "الْبِرِّ", "وَالتَّقْوَى"],
+    surah: "سورة المائدة"
+  }
+];
+
+
+
+let puzzles=[],current=0,score=0,timeLeft=45,timer,totalQuestions=20,level=1;
+let selectedWords=[];
+let usedTilesStack = []; // مخزن لتتبع العناصر التي تم النقر عليها بترتيبها
+let hintUsedThisQuestion = false;
+
+
+function getLevelConfig(qIndex){
+  if(qIndex<7) return {level:1,time:35,points:15};
+  if(qIndex<15) return {level:2,time:30,points:20};
+  return {level:3,time:25,points:25};
+}
+
+function shuffle(a){return a.sort(()=>Math.random()-0.5);}
+
+function startGame(){
+  puzzles=shuffle([...originalPuzzles]).slice(0,totalQuestions);
+  current=0;score=0;level=1;selectedWords=[];
+  document.getElementById("qTotal").textContent=puzzles.length;
+  showPuzzle();
+}
+
+function renderCard(){
+  document.getElementById("gameCard").innerHTML=`
+    <h3 id="surahName"></h3>
+    <div class="answer-slot" id="answerSlot"></div>
+    <div class="word-bank" id="wordBank"></div>
+    <button class="check-btn" onclick="checkAnswer()">✅ تحقّق من الترتيب</button>
+    <button class="hint-btn" id="hintBtn" onclick="useHint()">💡 مساعدة (أول كلمة)</button>
+    <button class="undo-btn" onclick="undoLastWord()">↩ تراجع</button>
+    <button class="reset-btn" onclick="resetSelection()">↺ إعادة الترتيب</button>
+    <div class="result" id="result"></div>
+  `;
+}
+
+function showPuzzle(){
+  if(current>=puzzles.length){endGame();return;}
+  renderCard();
+  selectedWords=[];
+  usedTilesStack = [];
+  hintUsedThisQuestion = false;
+
+
+  const cfg=getLevelConfig(current);
+  const levelChanged = cfg.level!==level;
+  level=cfg.level;
+  timeLeft=cfg.time;
+  document.getElementById("time").classList.remove("danger");
+  document.getElementById("time").textContent=timeLeft;
+  document.getElementById("score").textContent=score;
+  document.getElementById("qNum").textContent=current+1;
+  document.getElementById("level").textContent=level;
+
+  const p=puzzles[current];
+  document.getElementById("surahName").textContent="📍 "+p.surah + (levelChanged ? "  —  🎯 مستوى جديد! سرعة أكبر ونقاط أعلى" : "");
+
+  // عرض بنك الكلمات لأول مرة
+  renderWordBank(p.words);
+
+  renderAnswerSlot();
+  startTimer();
+}
+
+// دالة مستقلة لعرض بنك الكلمات المبعثرة في مكانها
+function renderWordBank(wordsArray) {
+  const bank=document.getElementById("wordBank");
+  bank.innerHTML="";
+  shuffle([...wordsArray]).forEach(w=>{
+    const tile=document.createElement("div");
+    tile.className="word-tile";
+    tile.textContent=w;
+    tile.onclick=()=>selectWord(w,tile);
+    bank.appendChild(tile);
+  });
+}
+
+function selectWord(word,tileEl){
+  if(tileEl.classList.contains("used")) return;
+  tileEl.classList.add("used");
+  tileEl.style.opacity="0.3";
+  tileEl.style.pointerEvents="none";
+  selectedWords.push(word);
+  renderAnswerSlot();
+  usedTilesStack.push(tileEl);
+
+}
+
+function renderAnswerSlot(){
+  const slot=document.getElementById("answerSlot");
+  slot.innerHTML="";
+  selectedWords.forEach(w=>{
+    const tile=document.createElement("div");
+    tile.className="word-tile";
+    tile.textContent=w;
+    slot.appendChild(tile);
+  });
+}
+
+// دالة إعادة الترتيب المحدثة: تُمسح الاختيارات فقط ويستمر الوقت الحالي دون تصفير
+function resetSelection(){
+  selectedWords = []; // تفريغ الكلمات المختارة من قبل المستخدم
+  usedTilesStack = []; // 💡 سطر جديد: تنظيف مخزن التراجع تماماً
+  hintUsedThisQuestion = false; // 💡 سطر جديد: السماح باستخدام المساعدة مجدداً إذا أعاد الترتيب
+  
+  renderAnswerSlot(); // تحديث خانة الإجابة لتصبح فارغة
+  
+  const p = puzzles[current];
+  renderWordBank(p.words); // إعادة تشتيت وخلط الكلمات مجدداً ليحاول المستخدم من جديد
+  
+  document.getElementById("result").innerHTML = ""; // تنظيف أي رسائل نتيجة قديمة إن وجدت
+  
+  // 💡 سطر جديد: إعادة تفعيل زر التلميح وشكله الطبيعي في الواجهة بعد الريسيت
+  const hBtn = document.getElementById("hintBtn");
+  if(hBtn) {
+    hBtn.disabled = false;
+    hBtn.style.opacity = "1";
+    hBtn.style.cursor = "pointer";
+  }
+}
+
+
+function undoLastWord(){
+  if(selectedWords.length === 0) return; // إذا لم يحدد أي كلمة لا تفعل شيء
+  
+  selectedWords.pop(); // حذف آخر كلمة من مصفوفة الإجابة
+  const lastTile = usedTilesStack.pop(); // سحب آخر بلاطة تم النقر عليها
+  
+  if(lastTile) {
+    lastTile.classList.remove("used"); // إزالة كلاس الاستخدام لتعود ملونة
+    lastTile.style.opacity = "1"; // إعادة الشفافية الطبيعية
+    lastTile.style.pointerEvents = "auto"; // إعادة تفعيل النقر عليها
+  }
+  renderAnswerSlot(); // تحديث واجهة العرض للكلمات المختارة
+}
+
+
+function startTimer(){
+  clearInterval(timer);
+  timer=setInterval(()=>{
+    timeLeft--;
+    document.getElementById("time").textContent=timeLeft;
+    if(timeLeft<=10) document.getElementById("time").classList.add("danger");
+    if(timeLeft<=0){clearInterval(timer);checkAnswer(true);}
+  },1000);
+}
+
+function checkAnswer(timeUp){
+  clearInterval(timer);
+  const p=puzzles[current];
+  const isCorrect = !timeUp && JSON.stringify(selectedWords)===JSON.stringify(p.correct);
+
+  if(isCorrect){
+    score+=getLevelConfig(current).points;
+    soundCorrect.play();
+    document.getElementById("result").innerHTML="✅ ترتيب صحيح! أحسنت";
+  }else{
+    soundWrong.play();
+    document.getElementById("result").innerHTML="❌ الترتيب الصحيح: <br>"+p.correct.join(" ");
+  }
+  document.getElementById("score").textContent=score;
+  document.querySelectorAll(".word-tile").forEach(t=>t.style.pointerEvents="none");
+  setTimeout(()=>{current++;showPuzzle();},2200);
+}
+function useHint(){
+  if(hintUsedThisQuestion) return; // إذا تم استخدام التلميح في هذا السؤال لا تفعل شيء
+  
+  const p = puzzles[current];
+  const firstCorrectWord = p.correct[0]; // جلب الكلمة الأولى الصحيحة من الآية
+  
+  // البحث عن بلاطة هذه الكلمة في بنك الكلمات والتي لم تُستخدم بعد
+  const tiles = document.querySelectorAll("#wordBank .word-tile");
+  let targetTile = null;
+  
+  for (let t of tiles) {
+    if(t.textContent === firstCorrectWord && !t.classList.contains("used")) {
+      targetTile = t;
+      break; 
+    }
+  }
+  
+  if(targetTile) {
+    resetSelection(); // تفريغ أي كلمات عشوائية اختارها المستخدم للبدء من جديد بشكل صحيح
+    selectWord(firstCorrectWord, targetTile); // اختيار الكلمة الأولى تلقائياً
+    
+    hintUsedThisQuestion = true;
+    
+    // تعطيل الزر برمجياً وتغيير مظهره ليوحي بأنه استُهلك
+    const hBtn = document.getElementById("hintBtn");
+    if(hBtn) {
+      hBtn.disabled = true;
+      hBtn.style.opacity = "0.5";
+      hBtn.style.cursor = "not-allowed";
+    }
+  }
+}
+
+
+function endGame(){
+  let max=0;
+  for(let i=0;i<puzzles.length;i++) max+=getLevelConfig(i).points;
+  let msg="";
+  if(score>=max*0.8){msg="🌟 ما شاء الله! ترتيب ممتاز للآيات!";soundWin.play();}
+  else if(score>=max*0.5){msg="👏 أداء جيد، واصل المحاولة!";soundWin.play();}
+  else{msg="🌱 حاول مرة أخرى وستتحسن بإذن الله!";soundLose.play();}
+
+  document.getElementById("gameCard").innerHTML=`
+    <h2>🎉 انتهت اللعبة</h2>
+    <div class="final-score">${score} / ${max}</div>
+    <p>${msg}</p>
+    <div class="share-box">
+      <a class="whatsapp" target="_blank" href="https://wa.me على ${score}/${max} في لعبة البازل القرآني 🧩 جربها: ${siteLink}"><i class="fab fa-whatsapp"></i></a>
+      <a class="facebook" target="_blank" href="https://facebook.com{siteLink}"><i class="fab fa-facebook-f"></i></a>
+      <a class="copy" onclick="copyResult(${score},${max})"><i class="fa fa-link"></i></a>
+    </div>
+    <div>
+      <button class="restart-btn" onclick="startGame()">🔄 إعادة اللعبة</button>
+      <button class="exit-btn" onclick="location.href='games.html'">🚪 الخروج للألعاب</button>
+    </div>
+  `;
+}
+
+function copyResult(score,max){
+  navigator.clipboard.writeText(`حصلت على ${score}/${max} في لعبة البازل القرآني 🧩 جربها الآن: ${siteLink}`);
+  alert("تم النسخ ✔");
+}
+
+startGame();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصلاة والوضوء - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Cairo',sans-serif;
+  background:linear-gradient(to bottom,#e8f5ff,#ffffff);
+  color:#2f4f4f;
+}
+a{text-decoration:none;color:inherit;}
+
+/* الهيدر */
+header{
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:50px 20px 80px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+  overflow:hidden;
+}
+
+header::after{
+  content:"";
+  background:url('sa.webp') center/cover no-repeat;
+  opacity:0.15;
+  top:0; left:0; bottom:0; right:0;
+  position:absolute;
+  z-index:0;
+}
+header h1, header p, .nav{
+  position:relative;
+  z-index:1;
+}
+
+header h1{font-size:36px;margin-bottom:10px;}
+header p{font-size:18px;opacity:0.9;}
+
+/* شريط التنقل */
+.nav{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.nav a{
+  background:rgba(255,255,255,0.2);
+  color:white;
+  font-weight:bold;
+  padding:8px 16px;
+  border-radius:25px;
+  transition:0.3s;
+}
+.nav a:hover{
+  background:white;
+  color:#2e7d32;
+}
+
+/* الحاوية */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* بطاقات الغيوم */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.cloud{
+  background:linear-gradient(to bottom,#ffffff,#e3f2fd);
+  border-radius:50px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  cursor:pointer;
+  animation:float 5s ease-in-out infinite;
+  transition:0.3s;
+}
+.cloud:hover{
+  transform:scale(1.05);
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+.cloud h2{
+  color:#2e7d32;
+  margin-bottom:10px;
+}
+.cloud p{
+  font-size:14px;
+  color:#555;
+}
+
+/* حركة الغيوم */
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
+}
+
+/* صندوق التفاصيل */
+.details{
+  margin-top:40px;
+  background:white;
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  display:none;
+  animation:fadeIn 0.5s ease;
+  position:relative;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.details h2{
+  color:#2e7d32;
+  text-align:center;
+  margin-bottom:20px;
+}
+.details h3{
+  color:#388e3c;
+  margin-top:15px;
+  margin-bottom:5px;
+}
+.details ul{
+  margin-right:20px;
+}
+.details li{
+  margin-bottom:6px;
+}
+
+/* زر الإغلاق */
+.close-btn{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:#e53935;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:14px;
+}
+.close-btn:hover{background:#c62828}
+
+/* أزرار المشاركة */
+.share-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+.share-buttons a{
+  color:white;
+  padding:8px 12px;
+  border-radius:12px;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+#share-whatsapp{background:#25D366;}
+#share-facebook{background:#3b5998;}
+#share-instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.share-buttons a:hover{opacity:0.85}
+
+/* الفوتر */
+footer{
+  background:#2e7d32;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:50px;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+}
+footer small{opacity:0.8;}
+
+@media(max-width:600px){
+  header h1{font-size:28px;}
+  .details{padding:20px;}
+  .share-buttons a{flex:1;justify-content:center;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>الصلاة والوضوء</h1>
+  <p>نتعلم الوضوء والصلاة معًا</p>
+
+  <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="cards">
+    <div class="cloud" onclick="showSection('wudu')">
+      <h2>💧 الوضوء</h2>
+      <p>خطواته – شروطه – نواقضه</p>
+    </div>
+
+    <div class="cloud" onclick="showSection('prayer')">
+      <h2>🕌 الصلاة</h2>
+      <p>أركانها – شروطها – واجباتها – مبطلاتها</p>
+    </div>
+
+    <div class="cloud" onclick="showSection('dua')">
+      <h2>🤲🏻 الأدعية</h2>
+      <p>أدعية قبل وبعد الصلاة</p>
+    </div>
+  </div>
+
+  <div class="details" id="detailsBox"></div>
+
+</div>
+
+<footer>
+  <p>صدقة جارية لكل مسلم</p>
+  <small>المصدر: كتل منهاج المؤمن للدكتور مصطفى مراد</small>
+</footer>
+
+<script>
+function showSection(type){
+  const box = document.getElementById("detailsBox");
+  let content = "";
+  let textForShare = "";
+
+  if(type === "wudu"){
+    textForShare = "تعلم الوضوء وخطواته وشروطه ونواقضه";
+    content = `
+    <button class="close-btn" onclick="closeBox()">إغلاق ✖</button>
+    <h2>💧 الوضوء</h2>
+    <h3>الخطوات</h3>
+    <ul>
+      <li>النية</li>
+      <p>
+        <ul>
+          <li>اجعل نيتك في قلبك رفع الحدث الأصغر (الوضوء) التعبدي لله تعالى.</li>
+          <li>لا يلزم التلفظ بالنية، يكفي الإقرار في القلب.</li>
+          </ul>
+      </p>
+      <li>قول «بسم الله»</li>
+       <ul>
+        <li> يستحب أن تبدأ الوضوء باسم الله قبل غسل اليدين. </li>
+       </ul>
+      <li>غسل اليدين </li>
+       <ul>
+         <li> اغسل اليد اليمنى ثم اليسرى ثلاث مرات. </li>
+         <li> تأكد من وصول الماء إلى جميع الأصابع . </li>
+       </ul>
+      <li>المضمضة والاستنشاق</li>
+      <ul>
+        <li> ضع الماء في الفم واغسله ثلاث مرات. </li>
+        <li> استنشق الماء في الأنف وازفره ثلاث مرات. </li>
+        </ul>
+      <li>غسل الوجه</li>
+        <ul>
+          <li> اغسل الوجه كاملاً من منبت الشعر إلى الذقن ومن الأذن إلى الأذن ثلاث مرات. </li>
+        </ul>
+      <li>غسل اليدين إلى المرفقين</li>
+      <ul>
+      <li> بعد الوجه، اغسل اليد اليمنى ثم اليسرى ثلاث مرات من أطراف الأصابع إلى المرفق </li>
+      <li> اضمن وصول الماء إلى جميع الأجزاء. </li>
+        </ul>
+        
+      <li>مسح الرأس</li>
+        <ul>
+         <li>  أمسك بالماء بيديك وامسح مقدمة الرأس حتى مؤخرته ثم ارجع إلى البداية</li>
+         <li> يكفي مسح جزء من الرأس لا يشترط كثرة الماء. </li>
+       </ul>
+      <li>مسح الأذنين</li>
+       <ul>
+      <li> باستخدام الماء المتبقي على اليدين، امسح مقدمة الأذن وخلفها برفق </li>
+      </ul>
+      <li>غسل القدمين إلى الكعبين</li>
+      <ul>
+       <li> اغسل القدم اليمنى ثم اليسرى ثلاث مرات. </li>
+       <li> تأكد من وصول الماء إلى الكعبين وبين الأصابع. </li>
+        </ul>
+      <li>الدعاء بعد الانتهاء (سنّة)</li>
+        <ul>
+      <li> «أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمداً عبده ورسوله، اللهم اجعلني من التوابين واجعلني من المتطهرين». </li>
+        </ul>
+    </ul>
+    <h3>الشروط</h3>
+    <ul>
+      <li>الإسلام</li>
+      <li>العقل والتمييز</li>
+      <li>الماء الطاهر المُطهِّر</li>
+      <li>عدم وجود ما يمنع وصول الماء إلى البشرة (كالشمع أو الطلاء العازل)</li>
+      <li>انقطاع دم الحيض أو النفاس عن المرأة</li>
+    </ul>
+    <h3>النواقض</h3>
+    <ul>
+      <li>الخارج من السبيلين (البول، الغائط، الريح)</li>
+      <li>النوم الثقيل الذي لا يشعر معه صاحبه</li>
+      <li>زوال العقل (بإغماء أو جنون أو سُكر)</li>
+      <li>مسّ الفرج مباشرة بدون حائل</li>
+    </ul>
+    `;
+  }
+
+  if(type === "prayer"){
+    textForShare = "تعلم أركان الصلاة وشروطها وسننها ونواقضها";
+    content = `
+    <button class="close-btn" onclick="closeBox()">إغلاق ✖</button>
+    <h2>🕌 الصلاة</h2>
+    <h3>أركان الصلاة</h3>
+    <p>وهي أربعة عشر ركنًا وفق المذهب الشافعي، لا تصح الصلاة بدون أي منها<p/>
+    <ul>
+      <li>النية</li>
+      <li> القيام مع القدرة</li>
+      <li> تكبيرة الإحرام وهي "الله أكبر"</li>
+      <li>قراءة الفاتحة</li>
+      <li> الركوع وأقله أن ينحني بحيث يمكنه مس ركبتيه بكفيه، وأكمله أن يمد ظهره مستويا ويجعل رأسه حياله</li>
+      <li> الاعتدال من الركوع (الرفع منه والقيام معتدلاً)</li>
+      <li>السجود مرتين في كل ركعة، وأكمله تمكين جبهته وأنفه وكفيه وركبتيه وأطراف أصابع قدميه من محل سجوده. وأقله وضع جزء من كل عضو</li>
+      <li>الجلوس بين السجدتين</li>
+      <li>الطمأنينة في جميع الأركان </li>
+      <li> التشهد الأخير</li>
+      <li>الجلوس للتشهد الأخير</li>
+      <li>الصلاة على النبي ﷺ في التشهد الأخير</li>
+      <li>التسليم</li>
+      <li>ترتيب الأركان كما ذكرنا، فلو سجد مثلا قبل ركوعه عمدا بطلت صلاته، وسهواً لزمه الرجوع ليركع ثم يسجد</li>
+    </ul>
+
+    <h3>شروط الصلاة</h3>
+    <p>هي الأمور التي يجب توافرها قبل بدء الصلاة حتى تكون صحيحة.</p>
+    <ul>
+      <li>الإسلام</li>
+      <li>العقل</li>
+      <li>التمييز</li>
+      <li>الطهارة من النجاسة</li>
+      <li>الطهارة من الحدث</li>
+      <li>دخول الوقت</li>
+      <li>ستر العورة</li>
+      <li>استقبال القبلة</li>
+    </ul>
+    <h3>واجبات الصلاة</h3>
+    <p>هي ما لا تبطل الصلاة بتركه سهواً، لكن يُجبر تركه بـ سجود السهو قبل السلام (تصنيف تعليمي شائع، وهي عند الشافعية من السنن).</p>
+    <ul>
+      <li>جميع التكبيرات عدا تكبيرة الإحرام فهي ركن</li>
+      <li>قول سمع الله لمن حمده </li>
+      <li>قول ربنا ولك الحمد</li>
+      <li>سبحان ربي العظيم في الركوع</li>
+      <li>سبحان ربي الأعلى في السجود</li>
+      <li>ربي اغفر لي بين السجدتين</li>
+      <li>التشهد الأول </li>
+      <li>الجلوس للتشهد الأول</li>
+    </ul>  
+
+    
+    <h3>مبطلات الصلاة</h3>
+    <ul>
+      <li>الكلام عمدًا</li>
+      <li>الضحك</li>
+      <li>الأكل والشرب</li>
+      <li>انكشاف العورة</li>
+      <li>الانحراف عن القبلة كثيرًا</li>
+      <li>العبث المتوالي</li>
+      <li>انتقاض الطهارة</li>
+    
+    </ul>
+    `;
+  }
+
+  if(type === "dua"){
+    textForShare = "أدعية قبل وبعد الصلاة";
+    content = `
+    <button class="close-btn" onclick="closeBox()">إغلاق ✖</button>
+    <h2>🤲🏻 الأدعية</h2>
+    <h3>قبل الصلاة</h3>
+    <ul>
+      <li>التأكد من الطهارة وستر العورة واستقبال القبلة</li>
+      <li>حضور القلب واستحضار نية الصلاة لله وحده</li>
+      <li>الدعاء بعد الوضوء: «أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمداً عبده ورسوله»</li>
+    </ul>
+    <h3>بعد الصلاة (أذكار مشروعة)</h3>
+    <ul>
+      <li>أستغفر الله (3 مرات)</li>
+      <li>اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام</li>
+      <li>لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير</li>
+      <li>سبحان الله (33 مرة)</li>
+      <li>الحمد لله (33 مرة)</li>
+      <li>الله أكبر (34 مرة)</li>
+      <li>آية الكرسي (بعد كل صلاة مكتوبة)</li>
+    </ul>
+    `;
+  }
+
+  const url = encodeURIComponent(location.href);
+  const text = encodeURIComponent(textForShare);
+
+  content += `
+  <div class="share-buttons">
+    <a id="share-whatsapp" href="https://wa.me/?text=${text}%0A${url}" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+    <a id="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+    <a id="share-instagram" href="javascript:void(0)" onclick="shareInstagram(document.title)"><i class="fab fa-instagram"></i> انستقرام</a>
+  </div>
+  `;
+
+  box.innerHTML = content;
+  box.style.display = "block";
+  box.scrollIntoView({behavior:"smooth"});
+}
+
+function closeBox(){
+  document.getElementById("detailsBox").style.display="none";
+}
+
+// مشاركة موحّدة عبر انستقرام
+function shareInstagram(text){
+  if(navigator.share){
+    navigator.share({text:text}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('تم نسخ النص 📋 افتح تطبيق انستقرام والصقه في قصة أو منشور جديد');
+      window.open('https://www.instagram.com/','_blank');
+    }).catch(()=>{
+      window.open('https://www.instagram.com/','_blank');
+    });
+  }
+}
+
+</script>
+
+</body>
+</html>

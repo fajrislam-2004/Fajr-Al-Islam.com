@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأحاديث - فجر الإسلام</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* {box-sizing:border-box;margin:0;padding:0;}
+body {font-family:'Cairo',sans-serif;background:linear-gradient(to bottom,#e8f5e9,#ffffff);color:#2f4f4f;line-height:1.6;}
+a {color:inherit;text-decoration:none;}
+
+/* الهيدر */
+header{
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:50px 20px 80px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  background:url('adhkar-header.png') center/cover no-repeat;
+  opacity:0.15;
+  top:0; left:0; bottom:0; right:0;
+  position:absolute;
+  z-index:0;
+}
+header h1, header p, .nav{
+  position:relative;
+  z-index:1;
+}
+header h1 {font-size:38px;margin-bottom:10px;}
+header p {font-size:18px;opacity:0.9;}
+.nav {margin-top:20px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
+.nav a {
+  background:rgba(255,255,255,0.2);
+  color:white;
+  font-weight:bold;
+  padding:8px 16px;
+  border-radius:25px;
+  transition:0.3s;
+}
+.nav a:hover {background:white;color:#1b5e20;}
+
+/* شريط البحث */
+#search-box{
+  max-width:400px;
+  margin:20px auto 10px auto;
+  display:block;
+  padding:12px 15px;
+  border-radius:25px;
+  border:1px solid #ccc;
+  font-size:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+#search-box:focus{
+  outline:none;
+  border-color:#4caf50;
+  box-shadow:0 4px 12px rgba(76,175,80,0.3);
+}
+
+/* الحاوية */
+.container {max-width:1200px;margin:auto;padding:40px 20px;}
+
+/* البطاقات */
+.card {
+  background:white;
+  margin-bottom:25px;
+  padding:25px 20px;
+  border-radius:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  transition:0.2s, transform 0.2s;
+  position:relative;
+}
+.card:hover {
+  transform:translateY(-8px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
+.card h3 {color:#1b5e20;font-size:20px;margin-bottom:12px;}
+.card p {font-size:16px;color:#333;margin-bottom:10px;}
+.card .adhkar-fadl {
+  font-size:14px;color:#4caf50;display:flex;align-items:center;gap:6px;margin-bottom:10px;
+}
+.card .adhkar-fadl span {font-size:16px;}
+.section-title{
+  text-align:center;
+  color:#1b5e20;
+  font-size:24px;
+  margin:10px 0 20px 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.section-title.qudsi-title{color:#b8860b;}
+.qudsi-intro{
+  text-align:center;
+  color:#666;
+  font-size:14px;
+  max-width:600px;
+  margin:0 auto 25px auto;
+  line-height:1.6;
+}
+.qudsi-card{
+  border:2px solid #d4af37;
+  background:linear-gradient(145deg,#fffdf5,#fff8e1);
+}
+.qudsi-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:linear-gradient(135deg,#d4af37,#b8860b);
+  color:white;
+  font-size:12px;
+  font-weight:bold;
+  padding:4px 12px;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+.card .hadith-source{
+  font-size:13px;
+  color:#1b5e20;
+  background:#e8f5e9;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:10px;
+  margin-bottom:10px;
+  font-weight:bold;
+  border-right:3px solid #4caf50;
+}
+
+/* أزرار المشاركة */
+.share-buttons{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.share-buttons a{
+  color:white;
+  padding:5px 10px;
+  border-radius:12px;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  transition:0.3s;
+}
+.share-buttons a:hover{opacity:0.85;}
+#share-whatsapp{background:#25D366;}
+#share-facebook{background:#3b5998;}
+#share-instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+
+/* الفوتر */
+footer {
+  background:#1b5e20;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+}
+footer p {margin-bottom:5px;font-size:15px;}
+footer small {opacity:0.7;font-size:13px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>الأحاديث</h1>
+  <p>أحاديث صحيحة موثّقة، بتخريجها وفائدتها(أحاديث نبوية وقدسية)</p>
+
+  <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+    </nav>
+</header>
+
+<input type="text" id="search-box" placeholder="ابحث عن حديث...">
+
+<div class="container" id="cards-container">
+  <h2 class="section-title"><i class="fas fa-book-quran"></i> أحاديث نبوية شريفة</h2>
+
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> حديث الأعمال بالنيات</h3>
+    <p>عن النبي ﷺ قال: "إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى, فمن كانت هجرته إلى الله ورسوله فهجرته إلى الله ورسوله, ومن كانت هجرته لدنيا يصيبها أو امرأة ينكحها فهجرته إلى ما هاجر إليه."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه (رواه البخاري ومسلم) عن عمر بن الخطاب رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يعلّمنا أن قبول الأعمال عند الله مرتبط بصدق النية والإخلاص فيها.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل الصلاة على النبي ﷺ</h3>
+    <p>عن النبي ﷺ قال: "من صلى عليَّ صلاة واحدة صلى الله عليه بها عشراً."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يزيد الصلاة على النبي ﷺ ويدخل بركة عظيمة في يوم المسلم.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> حديث الدين النصيحة</h3>
+    <p>عن النبي ﷺ قال: "الدين النصيحة. قالوا: لمن يا رسول الله؟ قال: لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن تميم الداري رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span>الفائدة: تعزيز الإخلاص لله ورسوله, وتوجيه المجتمع نحو الخير بالرفق, ونبذ الغش والحقد, مما يبني مجتمعًا مترابطًا ومتعاونًا على البر والتقوى.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> حقيقة المسلم</h3>
+    <p>عن النبي ﷺ قال: "المسلم من سلم المسلمون من لسانه ويده."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن عبدالله بن عمرو رضي الله عنهما</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يربّي المسلم على ضبط لسانه ويده وعدم إيذاء الآخرين.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> كمال الإيمان بالمحبة</h3>
+    <p>عن النبي ﷺ قال: "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أنس بن مالك رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يزرع المحبة والإيثار بين المسلمين ويكمل الإيمان.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> الطهور شطر الإيمان</h3>
+    <p>عن النبي ﷺ قال: "الطُّهور شطر الإيمان, والحمد لله تملأ الميزان, وسبحان الله والحمد لله تملآن- أو تملأ- ما بين السموات والأرض, والصلاة نور, والصدقة برهان, والصبر ضياء, والقرآن حجة لك أو عليك, كل الناس يغدو فبائع نفسه فمعتقها أو موبقها."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي مالك الأشعري رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يدل الحديث على أن الطهارة والذكر والصلاة والصدقة والصبر والعمل بالقرآن كلها من أعظم أسباب كمال الإيمان والفوز برضا الله</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> حسن الإسلام</h3>
+    <p>عن النبي ﷺ قال: "من حسن إسلام المرء تركه ما لا يعنيه."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث حسن، رواه الترمذي عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يعلّمنا الانشغال بما ينفع وترك الفضول فيما لا يخصنا.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> كثرة طرق الخير</h3>
+    <p>عن النبي ﷺ قال: "كل سلامى من الناس عليه صدقة, كل يوم تطلع فيه الشمس: تعدل بين اثنين صدقة, وتُعين الرجل في دابته فتحمله عليها أو ترفع له عليها متاعه صدقة, والكلمة الطيبة صدقة, وبكل خطوة تمشيها إلى الصلاة صدقة وتُميط الأذى عن الطريق صدقة."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span>الفائدة: يغرس في المسلم أن الصدقة ليست مالًا فقط, بل هي كل عمل خير يقوم به في يومه,حتى الأمور الصغيرة. </div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> أركان الإسلام الخمسة</h3>
+    <p>عن النبي ﷺ قال: "بُني الإسلام على خمس: شهادة أن لا إله إلا الله وأن محمداً رسول الله، وإقام الصلاة، وإيتاء الزكاة، وحج البيت، وصوم رمضان."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن عبدالله بن عمر رضي الله عنهما</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يجمع أركان الإسلام الخمسة التي يقوم عليها بنيان الدين كله.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل تعلّم القرآن</h3>
+    <p>عن النبي ﷺ قال: "خيركم من تعلّم القرآن وعلّمه."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه البخاري عن عثمان بن عفان رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يرفع مكانة تعلّم القرآن الكريم وتعليمه للآخرين.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> الحث على مكارم الأخلاق</h3>
+    <p>عن النبي ﷺ قال: "من كان يؤمن بالله واليوم الآخر فليقل خيراً أو ليصمت, ومن كان يؤمن بالله واليوم الآخر فليكرم جاره, ومن كان يؤمن بالله واليوم الآخر فليكرم ضيفه."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يرشدنا الحديث إلى التحلي بالآداب والأخلاق الإسلامية, التي تزيد الأُلفة والمودة بين المسلمين.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> التحذير من الكِبر</h3>
+    <p>عن النبي ﷺ قال: "لا يدخل الجنة من كان في قلبه مثقال ذرة من كِبر."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن عبدالله بن مسعود رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يحذّر من الكِبر والغرور، ويدعو إلى التواضع في القول والعمل.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل الرحمة</h3>
+    <p>عن النبي ﷺ قال: "الراحمون يرحمهم الرحمن، ارحموا من في الأرض يرحمكم من في السماء."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث حسن صحيح، رواه الترمذي وأبو داود عن عبدالله بن عمرو رضي الله عنهما</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن أن رحمة الله بعباده مرتبطة برحمتهم لبعضهم البعض.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> تحريم الغش</h3>
+    <p>عن النبي ﷺ قال: "من غشّنا فليس منّا."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يحرّم الغش في البيع والمعاملات وجميع الحالات ويحث على الصدق والأمانة.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> صنائع المعروف</h3>
+    <p>عن النبي ﷺ قال: "تبسمك في وجه أخيك صدقة، وأمرك بالمعروف ونهيك عن المنكر صدقة، وإماطتك الأذى عن الطريق صدقة، وإرشادك الرجل في أرض الضلال لك صدقة."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث حسن، رواه الترمذي عن أبي ذر رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span>  الفائدة: يبيّن الحديث أن الصدقة لا تقتصر على المال فقط، بل تشمل كل عمل إنساني أو أخلاقي يسعد الآخرين أو يرفع عنهم الأذى، أويوجههم نحو الخير.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل المؤمن القوي</h3>
+    <p>عن النبي ﷺ قال: "المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف، وفي كل خير، احرص على ما ينفعك، واستعن بالله ولا تعجز، وإن أصابك شيء فلا تقل: لو أني فعلت كذا وكذا، ولكن قل: قدَّر الله وما شاء فعل، فإن لو تفتح عمل الشيطان."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span>الفائدة: يدل الحديث على أن المؤمن الأقوى في إيمانه وعمله هو أحب إلى الله، وأن المسلم مطالب بالأخذ بالأسباب والاجتهاد مع التوكل على الله وترك العجز والتحسر على الماضي.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> وصية جامعة</h3>
+    <p>عن النبي ﷺ قال: "اتقِ الله حيثما كنت، وأتبع السيئة الحسنة تمحها، وخالق الناس بخلق حسن."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث حسن صحيح، رواه الترمذي عن أبي ذر رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: وصية جامعة في تقوى الله والتوبة السريعة وحسن معاملة الناس.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> الجزاء من جنس العمل</h3>
+    <p>عن النبي ﷺ قال: "من لا يرحم لا يُرحم."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن جرير بن عبدالله رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن أن الرحمة بالخلق سبب لنيل رحمة الخالق سبحانه.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> شكر الناس</h3>
+    <p>عن النبي ﷺ قال: "من لا يشكر الناس لا يشكر الله."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث حسن، رواه أبو داود والترمذي عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يزرع تقدير معروف الآخرين ويقوّي السلوك الإيجابي بين الناس.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل الرفق</h3>
+    <p>عن النبي ﷺ قال: "إن الله رفيق يحب الرفق، ويعطي على الرفق ما لا يعطي على العنف."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن عائشة رضي الله عنها</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن فضل الرفق واللين في التعامل مع الناس في كل الأحوال.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> قاعدة رفع الضرر</h3>
+    <p>عن النبي ﷺ قال: "لا ضرر ولا ضرار."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث حسن، رواه ابن ماجه عن أبي سعيد الخدري رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: قاعدة فقهية عظيمة تحرّم إلحاق الضرر بالنفس أو بالآخرين ابتداءً أو مقابلة.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل الحياء</h3>
+    <p>عن النبي ﷺ قال: "الحياء لا يأتي إلا بخير."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن عمران بن حصين رضي الله عنهما</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن أن الحياء خُلق محمود بالكامل، وهو من شعب الإيمان.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> أجر الدلالة على الخير</h3>
+    <p>عن النبي ﷺ قال: "من دلّ على خير فله مثل أجر فاعله."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي مسعود الأنصاري رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يحفّز على إرشاد الناس للخير حتى لو لم يفعله الدال بنفسه، فله أجر مثل فاعله.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل العطاء</h3>
+    <p>عن النبي ﷺ قال: "اليد العليا خير من اليد السفلى، وابدأ بمن تعول، وخير الصدقة ما كان عن ظهر غنى، ومن يستغنِ يغنه الله، ومن يستعفف يعفّه الله."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن حكيم بن حزام وأبي هريرة رضي الله عنهما</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن فضل يد المعطي المنفق على يد الآخذ السائل،</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> لا تحقر المعروف</h3>
+    <p>عن النبي ﷺ قال: "لا تحقرنّ من المعروف شيئاً ولو أن تلقى أخاك بوجه طليق."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي ذر رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يحث على فعل أي خير مهما بدا صغيراً، فحتى الابتسامة والوجه الطلق من المعروف.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> إتقان العمل</h3>
+    <p>عن النبي ﷺ قال: "إن الله يحب إذا عمل أحدكم عملاً أن يُتقنه."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث حسن، رواه الطبراني والبيهقي عن عائشة رضي الله عنها</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يحث على الإتقان والاحتراف في كل عمل يقوم به المسلم، دنيوياً كان أو دينياً.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> فضل طلب العلم</h3>
+    <p>عن النبي ﷺ قال: "من سلك طريقاً يلتمس فيه علماً سهّل الله له به طريقاً إلى الجنة."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يرفع مكانة طلب العلم ويجعله سبباً موصلاً إلى الجنة بإذن الله.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> المداومة على العمل</h3>
+    <p>عن النبي ﷺ قال: "أحبّ الأعمال إلى الله أدومها وإن قلّ."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن عائشة رضي الله عنها</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن أن الاستمرار على القليل من العمل الصالح خير من الكثير المنقطع.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> الاستقامة</h3>
+    <p>عن النبي ﷺ قال: "استقيموا ولن تُحصوا، واعلموا أن خير أعمالكم الصلاة ولا يحافظ على الوضوء إلا مؤمن."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: حديث صحيح، رواه أحمد وابن ماجه عن ثوبان رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يوضح أن الاستقامة على الطاعة مطلوبة، وأن الإنسان لن يحصي كل تفاصيل الكمال فليجتهد ولا ييأس.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> أفضل الصدقة</h3>
+    <p>عن النبي ﷺ قال: "أفضل الصدقة أن تصدّق وأنت صحيح شحيح تخشى الفقر وتأمل الغنى، ولا تمهل حتى إذابلغت الروح الحلقوم قلت: لفلان كذا ولفلان كذا، وقد كان لفلان."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن أن أعظم الصدقة ما كانت في حال القوة والحرص على المال، لا بعد فوات الأوان.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> الدنيا مزرعة الآخرة</h3>
+    <p>عن النبي ﷺ قال: "كن في الدنيا كأنك غريبٌ أو عابرُ سبيل".</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه البخاري عن عبد الله ابن عمر رضي الله عنهما</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يدلّ الحديث على أن المسلم ينبغي أن يزهد في الدنيا، ويغتنم عمره في طاعة الله والاستعداد للآخرة..</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> النهي عن البدع في الدين</h3>
+    <p>عن النبي ﷺ قال: "من أحدث في أمرنا هذا ما ليس منه فهو ردّ".</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن عائشة رضي الله عنها</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يدلّ الحديث على وجوب اتباع السنة، وأن كل عبادة أو عمل يُبتدع في الدين وليس له أصل في الشرع فهو مردود غير مقبول.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+  <div class="card">
+    
+    <h3><i class="fas fa-quote-right"></i> عناية الله</h3>
+    <p>عن النبي ﷺ قال: "يا غلام، إني أعلِّمك كلمات: احفظِ اللهَ يحفظْك، احفظِ اللهَ تجده تجاهك، إذا سألتَ فاسألِ الله، وإذا استعنتَ فاستعن بالله، واعلم أن الأمة لو اجتمعت على أن ينفعوك بشيءٍ لم ينفعوك إلا بشيءٍ قد كتبه الله لك، ولو اجتمعوا على أن يضروك بشيءٍ لم يضروك إلا بشيءٍ قد كتبه الله عليك، رُفعت الأقلام وجفَّت الصحف"</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه الترمذي عن عبد الله ابن عباس رضي الله عنهما</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يدلّ الحديث على وجوب التوكل على الله وحده، وحفظ حدوده وأوامره، واليقين بأن النفع والضر بيد الله وحده.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+  <h2 class="section-title qudsi-title"><i class="fas fa-star-and-crescent"></i> أحاديث قدسية</h2>
+  <p class="qudsi-intro">الحديث القدسي: كلام معناه من الله سبحانه، ولفظه من رسوله ﷺ، وليس قرآناً يُتعبّد بتلاوته.</p>
+
+  <div class="card qudsi-card">
+    <span class="qudsi-badge"><i class="fas fa-star-and-crescent"></i> حديث قدسي</span>
+    <h3><i class="fas fa-quote-right"></i> تحريم الظلم</h3>
+    <p>قال الله تعالى فيما يرويه عنه رسوله ﷺ: "يا عبادي، إني حرّمت الظلم على نفسي وجعلته بينكم محرّماً فلا تظالموا، يا عبادي إنكم تخطئون بالليل والنهار وأنا أغفر الذنوب جميعًا ولا أبالي فاستغفروني أغفر لكم، يا عبادي كلكم ضال إلا من هديته فاستهدوني أهدِكم، يا عبادي كلكم جائع إلا من أطعمته فاستطعموني أطعمكم، يا عبادي إنكم لن تبلغوا ضرِي فتضروني ولن تبلغوا نفعي فتنفعوني، يا عبادي لو أن أوَّلكم وآخركم وإنسكم وجنكم كانوا على أتقى قلب رجلٍ واحدٍ منكم ما زاد ذلك في ملكي شيئًا،
+      يا عبادي لو أن أوّلكم وآخركم وإنسكم وجنكم اجتمعوا في صعيدٍ واحدٍ فسألوني فأعطيت كل إنسان منهم مسألته ما نقص ذلك في ملكي شيئًا إلا كما ينقص البحر إن يُغمس فيه المخيط غمسةً واحدةً، يا عبادي إنما هي أعمالكم أُحصيها لكم ثم أوفّيكم إياها فمن وجد خيرًا فليحمد الله ومن وجد غير ذلك فلا يلومن إلا نفسه."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه مسلم عن أبي ذر رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن رحمة الله بعباده وتحريمه الظلم على نفسه سبحانه، فكيف بمن يظلم غيره من العباد، وحث العباد على طلب الهداية والمغفرة والرزق منه وحده مع اليقين بأنه الغني الكريم الذي لا ينقص من ملكه شيء.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card qudsi-card">
+    <span class="qudsi-badge"><i class="fas fa-star-and-crescent"></i> حديث قدسي</span>
+    <h3><i class="fas fa-quote-right"></i> حسن الظن بالله والتقرب منه</h3>
+    <p>قال الله تعالى فيما يرويه عنه رسوله ﷺ: "أنا عند ظن عبدي بي، وأنا معه إذا ذكرني، فإن ذكرني في نفسه ذكرته في نفسي، وإن ذكرني في ملإ ذكرته في ملإ خير منهم، وإن تقرّب إلي بشبر تقربت إليه ذراعٍا، وإن تقرّب إلي ذراعًا تقرّبت إليه باعًا، وإن أتاني يمشي أتيته هرولة."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يدل الحديث على سعة رحمة الله وقربه من عبده، وأنه يجازي الإنسان بحسب ظنه به ويضاعف له القرب والفضل كلما تقرّب إليه بالذكر والطاعة.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+  <div class="card qudsi-card">
+    <span class="qudsi-badge"><i class="fas fa-star-and-crescent"></i> حديث قدسي</span>
+    <h3><i class="fas fa-quote-right"></i> سعة مغفرة الله</h3>
+    <p>قال الله تعالى فيما يرويه عنه رسوله ﷺ: " يا ابن آدم، إنك ما دعوتني ورجوتني غفرتُ لك على ما كان منك ولا أبالي، يا ابن آدم لو بلغت ذنوبك عنان السماء ثم استغفرتني غفرتُ لك، يا ابن آدم، إنك لو أتيتني بقُراب الأرض خطايا ثم لقيتني لا تشرك بي شيئاً لأتيتك بقُرابها مغفرة."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه الترمذي (حديث حسن صحيح) عن أنس بن مالك رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن سعة رحمة الله ومغفرته لمن لقيه موحداً غير مشرك به، مهما كثرت ذنوبه.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+  <div class="card qudsi-card">
+    <span class="qudsi-badge"><i class="fas fa-star-and-crescent"></i> حديث قدسي</span>
+    <h3><i class="fas fa-quote-right"></i> فضل الصيام</h3>
+    <p>قال الله تعالى فيما يرويه عنه رسوله ﷺ: "كل عمل ابن آدم له إلا الصيام، فإنه لي وأنا أجزي به."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن مكانة الصيام الخاصة عند الله، وأن أجره عظيم لا يقدّره إلا الله سبحانه.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+ 
+  <div class="card qudsi-card">
+    <span class="qudsi-badge"><i class="fas fa-star-and-crescent"></i> حديث قدسي</span>
+    <h3><i class="fas fa-quote-right"></i> إعداد الجنة للصالحين</h3>
+    <p>قال الله تعالى فيما يرويه عنه رسوله ﷺ: "أعددتُ لعبادي الصالحين ما لا عين رأت، ولا أذن سمعت، ولا خطر على قلب بشر."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: يبيّن عِظَم نعيم الجنة الذي أعدّه الله لعباده الصالحين، وهو فوق ما يتخيله أي إنسان.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+  <div class="card qudsi-card">
+    <span class="qudsi-badge"><i class="fas fa-star-and-crescent"></i> حديث قدسي</span>
+    <h3><i class="fas fa-quote-right"></i> ولاية الله ومحبة أوليائه </h3>
+    <p>قال الله تعالى فيما يرويه عنه رسوله ﷺ: "من عادى لي وليًّا فقد آذنتُه بالحرب، وما تقرَّب إليَّ عبدي بشيءٍ أحبَّ إليَّ مما افترضتُ عليه، وما يزال عبدي يتقرَّب إليَّ بالنوافل حتى أُحبَّه، فإذا أحببتُه كنتُ سمعَه الذي يسمع به، وبصرَه الذي يبصر به، ويدَه التي يبطش بها، ورِجلَه التي يمشي بها، وإن سألني لأُعطينَّه، ولئن استعاذني لأُعيذنَّه، وما ترددتُ عن شيءٍ أنا فاعله ترددي عن نفس المؤمن، يكره الموت وأنا أكره مساءته"</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: رواه البخاري عن أبي هريرة رضي الله عنه</div>
+    <div class="adhkar-fadl"><span>🌟</span>الفائدة: يدلّ الحديث على فضل التقرب إلى الله بالفرائض والنوافل، وأن من أحبّه الله حفظه ونصره وحذّر من إيذاء أوليائه.</div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+  <div class="card qudsi-card">
+    <span class="qudsi-badge"><i class="fas fa-star-and-crescent"></i> حديث قدسي</span>
+    <h3><i class="fas fa-quote-right"></i> النهي عن سبّ الدهر</h3>
+    <p>قال الله تعالى فيما يرويه عنه رسوله ﷺ: "يؤذيني ابنُ آدم، يسبُّ الدهر، وأنا الدهر، بيدي الأمر، أُقلِّب الليل والنهار."</p>
+    <div class="hadith-source"><i class="fas fa-book"></i> التخريج: متفق عليه عن أبي هريرة رضي الله عنه </div>
+    <div class="adhkar-fadl"><span>🌟</span> الفائدة: ينهى الحديث عن سبّ الزمان أو الدهر؛ لأن تصريف الأمور بيد الله تعالى، وسبّ الدهر يتضمن اعتراضًا على قضاء الله وتدبيره. </div>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>صدقة جارية لكل مسلم</p>
+  <small>المصادر: صحيح البخاري، صحيح مسلم، سنن الترمذي وأبي داود وابن ماجه، مسند الإمام أحمد (مع بيان درجة كل حديث وتخريجه بجانبه)</small>
+</footer>
+
+<script>
+const searchBox = document.getElementById('search-box');
+searchBox.addEventListener('input', ()=> {
+  const query = searchBox.value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    const text = card.querySelector('h3').textContent.toLowerCase() + " " + card.querySelector('p').textContent.toLowerCase();
+    card.style.display = text.includes(query) ? 'block' : 'none';
+  });
+});
+
+// مشاركة محسّنة
+document.querySelectorAll('.card').forEach(card=>{
+  const title = card.querySelector('h3').textContent;
+  const content = card.querySelector('p').textContent;
+  const fadl = card.querySelector('.adhkar-fadl').textContent;
+  const pageName = "الأحاديث - فجر الإسلام";
+
+  card.querySelectorAll('.share-buttons a').forEach(btn=>{
+    const shareText = `${title}\n${content}\n ${fadl}\n\n${pageName}\n${location.href}`;
+    if(btn.id==='share-whatsapp'){
+      btn.href=`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+    } else if(btn.id==='share-facebook'){
+      btn.href=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}&quote=${encodeURIComponent(shareText)}`;
+    } else if(btn.id==='share-instagram'){
+      btn.onclick=()=>shareInstagram(shareText);
+    }
+  });
+});
+
+// مشاركة موحّدة عبر انستقرام
+function shareInstagram(text){
+  if(navigator.share){
+    navigator.share({text:text}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('تم نسخ النص 📋 افتح تطبيق انستقرام والصقه في قصة أو منشور جديد');
+      window.open('https://www.instagram.com/','_blank');
+    }).catch(()=>{
+      window.open('https://www.instagram.com/','_blank');
+    });
+  }
+}
+
+</script>
+
+</body>
+</html>

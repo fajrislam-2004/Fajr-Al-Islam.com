@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عالم المعرفة - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* {box-sizing:border-box;margin:0;padding:0;}
+body {
+  font-family:'Cairo',sans-serif;
+  background: linear-gradient(to bottom,#f0fff4,#e8f5e9);
+  color:#2f4f4f;
+  line-height:1.6;
+}
+
+/* الهيدر */
+header {
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:60px 20px 80px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  background:url('header-bg.png') center/cover no-repeat;
+  opacity:0.15;
+  position:absolute;
+  top:0; left:0; bottom:0; right:0;
+  z-index:0;
+}
+header h1, .nav {position:relative; z-index:1;}
+header h1 {font-size:42px;margin-bottom:10px;}
+
+/* شريط التنقل */
+.nav {
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.nav a {
+  background:rgba(255,255,255,0.2);
+  color:white;
+  font-weight:bold;
+  padding:8px 16px;
+  border-radius:25px;
+  transition:0.3s;
+  text-decoration:none;
+}
+.nav a:hover {background:white;color:#1b5e20;}
+
+/* الحاوية */
+.container {
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* البطاقات */
+.games-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+.game-card {
+  background: linear-gradient(145deg,#ffffff,#d0f0e0);
+  border-radius:25px;
+  padding:25px 20px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  cursor:pointer;
+}
+.game-card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
+  background: linear-gradient(145deg,#c8e6c9,#a5d6a7);
+}
+.game-card span {
+  font-size:50px;
+  display:block;
+  margin-bottom:15px;
+}
+.game-card h3 {
+  font-size:22px;
+  color:#1b5e20;
+  margin-bottom:10px;
+}
+.game-card p {
+  font-size:16px;
+  color:#555;
+  margin-bottom:15px;
+}
+.game-card a {
+  display:inline-block;
+  padding:10px 20px;
+  background:#1b5e20;
+  color:white;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+.game-card a:hover {background:#4caf50;}
+
+.game-card.coming-soon{
+  opacity:0.6;
+  filter:grayscale(0.4);
+  position:relative;
+}
+.soon-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:#ff9800;
+  color:white;
+  font-size:12px;
+  font-weight:bold;
+  padding:4px 12px;
+  border-radius:12px;
+}
+.game-card.coming-soon a{
+  background:#9e9e9e;
+  cursor:not-allowed;
+  pointer-events:none;
+}
+
+/* الفوتر */
+footer {
+  background:#1b5e20;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+}
+footer p {margin-bottom:5px;font-size:15px;}
+footer small {opacity:0.7;font-size:13px;}
+
+/* تجاوب الهاتف */
+@media screen and (max-width:768px){
+  header h1 {font-size:30px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌟 عالم المعرفة</h1>
+  <p>اختبر معلوماتك، وتعلّم وأنت تلعب وتتحدى نفسك </p>
+  <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="games-grid">
+    <div class="game-card">
+      <span>✍️</span>
+      <h3>أكمل الآية</h3>
+      <p>أكمل النصوص القرآنية المقطوعة بسرعة وبدقة، بمستويات متدرجة.</p>
+      <a href="fill.html">ابدأ اللعبة</a>
+    </div>
+
+    <div class="game-card">
+      <span>🧩</span>
+      <h3>رتّب الآية</h3>
+      <p>رتّب كلمات الآية لتكوين النص الصحيح، بمستويات متدرجة.</p>
+      <a href="puzzle.html">ابدأ اللعبة</a>
+    </div>
+
+    <div class="game-card">
+      <span>💚</span>
+      <h3>نبض التحدي</h3>
+      <p>عندك 3 قلوب فقط، جاوب بسرعة قبل ما ينفد وقتك أو قلوبك!</p>
+      <a href="daily.html">ابدأ اللعبة</a>
+    </div>
+
+
+  </div>
+</div>
+
+<footer>
+  <p>صدقة جارية لكل مسلم</p>
+  <small>فجر الإسلام</small>
+</footer>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فجر الإسلام</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(to bottom,#e8f5e9,#ffffff);color:#2f4f4f;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+
+header{
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:60px 20px 100px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  background:url('header-bg.png') center/cover no-repeat;
+  opacity:0.15;
+  top:0; left:0; bottom:0; right:0;
+  position:absolute;
+  z-index:0;
+}
+
+header h1, header p, .nav{position:relative; z-index:1;}
+header h1{font-size:42px;margin-bottom:15px;}
+header p{font-size:20px;opacity:0.9;}
+
+
+.nav{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.nav a{
+  background:rgba(255,255,255,0.2);
+  color:white;
+  font-weight:bold;
+  padding:8px 16px;
+  border-radius:25px;
+  transition:0.3s;
+}
+.nav a:hover{background:white;color:#1b5e20;}
+
+/* الحاوية */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* البطاقات */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+.card{
+  background:white;
+  border-radius:20px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 10px 20px rgba(0,0,0,0.12);
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:100%;
+  height:6px;
+  background:linear-gradient(to left,#4caf50,#1b5e20);
+}
+.card:hover{transform:translateY(-10px);}
+.card span{font-size:50px;display:block;margin-bottom:15px;}
+.card a{font-size:22px;font-weight:bold;color:#1b5e20;}
+.card p{margin-top:12px;font-size:15px;color:#555;}
+
+/* الفوتر */
+footer{
+  background:#1b5e20;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+}
+footer p{margin-bottom:5px;font-size:15px;}
+footer small{opacity:0.7;font-size:13px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>فجر الإسلام</h1>
+  <p>بوابتك اليومية للأذكار والقرآن والسيرة والمعرفة الإسلامية</p>
+
+  <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="cards">
+    <div class="card">
+      <span>📿</span>
+      <a href="adhkar.html">الأذكار</a>
+      <p>ذكر الله في كل لحظة من يومك </p>
+    </div>
+
+    <div class="card">
+      <span>📖</span>
+      <a href="ayah.html">آية وتدبر</a>
+      <p>خذ لحظة مع آية من كتاب الله، وتأمل في معناها</p>
+    </div>
+
+    <div class="card">
+      <span>📝</span>
+      <a href="hadith.html">الأحاديث</a>
+      <p>أحاديث صحيحة وفائدة سريعة</p>
+    </div>
+
+    <div class="card">
+      <span>🕌</span>
+      <a href="prayer.html">الصلاة والوضوء</a>
+      <p>تعلم خطوات الصلاة والوضوء بشكل مبسط</p>
+    </div>
+
+    <div class="card">
+      <span>🌿</span>
+      <a href="stories.html">قصص الأنبياء</a>
+      <p>ملخص قصص الأنبياء </p>
+    </div>
+
+    <div class="card">
+      <span>💚</span>
+      <a href="companions.html">سيرة الصحابة</a>
+      <p>تعرف على الصحابة الكرام وفضائلهم</p>
+    </div>
+    
+    <div class="card">
+      <span>🌸</span>
+      <a href="sahabiyat.html">الصحابيات</a>
+      <p>أمهات المؤمنين وقدوات نسائية من نور</p>
+    </div>
+    
+    <div class="card">
+      <span>⚔️</span>
+      <a href="ghazawat.html">المعارك والغزوات</a>
+      <p>معارك خلّدها التاريخ، شاهدة على عزّة الإسلام وثباته</p>
+    </div>
+    
+    <div class="card">
+      <span>🌟</span>
+      <a href="names.html">أسماء الله الحسنى</a>
+      <p>تعلّم أسماء الله الحسنى ومعانيها</p>
+    </div>
+    
+    <div class="card">
+      <span>🎮</span>
+      <a href="games.html">عالم المعرفة</a>
+      <p>ألعاب تعليمية ممتعة تختبر معلوماتك الدينية والثقافية وتنمّيها</p>
+    </div>
+    
+  </div>
+
+</div>
+
+<footer>
+  <p>صدقة جارية لكل مسلم</p>
+  <small>المصدر: القرآن الكريم، حصن المسلم، صحيح البخاري</small>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصحابة - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(to bottom,#e8f5e9,#ffffff);color:#2f4f4f;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+header{background:linear-gradient(135deg,#1b5e20,#4caf50);color:white;padding:50px 20px 80px 20px;text-align:center;border-bottom-left-radius:50px;border-bottom-right-radius:50px;position:relative;overflow:hidden;}
+header::after{content:"";background:url('header-bg.png') center/cover no-repeat;opacity:0.15;top:0;left:0;bottom:0;right:0;position:absolute;z-index:0;}
+header h1, header p, .nav{position:relative; z-index:1;}
+header h1{font-size:38px;margin-bottom:10px;}
+header p{font-size:18px;opacity:0.9;}
+.nav{margin-top:20px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
+.nav a{background:rgba(255,255,255,0.2);color:white;font-weight:bold;padding:8px 16px;border-radius:25px;transition:0.3s;}
+.nav a:hover{background:white;color:#1b5e20;}
+.container{max-width:1200px;margin:auto;padding:40px 20px;}
+.search-bar{max-width:400px;margin:0 auto 30px;display:flex;border-radius:25px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.search-bar input{flex:1;padding:10px 15px;border:none;font-size:16px;}
+.search-bar button{background:#1b5e20;color:white;border:none;padding:0 15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:0.3s;}
+.search-bar button:hover{background:#4caf50;}
+.cards{display:grid;gap:20px;justify-items:center;}
+.card{background:linear-gradient(145deg,#66bb6a,#2e7d32);border-radius:50%;height:160px;width:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 0 10px 25px rgba(0,0,0,0.2);cursor:pointer;transition:transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;position:relative;padding:15px;color:white;font-weight:bold;font-size:16px;overflow:hidden;}
+.card i{font-size:36px;display:block;margin-bottom:8px;}
+.card::before{content:"";position:absolute;width:120%;height:120%;background:radial-gradient(circle,#ffffff20,#ffffff00);top:-10%;left:-10%;border-radius:50%;transition:all 0.5s ease;}
+.card:hover::before{transform:scale(1.3);background:radial-gradient(circle,#ffffff40,#ffffff00);}
+.card:hover{transform:translateY(-10px) scale(1.08);box-shadow: inset 0 0 20px rgba(0,0,0,0.15), 0 15px 35px rgba(0,0,0,0.3);}
+.story-box{display:none;margin-top:30px;background:white;border-radius:30px;padding:30px;box-shadow:0 8px 25px rgba(0,0,0,0.15);position:fixed;top:50%;left:50%;transform:translate(-50%, -150%);width:90%;max-width:600px;z-index:100;transition:transform 0.5s ease, opacity 0.5s ease;opacity:0;}
+.story-box.active{transform:translate(-50%, -50%);opacity:1;display:block;}
+.story-box h2{color:#2e7d32;text-align:center;margin-bottom:20px;}
+.story-content{max-height:45vh;overflow-y:auto;font-size:17px;white-space:pre-line;text-align:justify;padding:0 5px;margin-bottom:15px;}
+.controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;}
+.controls button{border:none;padding:6px 12px;border-radius:10px;cursor:pointer;background:#1b5e20;color:white;}
+.controls .font-range{width:120px;}
+.story-box .close-btn{position:absolute;top:15px;left:15px;background:#e53935;color:white;border:none;padding:8px 15px;border-radius:15px;font-weight:bold;cursor:pointer;transition:0.3s;}
+.story-box .close-btn:hover{background:#ef5350;}
+.share-buttons{display:flex;justify-content:center;gap:10px;margin-top:15px;flex-wrap:wrap;}
+.share-buttons a{color:white;padding:8px 12px;border-radius:12px;font-size:14px;display:flex;align-items:center;gap:6px;text-decoration:none;}
+#share-whatsapp{background:#25D366;}
+#share-facebook{background:#3b5998;}
+#share-instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.share-buttons a:hover{opacity:0.8;}
+footer{background:#1b5e20;color:white;text-align:center;padding:20px;margin-top:50px;border-top-left-radius:30px;border-top-right-radius:30px;}
+footer p{margin-bottom:5px;font-size:15px;}
+footer small{opacity:0.7;font-size:13px;}
+@media(min-width:1200px){.cards{grid-template-columns:repeat(5,1fr);}}
+@media(min-width:992px) and (max-width:1199px){.cards{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:768px) and (max-width:991px){.cards{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:767px){.cards{grid-template-columns:repeat(3,1fr);}.card{width:140px;height:140px;font-size:15px;}.share-buttons a{font-size:13px;padding:6px 10px;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>الصحابة</h1>
+<p>سِيَر رجال آمنوا فغيّروا التاريخ بصدقهم وتضحياتهم</p>
+<nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="container">
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="ابحث عن صحابي...">
+<button onclick="searchCompanion()"><i class="fas fa-magnifying-glass"></i></button>
+</div>
+
+<div class="cards" id="cardsContainer">
+<div class="card" data-key="abuBakr"><i class="fas fa-user"></i>أبو بكر الصديق</div>
+<div class="card" data-key="umar"><i class="fas fa-user"></i>عمر بن الخطاب</div>
+<div class="card" data-key="uthman"><i class="fas fa-user"></i>عثمان بن عفان</div>
+<div class="card" data-key="ali"><i class="fas fa-user"></i>علي بن أبي طالب</div>
+<div class="card" data-key="talha"><i class="fas fa-user"></i>طلحة بن عبيد الله</div>
+<div class="card" data-key="zubayr"><i class="fas fa-user"></i>الزبير بن العوام</div>
+<div class="card" data-key="abdurrahman"><i class="fas fa-user"></i>عبد الرحمن بن عوف</div>
+<div class="card" data-key="saad"><i class="fas fa-user"></i>سعد بن أبي وقاص</div>
+<div class="card" data-key="saeed"><i class="fas fa-user"></i>سعيد بن زيد</div>
+<div class="card" data-key="abuubaidah"><i class="fas fa-user"></i>أبو عبيدة بن الجراح</div>
+<div class="card" data-key="bilal"><i class="fas fa-user"></i>بلال بن رباح</div>
+<div class="card" data-key="khalid"><i class="fas fa-user"></i>خالد بن الوليد</div>
+<div class="card" data-key="abuhurairah"><i class="fas fa-user"></i>أبو هريرة</div>
+<div class="card" data-key="salman"><i class="fas fa-user"></i>سلمان الفارسي</div>
+<div class="card" data-key="ibnabbas"><i class="fas fa-user"></i>عبدالله بن عباس</div>
+<div class="card" data-key="hamza"><i class="fas fa-user"></i>حمزة بن عبد المطلب</div>
+<div class="card" data-key="zaid"><i class="fas fa-user"></i>زيد بن حارثة</div>
+</div>
+
+<div class="story-box" id="storyBox">
+<button class="close-btn" onclick="closeStory()">إغلاق</button>
+<h2 id="storyTitle"></h2>
+
+<div class="controls">
+  <div>
+  <label>الخط</label>
+  <input type="range" min="16" max="26" value="17" id="fontRange" class="font-range">
+  </div>
+</div>
+
+<div class="story-content" id="storyContent"></div>
+<div class="share-buttons" id="shareButtons"></div>
+</div>
+</div>
+
+<footer>
+<p>صدقة جارية لكل مسلم</p>
+<small>المصدر: كتب التاريخ والسير</small>
+</footer>
+
+<script>
+const companions={
+abuBakr:{title:"أبو بكر الصديق رضي الله عنه",content:"أول من آمن بالنبي ﷺ من الرجال الأحرار، ولُقّب بالصديق لأنه صدّق النبي ﷺ فوراً في حادثة الإسراء والمعراج دون تردد. رافق النبي ﷺ في هجرته إلى المدينة، ونزلت في حقه آية «ثاني اثنين إذ هما في الغار».\n\nعمل بالتجارة قبل الإسلام وبعده، وأنفق معظم ماله في سبيل الله لعتق العبيد المعذَّبين كبلال بن رباح. اختير أول خليفة للمسلمين بعد وفاة النبي ﷺ، فقاد الأمة بحكمة، وحارب المرتدين، وجمع القرآن الكريم في مصحف واحد."},
+umar:{title:"عمر بن الخطاب رضي الله عنه",content:"عُرف بشدته قبل الإسلام، فأسلم بعد أن سمع آيات من سورة طه فلانَ قلبه، فكان إسلامه عزّاً للمسلمين وسبباً في إظهار الدعوة علانية بعد أن كانت سرية.\n\nلُقّب بالفاروق لأنه فرّق بين الحق والباطل، وهو الخليفة الثاني، فتحت في عهده بلاد كثيرة كالشام والعراق ومصر، وأسّس نظام الدواوين والتقويم الهجري، واشتهر بعدله الشديد حتى قيل: لو عثرت بغلة في العراق لخفت أن يسألني الله عنها."},
+uthman:{title:"عثمان بن عفان رضي الله عنه",content:"كان تاجراً غنياً معروفاً بالحياء الشديد حتى إن الملائكة كانت تستحي منه كما أخبر النبي ﷺ، تزوج بابنتي النبي ﷺ رقية ثم أم كلثوم تباعاً، فلُقّب بذي النورين.\n\nأنفق أمواله الطائلة في تجهيز جيش العسرة، وشراء بئر رومة ووقفها للمسلمين. تولى الخلافة الثالثة، وجمع الناس على مصحف واحد موحَّد لحفظ القرآن من الاختلاف، وهو ما يُعرف بالمصحف العثماني المعتمد إلى اليوم."},
+ali:{title:"علي بن أبي طالب رضي الله عنه",content:"ابن عم النبي ﷺ وأول من أسلم من الصبيان، تربى في بيت النبي ﷺ منذ صغره، وتزوج ابنته فاطمة الزهراء، ونام في فراش النبي ﷺ ليلة الهجرة فداءً له دون خوف.\n\nاشتهر بشجاعته في المعارك وفصاحته وعلمه الغزير بالقرآن والفقه، حتى قال فيه النبي ﷺ: أنا مدينة العلم وعلي بابها. تولى الخلافة الرابعة من الخلفاء الراشدين، وهو أبو الحسن والحسين ريحانتي النبي ﷺ."},
+talha:{title:"طلحة بن عبيد الله رضي الله عنه",content:"أحد العشرة المبشرين بالجنة، أسلم على يد أبي بكر الصديق في بداية الدعوة، وعُرف بكرمه الشديد حتى سُمي بطلحة الخير وطلحة الفياض لكثرة عطائه للفقراء.\n\nفي غزوة أحد، وقى النبي ﷺ بجسده من سهام الأعداء حتى شُلّت يده، فقال عنه النبي ﷺ: من سرّه أن ينظر إلى رجل يمشي على الأرض وقد قضى نحبه فلينظر إلى طلحة."},
+zubayr:{title:"الزبير بن العوام رضي الله عنه",content:"ابن عمة النبي ﷺ صفية بنت عبد المطلب، وأحد العشرة المبشرين بالجنة، أسلم وهو صغير السن، وهاجر الهجرتين إلى الحبشة والمدينة.\n\nلُقّب بحواري النبي ﷺ (أي ناصره المقرَّب)، وشهد كل المعارك مع النبي ﷺ، واشتهر بشجاعته الفائقة وإقدامه في القتال، وكان من كبار التجار الذين ينفقون أموالهم في سبيل الله."},
+abdurrahman:{title:"عبد الرحمن بن عوف رضي الله عنه",content:"أحد العشرة المبشرين بالجنة والسابقين الأولين للإسلام، هاجر الهجرتين، وكان تاجراً بارعاً بارك الله له في تجارته حتى أصبح من أغنى الصحابة.\n\nعُرف بسخائه العظيم، فتصدّق بقوافل تجارية كاملة وبآلاف الدنانير في سبيل الله، وشهد بدراً وأحداً وسائر المشاهد مع النبي ﷺ، وكان من أهل الشورى الذين اختارهم عمر لاختيار الخليفة من بعده."},
+saad:{title:"سعد بن أبي وقاص رضي الله عنه",content:"أحد العشرة المبشرين بالجنة، وأول من رمى بسهم في سبيل الله، وكان مجاب الدعوة حتى قال فيه النبي ﷺ: اللهم استجب لسعد إذا دعاك.\n\nقاد المسلمين في معركة القادسية الفاصلة ضد الفرس، ودخل المسلمون بفتحه بلاد العراق، وهو خال النبي ﷺ من جهة الرضاعة، واشتهر بشجاعته النادرة في الرمي والقتال."},
+saeed:{title:"سعيد بن زيد رضي الله عنه",content:"أحد العشرة المبشرين بالجنة، أسلم مبكراً هو وزوجته فاطمة بنت الخطاب أخت عمر بن الخطاب، وكان سبباً في إسلام عمر حين غضب عليهما ثم قرأ القرآن فأسلم.\n\nشهد أكثر الغزوات مع النبي ﷺ ما عدا بدراً لأنه كان في مهمة استطلاعية، وعاش حياة زاهدة رغم قربه من الخلفاء، وتوفي وهو من آخر العشرة المبشرين بالجنة وفاة."},
+abuubaidah:{title:"أبو عبيدة بن الجراح رضي الله عنه",content:"أحد العشرة المبشرين بالجنة، ولُقّب بأمين هذه الأمة كما سماه النبي ﷺ لصدقه وأمانته الشديدة، أسلم في بداية الدعوة على يد أبي بكر الصديق.\n\nقاد جيوش المسلمين في فتح بلاد الشام، وعُرف بزهده الشديد رغم قيادته الجيوش الكبيرة، وتوفي في طاعون عمواس وهو يخدم جنوده ويواسيهم، فحزن عليه المسلمون حزناً عظيماً."},
+bilal:{title:"بلال بن رباح رضي الله عنه",content:"كان عبداً حبشياً يُعذَّب على الإسلام تعذيباً شديداً في رمضاء مكة، فكان يقول وهو تحت التعذيب: أحد، أحد، لا يتزحزح عن إيمانه، حتى اشتراه أبو بكر الصديق وأعتقه.\n\nعمل مؤذناً، وكان أول مؤذن في الإسلام، اختاره النبي ﷺ بنفسه لجمال صوته، وأذّن على سطح الكعبة يوم فتح مكة، وهو مثال عظيم في الصبر والثبات على الحق رغم الاضطهاد."},
+khalid:{title:"خالد بن الوليد رضي الله عنه",content:"كان قائداً عسكرياً بارعاً حتى قبل إسلامه، وهو من قاد جيش قريش في غزوة أحد ضد المسلمين، ثم أسلم بعد ذلك وأصبح من أعظم قادة الإسلام.\n\nلُقّب بسيف الله المسلول لأنه لم يُهزم في أي معركة خاضها، قاد فتوحات عظيمة في العراق والشام، واشتهر بذكائه العسكري وحسن تدبيره، وتوفي على فراشه بعد حياة حافلة بالجهاد رغم كثرة المعارك التي خاضها."},
+abuhurairah:{title:"أبو هريرة رضي الله عنه",content:"أسلم متأخراً في السنة السابعة للهجرة، لكنه لازم النبي ﷺ ملازمة شديدة وكرّس وقته لحفظ حديثه الشريف، حتى أصبح أكثر الصحابة رواية للحديث النبوي.\n\nسُمي بأبي هريرة لحبه الشديد للقطط الصغيرة، ودعا له النبي ﷺ بقوة الحفظ فلم ينسَ حديثاً سمعه بعدها، وترك تراثاً حديثياً هائلاً لا يزال المسلمون ينهلون منه إلى اليوم."},
+salman:{title:"سلمان الفارسي رضي الله عنه",content:"فارسي الأصل، ترك بلاده باحثاً عن الدين الحق بعد أن قرأ عن نبي سيُبعث في آخر الزمان، فتنقّل بين الرهبان حتى وقع في الرق، وسمع بالنبي ﷺ في المدينة فأسلم وأُعتق.\n\nاقترح حفر الخندق حول المدينة في غزوة الأحزاب، وهي خطة عسكرية لم تكن معروفة عند العرب، فنجحت في صد هجوم الأحزاب، وقال فيه النبي ﷺ: سلمان منا آل البيت."},
+ibnabbas:{title:"عبدالله بن عباس رضي الله عنه",content:"ابن عم النبي ﷺ، دعا له النبي ﷺ بقوله: اللهم فقهه في الدين وعلّمه التأويل، فاستجاب الله دعاءه، فأصبح من أعلم الصحابة بتفسير القرآن الكريم.\n\nلُقّب بحبر الأمة وترجمان القرآن لسعة علمه، وكان الخلفاء الراشدون يستشيرونه رغم صغر سنه لغزارة علمه وحكمته، وترك إرثاً علمياً عظيماً في التفسير والفقه."},
+hamza:{title:"حمزة بن عبد المطلب رضي الله عنه",content:"عم النبي ﷺ وأخوه من الرضاعة، اشتهر بشجاعته وقوته البدنية، أسلم غاضباً لكرامة النبي ﷺ حين آذاه أحد صناديد قريش، فكان إسلامه عزّاً كبيراً للمسلمين.\n\nاستشهد في غزوة أحد بعد قتاله ببسالة نادرة، فحزن عليه النبي ﷺ حزناً شديداً ولقّبه بأسد الله وأسد رسوله، وهو من أعظم شهداء الإسلام وأشجعهم."},
+zaid:{title:"زيد بن حارثة رضي الله عنه",content:"كان عبداً مملوكاً، أهدته خديجة رضي الله عنها للنبي ﷺ فأعتقه وتبنّاه قبل الإسلام حتى كان يُدعى زيد بن محمد. لما خُيّر بين البقاء مع النبي ﷺ أو العودة لأهله اختار البقاء لحبه الشديد للنبي ﷺ.\n\nهو الصحابي الوحيد الذي ذُكر اسمه صراحة في القرآن الكريم، وقاده النبي ﷺ في عدة غزوات، واستشهد قائداً لجيش المسلمين في غزوة مؤتة، فحزن عليه النبي ﷺ حزناً بالغاً."}};
+
+let fontSize=17;
+
+function showStory(key){
+  if(!companions[key]) return alert("هذه القصة غير موجودة!");
+  const box = document.getElementById('storyBox');
+  const title = document.getElementById('storyTitle');
+  const content = document.getElementById('storyContent');
+  const shareDiv = document.getElementById('shareButtons');
+
+  title.innerText = companions[key].title;
+  content.innerText = companions[key].content;
+  content.style.fontSize = fontSize + "px";
+
+  const shareHTML = `
+    <a id="share-whatsapp" href="https://wa.me/?text=${encodeURIComponent(companions[key].title + ' - ' + companions[key].content + ' ' + location.href)}" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+    <a id="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}&quote=${encodeURIComponent(companions[key].title + ' - ' + companions[key].content)}" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+    <a id="share-instagram" href="javascript:void(0)" onclick="shareInstagram(companions[key].title + ' - ' + companions[key].content)"><i class="fab fa-instagram"></i> انستقرام</a>
+  `;
+  shareDiv.innerHTML = shareHTML;
+
+  box.style.display='block'; 
+  setTimeout(()=> box.classList.add('active'), 50);
+}
+
+document.getElementById("fontRange").oninput=()=>{
+  fontSize=document.getElementById("fontRange").value;
+  document.getElementById("storyContent").style.fontSize=fontSize+"px";
+};
+
+function closeStory(){
+  const box = document.getElementById('storyBox');
+  box.classList.remove('active');
+  setTimeout(()=> box.style.display='none', 500);
+}
+
+function searchCompanion(){
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  const keys = Object.keys(companions);
+  const found = keys.find(k => companions[k].title.toLowerCase().includes(query));
+  if(found){
+    showStory(found);
+  } else { alert("لم يتم العثور على الصحابي المطلوب!"); }
+}
+
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('click',()=>showStory(c.dataset.key));
+});
+
+// مشاركة موحّدة عبر انستقرام
+function shareInstagram(text){
+  if(navigator.share){
+    navigator.share({text:text}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('تم نسخ النص 📋 افتح تطبيق انستقرام والصقه في قصة أو منشور جديد');
+      window.open('https://www.instagram.com/','_blank');
+    }).catch(()=>{
+      window.open('https://www.instagram.com/','_blank');
+    });
+  }
+}
+
+</script>
+
+</body>
+</html>

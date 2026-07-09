@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أسماء الله الحسنى - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {box-sizing:border-box;margin:0;padding:0;}
+body {
+  font-family:'Cairo',sans-serif;
+  background: linear-gradient(to bottom, #f5f5f5, #e8f5e9);
+  color:#2f4f4f;
+  line-height:1.6;
+}
+
+/* الهيدر */
+header {
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:60px 20px 80px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";
+  background:url('header-bg.png') center/cover no-repeat;
+  opacity:0.15;
+  position:absolute;
+  top:0; left:0; bottom:0; right:0;
+  z-index:0;
+}
+header h1, header p, .nav {position:relative; z-index:1;}
+header h1 {font-size:42px;margin-bottom:15px;}
+header p {font-size:20px;opacity:0.9;}
+
+/* شريط التنقل */
+.nav {
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.nav a {
+  background:rgba(255,255,255,0.2);
+  color:white;
+  font-weight:bold;
+  padding:8px 16px;
+  border-radius:25px;
+  transition:0.3s;
+  text-decoration:none;
+}
+.nav a:hover {background:white;color:#1b5e20;}
+
+/* الحاوية */
+.container {
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* شريط البحث */
+.search-bar {
+  max-width:400px;
+  margin:30px auto;
+  display:flex;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+.search-bar input {
+  flex:1;
+  padding:10px 15px;
+  border:none;
+  font-size:16px;
+}
+.search-bar button {
+  background:#1b5e20;
+  color:white;
+  border:none;
+  padding:0 15px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.search-bar button:hover {background:#4caf50;}
+
+/* قائمة أسماء الله الحسنى */
+.names-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:20px;
+}
+.name-card {
+  background: linear-gradient(145deg, #ffffff, #e0f2f1);
+  border-radius:20px;
+  padding:25px 20px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  cursor:pointer;
+}
+.name-card:hover {
+  transform:translateY(-8px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.2);
+  background: linear-gradient(145deg, #e8f5e9, #c8e6c9);
+}
+.name-card h3 {
+  font-size:22px;
+  color:#1b5e20;
+  margin-bottom:10px;
+}
+.name-card p {
+  font-size:15px;
+  color:#555;
+  line-height:1.5;
+}
+
+/* أزرار المشاركة داخل كل بطاقة */
+.share-buttons {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+.share-buttons a {
+  color:white;
+  padding:6px 10px;
+  border-radius:12px;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+#share-whatsapp {background:#25D366;}
+#share-facebook {background:#3b5998;}
+#share-instagram {background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.share-buttons a:hover {opacity:0.8; transform:scale(1.05);}
+
+/* قسم المشاركة الموحّد بآخر الصفحة */
+.page-share {
+  text-align:center;
+  margin-top:45px;
+  padding:30px 20px;
+  background:linear-gradient(145deg,#ffffff,#e8f5e9);
+  border-radius:25px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+.page-share p {
+  font-size:18px;
+  color:#1b5e20;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+.page-share .share-buttons a {
+  padding:10px 18px;
+  border-radius:25px;
+  font-size:15px;
+  font-weight:bold;
+}
+
+/* الفوتر */
+footer {
+  background:#1b5e20;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+}
+footer p {margin-bottom:5px;font-size:15px;}
+footer small {opacity:0.7;font-size:13px;}
+
+/* تجاوب الهاتف */
+@media screen and (max-width:768px){
+  header h1 {font-size:30px;}
+  header p {font-size:16px;}
+  .search-bar {max-width:300px;}
+  .name-card h3 {font-size:18px;}
+  .name-card p {font-size:14px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>أسماء الله الحسنى</h1>
+  <p>"من أحصاها دخل الجنة"... تدبّر أسماء الله الحسنى ومعانيها</p>
+  <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="ابحث عن اسم الله...">
+    <button onclick="searchName()">🔍</button>
+  </div>
+
+  <div class="names-grid" id="namesGrid">
+    <!-- أسماء الله الحسنى سيتم إضافتها هنا -->
+  </div>
+
+  <div class="page-share">
+    <p>📤 شارك صفحة أسماء الله الحسنى مع أحبابك</p>
+    <div class="share-buttons">
+      <a id="share-whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a id="share-facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a id="share-instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i> انستقرام</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>صدقة جارية لكل مسلم</p>
+  <small>المصدر: القرآن الكريم – أسماء الله الحسنى</small>
+</footer>
+
+<script>
+// قائمة 99 اسمًا بالترتيب
+const allNames=[
+["الرحمن","ذو الرحمة الواسعة العامة التي وسعت جميع الخلق، مؤمنهم وكافرهم، في الدنيا"],
+["الرحيم","ذو الرحمة الخاصة بالمؤمنين، يرحمهم في الدنيا والآخرة"],
+["الملك","المتصرف في الملك كله خلقاً وأمراً، له الملك المطلق وحده"],
+["القدوس","المنزّه عن كل نقص وعيب وعن مشابهة المخلوقين في ذاته وصفاته"],
+["السلام","السالم من كل عيب ونقص وآفة، ومنه السلامة لجميع خلقه"],
+["المؤمن","الذي صدّق نفسه فيما أخبر به، وصدّق رسله بالمعجزات، وآمَّن عباده من الظلم"],
+["المهيمن","الرقيب الحفيظ الشاهد المطّلع على أحوال خلقه كلها"],
+["العزيز","القوي الغالب الذي لا يُغلب ولا يُقهر أبداً"],
+["الجبار","العليّ الذي قهر جميع الخلق وأذعنوا لعظمته، وجبر الكسير والضعيف والمحتاج من عباده"],
+["المتكبر","المتعالي عن صفات الخلق ونقائصهم، صاحب الكبرياء والعظمة وحده"],
+["الخالق","المقدِّر للأشياء قبل إيجادها على مقتضى حكمته البالغة"],
+["البارئ","الذي أوجد الأشياء وأبرزها من العدم إلى الوجود متمايزة بريئة من التفاوت"],
+["المصور","الذي صوّر جميع الموجودات ورتّبها، فأعطى كل شيء منها صورته الخاصة"],
+["الغفار","الذي يستر الذنوب ويمحوها، ويتكرر منه الغفران كلما تكررت التوبة"],
+["القهار","الذي قهر كل شيء وذلّله لأمره وقضائه، فخضع له كل مخلوق"],
+["الوهاب","كثير العطاء بلا سبب ولا عوض ولا مقابل يطلبه من عباده"],
+["الرزاق","الذي خلق الأرزاق وأسبابها وأوصلها إلى أصحابها"],
+["الفتاح","الذي يفتح على عباده أبواب الرحمة والرزق، ويفتح بين الخصوم بالحكم العدل"],
+["العليم","المحيط علمه بكل شيء، الظاهر والباطن، الماضي والحاضر والمستقبل"],
+["القابض","الذي يقبض الأرزاق بحكمته وعدله، ويقبض الأرواح عند الموت"],
+["الباسط","الذي يبسط الرزق ويوسّعه لمن يشاء من عباده بفضله"],
+["الخافض","خافض الجبابرة والمتكبرين، يذلّهم بعد عزّهم"],
+["الرافع","رافع المؤمنين بالطاعة، وأوليائه بالكرامة والمنزلة"],
+["المعز","الذي يهب العزّة لمن أطاعه من عباده"],
+["المذل","الذي يُذل من عصاه وكفر به"],
+["السميع","الذي يسمع كل مسموع خفيّه وجليّه، من غير حاجة لأذن"],
+["البصير","الذي يرى كل شيء حتى دبيب النملة السوداء في الليلة الظلماء"],
+["الحكم","المتفرد بالحكم في خلقه، فلا معقّب لحكمه ولا رادّ له"],
+["العدل","الذي لا يجور في حكمه، وأفعاله كلها دائرة بين الفضل والعدل"],
+["اللطيف","الذي يوصل رفقه إلى العبد بأرفق وجه من حيث لا يعلم، ويعلم دقائق الأمور"],
+["الخبير","الذي لا يعزب عن علمه خافية، عالم ببواطن الأمور كعلمه بظواهرها"],
+["الحليم","الذي لا يستفزه العصيان، ولا يحمله الغضب على العجلة بالعقوبة"],
+["العظيم","الذي جلّ قدره وعظم شأنه، فلا شيء أعظم منه"],
+["الغفور","كثير المغفرة والستر لذنوب عباده"],
+["الشكور","الذي يعطي الثواب الجزيل على العمل القليل"],
+["العلي","المتعالي بذاته عن خلقه، وبقدره عن الأشباه والنظراء"],
+["الكبير","الذي هو أكبر من كل شيء وأجلّ من أن يُقاس بغيره"],
+["الحفيظ","الذي يحفظ ما خلق من الفناء والاختلال، ويحفظ على عباده أعمالهم"],
+["المقيت","المقتدر الذي يعطي كل مخلوق قوته وما يحتاجه لبقائه"],
+["الحسيب","الكافي عباده ما أهمهم، والمحاسب لهم على أعمالهم يوم القيامة"],
+["الجليل","المستحق لصفات الجلال والعظمة والكمال المطلق"],
+["الكريم","كثير الخير، الجواد المعطي الذي لا ينفد عطاؤه ولا يُسأل فيبخل"],
+["الرقيب","الحفيظ الذي لا يغيب عنه شيء من أحوال خلقه"],
+["المجيب","الذي يجيب دعوة الداعي إذا دعاه وسأله بصدق"],
+["الواسع","الواسع الغنى والفضل، وسع كل شيء رحمة وعلماً"],
+["الحكيم","ذو الحكمة البالغة التي هي وضع كل شيء في موضعه اللائق به"],
+["الودود","المحب لأوليائه الصالحين، المحبوب في قلوب من عرفه"],
+["المجيد","الذي كمل في شرفه وجلاله، وعزّ سلطانه وعظمت أفعاله"],
+["الباعث","الذي يبعث الخلق يوم القيامة بعد موتهم للحساب والجزاء"],
+["الشهيد","العالم بما شاهده وحضره من أحوال خلقه، فلا يغيب عنه شيء"],
+["الحق","الثابت الوجود حقاً، الذي لا يستحيل ولا يزول أبداً"],
+["الوكيل","القائم بأمور خلقه ومصالحهم، الكافي لمن توكل عليه"],
+["القوي","القادر على كل شيء، الذي لا يعجزه شيء في الأرض ولا في السماء"],
+["المتين","شديد القوة الذي لا يلحقه ضعف ولا تعب في أفعاله"],
+["الولي","الناصر المتولي لأمور المؤمنين، المحب لهم القائم بمصالحهم"],
+["الحميد","المحمود على كل حال، المستحق للحمد بذاته وصفاته وأفعاله"],
+["المحصي","الذي أحاط علمه بعدد كل شيء، فلا يند عن علمه شيء"],
+["المبدئ","الذي ابتدأ خلق الأشياء وأوجدها من العدم بقدرته وحده"],
+["المعيد","الذي يعيد الخلق بعد إفنائهم يوم البعث كما بدأهم أول مرة"],
+["المحيي","الذي أوجد الحياة في الأشياء الميتة بقدرته وأمره"],
+["المميت","مقدّر الموت على كل ذي روح في أجله المحدد"],
+["الحي","الذي له الحياة الكاملة الأزلية الأبدية التي لا يعتريها زوال"],
+["القيوم","القائم بنفسه المستغني عن غيره، المقيم لجميع خلقه ومدبّر شؤونهم"],
+["الواجد","الغني الذي لا يفتقر لشيء، يجد كل ما يريد بلا عوز"],
+["الماجد","الواسع الكرم والعطاء والجلال الذي لا حدّ لمجده"],
+["الواحد","المتفرد الذي لا مثيل له في ذاته وصفاته وأفعاله"],
+["الأحد","المنفرد بالألوهية والكمال الذي لا يشاركه فيها أحد"],
+["الصمد","السيد الذي كمل في سؤدده، الذي تقصده الخلائق في حوائجها وهو غني عنها"],
+["القادر","الذي له القدرة الكاملة التامة على كل شيء يشاؤه"],
+["المقتدر","الشديد القدرة الذي لا يعجزه شيء مهما عظم"],
+["المقدم","الذي يقدّم من يشاء من خلقه بفضله وحكمته"],
+["المؤخر","الذي يؤخر من يشاء من خلقه بعدله وحكمته"],
+["الأول","الذي ليس قبله شيء، الأزلي الذي لا بداية لوجوده"],
+["الآخر","الذي ليس بعده شيء، الباقي الذي لا نهاية لبقائه"],
+["الظاهر","الذي ظهر فوق كل شيء بقهره وقدرته، فهو أظهر من كل ظاهر بأدلة وجوده"],
+["الباطن","المحتجب عن أبصار الخلق وأوهامهم، العالم ببواطن الأمور وخفاياها"],
+["الوالي","المالك المتصرف في الأشياء كلها وحده دون سواه"],
+["المتعالي","المنزّه عن صفات المخلوقين، العالي بذاته وقدره وقهره فوق كل شيء"],
+["البر","المحسن إلى خلقه، ومنه جميع أنواع البر والإحسان والخير"],
+["التواب","الذي يوفّق عبده للتوبة، ثم يتوب عليه ويقبلها منه"],
+["المنتقم","الذي ينتقم ممن عصاه وتمادى في ظلمه بعد إعذاره وإنذاره"],
+["العفو","الذي يمحو السيئات ويتجاوز عن المعاصي فلا يعاقب عليها"],
+["الرؤوف","شديد الرحمة والرأفة بعباده، أرحم بهم من الوالدة بولدها"],
+["مالك الملك","المتصرف في خلقه كيف يشاء، يعطي الملك من يشاء وينزعه ممن يشاء"],
+["ذو الجلال والإكرام","المستحق للتعظيم والإجلال، والذي يُكرم أولياءه المتقين"],
+["المقسط","الذي يقيم العدل والقسط بين خلقه في جميع أحكامه"],
+["الجامع","الذي يجمع الخلائق يوم لا ريب فيه للحساب والجزاء"],
+["الغني","الذي لا يحتاج إلى أحد من خلقه بأي وجه من الوجوه، وكل شيء مفتقر إليه"],
+["المغني","الذي يغني من يشاء من عباده بفضله عن سؤال غيره"],
+["المانع","الذي يمنع أسباب الهلاك والنقص والسوء عن أوليائه"],
+["الضار","الذي يقدّر الضرر بحكمته على من يستحقه من عباده"],
+["النافع","الذي يخلق النفع ويجعل أسبابه بيد من يشاء، فلا ينفع أحد إلا بإذنه"],
+["النور","الذي نوّر السماوات والأرض، وهادي القلوب لنور الإيمان والمعرفة"],
+["الهادي","الذي هدى عباده لما فيه صلاحهم بالإرشاد والتوفيق إلى الحق"],
+["البديع","مبدع الأشياء وموجدها على غير مثال سابق، فلا شبيه لصنعه"],
+["الباقي","الذي له البقاء الدائم الذي لا يعتريه فناء بعد فناء خلقه"],
+["الوارث","الذي يبقى بعد فناء جميع خلقه، فيرث الأرض ومن عليها"],
+["الرشيد","الذي أرشد الخلق إلى ما فيه صلاحهم بحكمته البالغة"],
+["الصبور","الذي لا يعاجل العصاة بالعقوبة، بل يمهلهم مع قدرته التامة عليهم"]
+];
+
+const namesGrid=document.getElementById("namesGrid");
+
+allNames.forEach(([name,desc],index)=>{
+  const div=document.createElement("div");
+  div.className="name-card";
+  div.dataset.name=name;
+  div.dataset.desc=desc;
+  div.innerHTML=`
+    <h3>${index+1}. ${name}</h3>
+    <p>${desc}</p>`;
+  namesGrid.appendChild(div);
+});
+
+function searchName() {
+  const query=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.name-card').forEach(card=>{
+    card.style.display=card.dataset.name.toLowerCase().includes(query)?'block':'none';
+  });
+}
+
+// مشاركة الصفحة كاملة (مرة واحدة بآخر الصفحة)
+const pageShareText=encodeURIComponent(`أسماء الله الحسنى (99 اسماً) بمعانيها 🌟\nصفحة فجر الإسلام\n${location.href}`);
+document.getElementById('share-whatsapp').href=`https://api.whatsapp.com/send?text=${pageShareText}`;
+document.getElementById('share-facebook').href=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}&quote=${pageShareText}`;
+document.getElementById('share-instagram').onclick=()=>shareInstagram('أسماء الله الحسنى (99 اسماً) بمعانيها 🌟 - فجر الإسلام');
+
+// مشاركة موحّدة عبر انستقرام
+function shareInstagram(text){
+  if(navigator.share){
+    navigator.share({text:text}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('تم نسخ النص 📋 افتح تطبيق انستقرام والصقه في قصة أو منشور جديد');
+      window.open('https://www.instagram.com/','_blank');
+    }).catch(()=>{
+      window.open('https://www.instagram.com/','_blank');
+    });
+  }
+}
+
+</script>
+
+</body>
+</html>

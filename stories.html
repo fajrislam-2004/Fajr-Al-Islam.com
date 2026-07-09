@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص الأنبياء - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Cairo',sans-serif;
+  background:linear-gradient(to bottom,#e8f5e9,#ffffff);
+  color:#2f4f4f;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit;}
+
+/* الهيدر */
+header{
+  background:linear-gradient(135deg,#1b5e20,#4caf50);
+  color:white;
+  padding:50px 20px 80px 20px;
+  text-align:center;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  position:relative;
+}
+header::after{
+  content:"";
+  background:url('adhkar-header.png') center/cover no-repeat;
+  opacity:0.15;
+  position:absolute; inset:0;
+}
+header h1, header p, .nav{position:relative; z-index:1;}
+header h1{font-size:38px;margin-bottom:10px;}
+header p{font-size:18px;opacity:0.9;}
+.nav{margin-top:20px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
+.nav a{background:rgba(255,255,255,0.2);color:white;font-weight:bold;padding:8px 16px;border-radius:25px;transition:0.3s;}
+.nav a:hover{background:white;color:#1b5e20;}
+
+/* شريط البحث */
+.search-bar{
+  max-width:400px;
+  margin:30px auto;
+  display:flex;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+.search-bar input{flex:1;padding:10px 15px;border:none;font-size:16px;}
+.search-bar button{
+  background:#1b5e20;color:white;border:none;padding:0 15px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.search-bar button:hover{background:#4caf50;}
+
+/* البطاقات */
+.cards{display:grid;gap:20px;justify-items:center;}
+.card{
+  background:linear-gradient(145deg,#66bb6a,#2e7d32);
+  border-radius:50%;
+  height:160px;width:160px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  box-shadow:inset 0 0 15px rgba(0,0,0,0.1),0 10px 25px rgba(0,0,0,0.2);
+  cursor:pointer;
+  transition:.3s;
+  padding:15px;
+  color:white;font-weight:bold;font-size:16px;
+}
+.card i{font-size:36px;margin-bottom:8px;}
+.card:hover{transform:translateY(-8px) scale(1.05);}
+
+/* خلفية مظلمة */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  display:none;
+  z-index:998;
+}
+
+/* مربع القصة */
+.story-box{
+  display:none;
+  background:white;
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(0.8);
+  width:90%;
+  max-width:600px;
+  max-height:80vh;
+  z-index:999;
+  opacity:0;
+  transition:.3s;
+}
+.story-box.active{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+  display:block;
+}
+.story-box h2{text-align:center;color:#2e7d32;margin-bottom:10px;}
+.story-content{max-height:45vh;overflow-y:auto;font-size:17px;white-space:pre-line;text-align:justify;padding:0 5px;}
+.story-box .close-btn{
+  position:absolute;top:15px;left:15px;
+  background:#e53935;color:white;border:none;padding:8px 15px;border-radius:15px;
+  cursor:pointer;
+}
+
+.controls{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+  gap:10px;margin-bottom:10px;
+}
+.controls button{
+  border:none;padding:6px 12px;border-radius:10px;
+  cursor:pointer;background:#1b5e20;color:white;
+}
+.controls .font-range{width:120px;}
+
+
+/* المشاركة */
+.share-buttons{
+  display:flex;justify-content:center;gap:10px;margin-top:15px;flex-wrap:wrap;
+}
+.share-buttons a{
+  color:white;padding:8px 12px;border-radius:12px;
+  font-size:14px;display:flex;align-items:center;gap:6px;
+}
+#share-whatsapp{background:#25D366;}
+#share-facebook{background:#3b5998;}
+#share-instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+
+/* الفوتر */
+footer{
+  background:#1b5e20;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:50px;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+}
+
+/* التجاوب */
+@media(min-width:1200px){.cards{grid-template-columns:repeat(5,1fr);}}
+@media(min-width:992px) and (max-width:1199px){.cards{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:768px) and (max-width:991px){.cards{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:767px){.cards{grid-template-columns:repeat(3,1fr);}.card{width:140px;height:140px;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>قصص الأنبياء</h1>
+<p>رحلة عبر قصص الأنبياء وحكمتهم وصبرهم</p>
+<nav class="nav">
+  <a href="index.html">الرئيسية</a>
+  <a href="adhkar.html">الأذكار</a>
+  <a href="ayah.html">آية وتدبر</a>
+  <a href="hadith.html">الأحاديث</a>
+  <a href="prayer.html">الصلاة</a>
+  <a href="stories.html">قصص الأنبياء</a>
+  <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+  <a href="names.html"> أسماء الله الحسنى</a>
+  <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="ابحث عن نبي...">
+<button onclick="searchStory()"><i class="fas fa-search"></i></button>
+</div>
+
+<div class="cards">
+<div class="card" data-key="adam"><i class="fas fa-book"></i>آدم عليه السلام</div>
+<div class="card" data-key="idris"><i class="fas fa-book"></i>إدريس عليه السلام</div>
+<div class="card" data-key="nuh"><i class="fas fa-book"></i>نوح عليه السلام</div>
+<div class="card" data-key="hud"><i class="fas fa-book"></i>هود عليه السلام</div>
+<div class="card" data-key="salih"><i class="fas fa-book"></i>صالح عليه السلام</div>
+<div class="card" data-key="ibrahim"><i class="fas fa-book"></i>إبراهيم عليه السلام</div>
+<div class="card" data-key="lut"><i class="fas fa-book"></i>لوط عليه السلام</div>
+<div class="card" data-key="ismail"><i class="fas fa-book"></i>إسماعيل عليه السلام</div>
+<div class="card" data-key="ishaq"><i class="fas fa-book"></i>إسحاق عليه السلام</div>
+<div class="card" data-key="yaqub"><i class="fas fa-book"></i>يعقوب عليه السلام</div>
+<div class="card" data-key="yusuf"><i class="fas fa-book"></i>يوسف عليه السلام</div>
+<div class="card" data-key="ayyub"><i class="fas fa-book"></i>أيوب عليه السلام</div>
+<div class="card" data-key="shuayb"><i class="fas fa-book"></i>شعيب عليه السلام</div>
+<div class="card" data-key="musa"><i class="fas fa-book"></i>موسى عليه السلام</div>
+<div class="card" data-key="harun"><i class="fas fa-book"></i>هارون عليه السلام</div>
+<div class="card" data-key="dhulkifl"><i class="fas fa-book"></i>ذو الكفل عليه السلام</div>
+<div class="card" data-key="dawud"><i class="fas fa-book"></i>داود عليه السلام</div>
+<div class="card" data-key="sulaiman"><i class="fas fa-book"></i>سليمان عليه السلام</div>
+<div class="card" data-key="ilyas"><i class="fas fa-book"></i>إلياس عليه السلام</div>
+<div class="card" data-key="alyasa"><i class="fas fa-book"></i>اليسع عليه السلام</div>
+<div class="card" data-key="yunus"><i class="fas fa-book"></i>يونس عليه السلام</div>
+<div class="card" data-key="zakariya"><i class="fas fa-book"></i>زكريا عليه السلام</div>
+<div class="card" data-key="yahya"><i class="fas fa-book"></i>يحيى عليه السلام</div>
+<div class="card" data-key="isa"><i class="fas fa-book"></i>عيسى عليه السلام</div>
+<div class="card" data-key="muhammad"><i class="fas fa-book"></i>محمد ﷺ خاتم الأنبياء</div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeStory()"></div>
+
+<div class="story-box" id="storyBox">
+<button class="close-btn" onclick="closeStory()">إغلاق</button>
+<h2 id="storyTitle"></h2>
+
+<div class="controls">
+  <div>
+  <label>الخط</label>
+  <input type="range" min="16" max="26" value="18" id="fontRange" class="font-range">
+  </div>
+
+  </div>
+
+<div class="story-content" id="storyContent"></div>
+<div class="share-buttons" id="shareButtons"></div>
+</div>
+
+<footer>
+<p>صدقة جارية لكل مسلم</p>
+<small>المصدر: القرآن الكريم، وكتاب "قصص الأنبياء" للحافظ ابن كثير، والأحاديث الصحيحة الواردة في مهن بعض الأنبياء</small>
+</footer>
+
+<script>
+
+let fontRange=document.getElementById("fontRange");
+let currentPage=0;
+let pages=[];
+let fontSize=17;
+
+const stories={adam:{title:"آدم عليه السلام",content:"خلق الله سبحانه آدم عليه السلام من طين، ونفخ فيه من روحه، وعلّمه أسماء كل الأشياء، وهي معجزة فضّله الله بها حتى على الملائكة. أمر الله الملائكة بالسجود لآدم إكراماً لا عبادة، فسجدوا جميعاً إلا إبليس الذي استكبر وعصى أمر ربه.\n\nأسكن الله آدم وزوجه حواء الجنة، فوسوس لهما الشيطان حتى أكلا من الشجرة التي نُهيا عنها، فتاب الله عليهما بعدما تعلّم آدم من ربه كلمات فدعا بها، وأهبطهما إلى الأرض ليكونا أول البشر فيها، وعمل آدم بالزراعة وحرث الأرض ليكسب قوته بعد أن كان يعيش في الجنة رغداً، وجعله الله أول الأنبياء وأبا البشرية جمعاء."},idris:{title:"إدريس عليه السلام",content:"هو من أقدم الأنبياء بعد آدم عليه السلام، ذكره القرآن الكريم ووصفه بالصدق والنبوة، وأنه رُفع مكاناً علياً تكريماً له من الله سبحانه.\n\nعُرف إدريس عليه السلام بحرصه الشديد على العبادة والصبر عليها، وكان من أوائل من علّم الناس الكتابة بالقلم، واشتغل بالخياطة وكان أول من خاط الثياب ولبس المخيط، ودعا قومه إلى توحيد الله واجتناب الشرك، وهو جد نوح عليه السلام بحسب أكثر الروايات."},nuh:{title:"نوح عليه السلام",content:"أرسل الله نوحاً عليه السلام إلى قومه بعدما انتشر فيهم الشرك وعبادة الأصنام، فدعاهم إلى توحيد الله ليلاً ونهاراً، سراً وجهراً، مدة تسعمئة وخمسين عاماً كما ذكر القرآن الكريم، فلم يؤمن معه إلا قليل.\n\nلما يئس نوح من إيمان قومه، أمره الله ببناء سفينة عظيمة، فاشتغل بالنجارة بيده وسط سخرية قومه، وحين فار التنور علامة على الطوفان، حمل فيها من كل زوجين اثنين ومن آمن معه، فجاء الطوفان العظيم وأغرق الله الكافرين، حتى استقرت السفينة على جبل الجودي، ونجّى الله نوحاً ومن معه، ولذلك يُلقَّب بآدم الثاني."},hud:{title:"هود عليه السلام",content:"أرسل الله هوداً عليه السلام إلى قوم عاد، وكانوا قوماً أقوياء ذوي بأس شديد، بنوا حضارة عظيمة واغتروا بقوتهم، فعبدوا الأصنام من دون الله.\n\nدعاهم هود إلى توحيد الله وترك الطغيان، فكذّبوه واستكبروا، فأرسل الله عليهم ريحاً صرصراً عاتية استمرت سبع ليال وثمانية أيام، دمّرت كل شيء ولم تُبقِ منهم أحداً، ونجّى الله هوداً ومن آمن معه."},salih:{title:"صالح عليه السلام",content:"أُرسل صالح عليه السلام إلى قوم ثمود الذين كانوا ينحتون بيوتهم من الجبال، فدعاهم إلى عبادة الله وحده، فطلبوا منه معجزة تثبت صدقه.\n\nأخرج الله لهم ناقة من صخرة كآية عظيمة، وأمرهم صالح أن يتركوها تشرب وترعى ولا يمسّوها بسوء، لكنهم عقروها تحدياً واستكباراً، فأخذتهم صيحة عظيمة من السماء أهلكتهم جميعاً إلا من آمن مع صالح."},ibrahim:{title:"إبراهيم عليه السلام",content:"وُلد إبراهيم عليه السلام في قوم يعبدون الأصنام، وعمل في شبابه راعياً للأغنام كعادة أكثر الأنبياء، فكان منذ صغره يتأمل في الكون ليصل إلى معرفة ربه. واجه قومه وأباه بالحجة، وحطّم أصنامهم، فألقوه في نار عظيمة، فأمر الله النار أن تكون برداً وسلاماً عليه فلم تؤذه.\n\nهاجر إلى الشام، ورُزق بولده إسماعيل، ثم أمره الله أن يترك هاجر وإسماعيل الرضيع بوادٍ غير ذي زرع بمكة، ونبع هناك ماء زمزم. من أعظم ابتلاءاته رؤياه بذبح ابنه إسماعيل، ففداه الله بذبح عظيم، وهذا أصل عيد الأضحى.\n\nبنى إبراهيم وابنه إسماعيل الكعبة المشرّفة، ودعا الله أن يبعث في أهل مكة رسولاً منهم، فكانت دعوته سبباً في بعثة النبي محمد ﷺ من نسل إسماعيل. لُقّب إبراهيم بخليل الرحمن وهو أبو الأنبياء."},lut:{title:"لوط عليه السلام",content:"كان لوط عليه السلام ابن أخي إبراهيم عليه السلام، وآمن به وهاجر معه، ثم أرسله الله إلى أهل سدوم الذين ابتدعوا فاحشة لم يسبقهم إليها أحد من العالمين.\n\nدعاهم لوط إلى ترك هذه الفاحشة وعبادة الله وحده، فكذّبوه واستهزؤوا به وهدّدوه بالطرد، فلما جاء أمر الله، أُمر لوط أن يخرج بأهله ليلاً إلا امرأته التي كانت من الهالكين، وقلب الله قريتهم عالياً سافلاً وأمطر عليهم حجارة من سجيل."},ismail:{title:"إسماعيل عليه السلام",content:"هو الابن البكر لإبراهيم عليه السلام من زوجته هاجر، تركه أبوه رضيعاً مع أمه في وادي مكة بأمر من الله، فنبع ماء زمزم إكراماً لهما، واجتمع حولهما الناس حتى صارت مكة مدينة عامرة.\n\nلما بلغ إسماعيل سن السعي، تعلّم الرماية بالقوس والسهم حتى صار من أمهر الرماة العرب، ثم رأى إبراهيم في المنام أنه يذبحه، فلما أخبره بالرؤيا قال إسماعيل: افعل ما تؤمر ستجدني إن شاء الله من الصابرين، ففداه الله بذبح عظيم. شارك إسماعيل أباه في بناء الكعبة المشرّفة، وهو جد النبي محمد ﷺ."},ishaq:{title:"إسحاق عليه السلام",content:"هو الابن الثاني لإبراهيم عليه السلام، وُلد من زوجته سارة بعد أن بشّرته الملائكة به وهو في سن الكِبَر، وكانت بشارة عظيمة له ولزوجته.\n\nجعله الله نبياً من الصالحين، وبارك فيه وفي ذريته، فكان منها يعقوب عليه السلام وسلسلة طويلة من الأنبياء من بني إسرائيل الذين تتابعوا على الرسالة من بعده."},yaqub:{title:"يعقوب عليه السلام",content:"هو ابن إسحاق عليه السلام، ولُقّب بإسرائيل، وله اثنا عشر ولداً كان أحبهم إليه يوسف عليه السلام لما رأى فيه من الصلاح والنور.\n\nابتُلي يعقوب بفراق ابنه يوسف سنين طويلة بعدما دبّر له إخوته المكيدة، فحزن عليه حزناً شديداً حتى ابيضّت عيناه من الحزن، لكنه صبر واحتسب، حتى جمع الله شمله بيوسف بعد أن أصبح عزيز مصر، ففرح فرحاً عظيماً."},yusuf:{title:"يوسف عليه السلام",content:"رأى يوسف عليه السلام في صغره رؤيا أن أحد عشر كوكباً والشمس والقمر ساجدون له، ففسّرها أبوه يعقوب بأنها بشارة عظيمة، وحذّره من إخبار إخوته حسداً منهم.\n\nحسده إخوته فألقوه في الجُبّ، فالتقطته قافلة وباعته في مصر، حيث تعرّض لمحنة عظيمة حين راودته امرأة العزيز عن نفسه فاستعصم، فسُجن ظلماً سنين، لكنه صبر، وفسّر رؤيا الملك فأخرجه من السجن وولّاه على خزائن الأرض، فصار بمنزلة وزير المالية والاقتصاد في مصر.\n\nجاء إخوته إلى مصر طلباً للطعام في سنوات القحط دون أن يعرفوه، فعفا عنهم وجمع شمل أسرته، وسجد له أبواه وإخوته تحقيقاً لرؤياه الأولى، وهي من أجمل قصص القرآن وأكثرها عبرة في الصبر والعفو."},ayyub:{title:"أيوب عليه السلام",content:"كان أيوب عليه السلام نبياً غنياً كثير المال والولد، فابتلاه الله بفقد كل ذلك وبمرض شديد أصاب جسده سنين طويلة، فصبر صبراً عظيماً ولم يتوقف عن ذكر الله وشكره.\n\nلما اشتد به البلاء، دعا ربه بأدب جميل: أني مسّني الضر وأنت أرحم الراحمين، فاستجاب الله له، وأمره أن يضرب برجله فنبعت عين ماء اغتسل منها وشرب فشفاه الله، وردّ عليه أهله وماله وزاده أضعافاً، فصار مضرباً للمثل في الصبر."},shuayb:{title:"شعيب عليه السلام",content:"أُرسل شعيب عليه السلام إلى أهل مدين، وكان تاجراً معروفاً بينهم بالصدق والأمانة، وكانوا يبخسون الناس حقوقهم في الكيل والميزان مع انتشار الفساد بينهم، فدعاهم إلى توحيد الله وإلى العدل في المعاملات التجارية.\n\nكذّبه قومه واستكبروا وهدّدوه بالطرد، فأخذتهم صيحة عظيمة وزلزلة أهلكتهم في ديارهم، ونجّى الله شعيباً ومن آمن معه، وهو من زوّج ابنته لموسى عليه السلام حين هرب من مصر ولجأ إلى مدين."},musa:{title:"موسى عليه السلام",content:"وُلد موسى عليه السلام في زمن فرعون الذي كان يذبّح أبناء بني إسرائيل. أوحى الله إلى أمه أن تُلقيه في اليمّ، فالتقطه آل فرعون وربّته زوجة فرعون آسية، وردّه الله إلى أمه لترضعه.\n\nلما كبر وقتل قبطياً خطأً، هرب إلى مدين وعمل راعياً للأغنام عند شعيب عليه السلام وتزوج ابنته. كلّمه الله عند جبل الطور وأعطاه العصا واليد البيضاء، وأرسله إلى فرعون الذي ادّعى الألوهية.\n\nأظهر الله على يد موسى تسع آيات، فاستكبر فرعون وكذّب. خرج موسى ببني إسرائيل ليلاً، فانشق البحر لهم بضربة من عصاه، وأغرق الله فرعون وجنوده، وأنزل الله على موسى التوراة، وهو من أولي العزم من الرسل."},harun:{title:"هارون عليه السلام",content:"هو الأخ الأكبر لموسى عليه السلام، دعا موسى ربه أن يجعل هارون وزيراً له ومعيناً له في تبليغ الرسالة لفصاحة لسانه، فاستجاب الله دعاءه وأرسله معه إلى فرعون.\n\nشارك هارون أخاه موسى في مواجهة فرعون وفي رحلة الخروج ببني إسرائيل، وحين ذهب موسى لميقات ربه استخلف هارون على قومه، فعبدوا العجل في غيبته، فحاول هارون ردعهم لكنهم لم يستجيبوا حتى عاد موسى."},dhulkifl:{title:"ذو الكفل عليه السلام",content:"ذكره القرآن الكريم من الصابرين الأخيار، واختُلف في اسمه الحقيقي، لكن المتفق عليه أنه كان نبياً صالحاً التزم بما تكفّل به من العبادة والعدل بين الناس، فسُمي بذلك.\n\nعُرف بشدة صبره وحرصه على قيام الليل والصيام والقضاء بالعدل بين الناس في زمانه، وقد عدّه الله في القرآن مع كبار الأنبياء الصابرين كإسماعيل واليسع."},dawud:{title:"داود عليه السلام",content:"كان داود عليه السلام جندياً في جيش طالوت، فقتل الجبار جالوت بمقلاعه، فآتاه الله الملك والحكمة بعد ذلك، وأنزل عليه كتاب الزبور.\n\nوهبه الله صوتاً عذباً كانت الجبال تُسبّح معه، وألان له الحديد فاشتغل بالحدادة وكان يصنع منه دروعاً يبيعها ويأكل من كسب يده، وكان عادلاً حكيماً في قضائه بين الناس، وهو والد سليمان عليه السلام."},sulaiman:{title:"سليمان عليه السلام",content:"ورث سليمان عليه السلام النبوة والملك عن أبيه داود عليه السلام، وسخّر الله له الريح تجري بأمره، وعلّمه منطق الطير، وسخّر له الجن يعملون بين يديه.\n\nمن أشهر قصصه قصته مع ملكة سبأ (بلقيس)، حيث دعاها إلى توحيد الله بعد أن رأى قومها يعبدون الشمس، فآمنت وأسلمت مع سليمان لله رب العالمين. كان سليمان نموذجاً للملك العادل الشاكر لنعم الله رغم ما أوتيه من الملك العظيم."},ilyas:{title:"إلياس عليه السلام",content:"أُرسل إلياس عليه السلام إلى بني إسرائيل بعد سليمان عليه السلام، في زمن انتشر فيه عبادة صنم يُسمى بعلاً، فدعاهم إلى ترك عبادته وعبادة الله وحده خالق كل شيء.\n\nكذّبه أكثر قومه واستمروا على ضلالهم، فدعا الله عليهم، ونجّى الله من آمن معه، وأثنى الله عليه في القرآن الكريم ووصفه بأنه من المرسلين الصالحين."},alyasa:{title:"اليسع عليه السلام",content:"هو تلميذ النبي إلياس عليه السلام وخليفته في الدعوة إلى الله من بعده، أرسله الله إلى بني إسرائيل يدعوهم إلى توحيد الله بعد وفاة إلياس.\n\nذكره القرآن الكريم مع كبار الأنبياء والصالحين المصطفين، وعُرف بالصبر والحلم في دعوته، وسار على نهج من سبقه من الأنبياء في الأمر بالمعروف والنهي عن المنكر."},yunus:{title:"يونس عليه السلام",content:"أُرسل يونس عليه السلام إلى أهل نينوى، فدعاهم إلى الإيمان، فلما استعصوا عليه غضب وغادرهم مهاجراً قبل أن يأذن له ربه، وركب سفينة، فألقوا به في البحر بعد قرعة.\n\nالتقمه حوت عظيم بأمر الله، فلبث في بطنه يدعو ربه: لا إله إلا أنت سبحانك إني كنت من الظالمين، فاستجاب الله له ونجّاه من الحوت. عاد قومه إلى الإيمان قبل أن يأتيهم العذاب، فآمنوا جميعاً فرفع الله عنهم العذاب، وهي القرية الوحيدة التي آمنت كلها فنفعها إيمانها."},zakariya:{title:"زكريا عليه السلام",content:"كان زكريا عليه السلام كافل مريم عليها السلام، واشتغل بالنجارة يكسب رزقه من عمل يده، وكان قد تقدّم به العمر ولم يُرزق بولد، فلما رأى رزق الله الوفير لمريم في محرابها، دعا ربه أن يهبه ولداً صالحاً يرثه.\n\nاستجاب الله دعاءه رغم كبر سنه وعقم زوجته، وبشّره بيحيى، وجعل آية ذلك ألا يتكلم مع الناس ثلاثة أيام إلا رمزاً، فكانت من أعظم آيات قدرة الله في الاستجابة للدعاء."},yahya:{title:"يحيى عليه السلام",content:"وُلد يحيى عليه السلام استجابة لدعاء أبيه زكريا عليه السلام، وآتاه الله الحكمة وهو صبي صغير، وكان باراً بوالديه ولم يكن جباراً عصياً.\n\nعُرف بشدة تقواه وزهده وحرصه على العبادة، ووصفه الله بالسلام عليه يوم وُلد ويوم يموت ويوم يُبعث حياً، وكان معاصراً لنبي الله عيسى عليه السلام ومصدّقاً برسالته."},isa:{title:"عيسى عليه السلام",content:"وُلد عيسى عليه السلام بمعجزة من أمه مريم دون أب، حيث أرسل الله إليها الملك جبريل فنفخ فيها بأمر الله. لما حملته إلى قومها اتهموها زوراً، فتكلم عيسى في المهد ودافع عن براءة أمه.\n\nأرسله الله إلى بني إسرائيل، وأيّده بمعجزات عظيمة بإذن الله، منها إحياء الموتى وإبراء الأكمه والأبرص، وأنزل الله عليه الإنجيل.\n\nكذّبه أكثر بني إسرائيل ودبّروا لقتله وصلبه، فأنجاه الله ورفعه إليه، وألقى شبهه على أحد أتباعه، فلم يُقتل عيسى ولم يُصلب، بل رفعه الله حياً إليه، وسينزل في آخر الزمان علامة من علامات الساعة."},muhammad:{title:"محمد ﷺ خاتم الأنبياء",content:"وُلد النبي محمد ﷺ في مكة المكرمة عام الفيل، من نسل إسماعيل بن إبراهيم عليهما السلام، ونشأ يتيماً، وعمل في صغره راعياً للأغنام، ثم اشتغل بالتجارة حتى اشتهر بين قومه بالصدق والأمانة فلُقّب بالصادق الأمين.\n\nنزل عليه الوحي وهو في غار حراء عن عمر أربعين عاماً، فكان خاتم الأنبياء والمرسلين، وأُرسل رحمة للعالمين كافة، ودعا الناس إلى توحيد الله ونبذ الشرك، فآمن به قلة في البداية وواجه أذى شديداً من قومه.\n\nهاجر إلى المدينة المنورة فأسس فيها أول دولة إسلامية، وأتمّ الله به الدين، ونزل عليه القرآن الكريم كاملاً خلال ثلاث وعشرين سنة، وتوفي ﷺ بعد أن بلّغ الرسالة كاملة، صلى الله عليه وسلم تسليماً كثيراً."}};
+
+function showStory(key){
+document.body.style.overflow="hidden";
+overlay.style.display="block";
+storyBox.style.display="block";
+setTimeout(()=>storyBox.classList.add("active"),50);
+
+storyTitle.innerText=stories[key].title;
+storyContent.innerText=stories[key].content;
+storyContent.style.fontSize=fontSize+"px";
+
+shareButtons.innerHTML=`
+<a id="share-whatsapp" href="https://wa.me/?text=${encodeURIComponent(stories[key].title+'\n'+stories[key].content)}" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+<a id="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=${location.href}" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+<a id="share-instagram" href="javascript:void(0)" onclick="shareInstagram(stories[key].title)"><i class="fab fa-instagram"></i> انستقرام</a>
+`;
+}
+
+
+fontRange.oninput=()=>storyContent.style.fontSize=fontRange.value+"px";
+
+
+
+function closeStory(){
+storyBox.classList.remove("active");
+setTimeout(()=>{
+storyBox.style.display="none";
+overlay.style.display="none";
+document.body.style.overflow="auto";
+},300);
+}
+
+function searchStory(){
+let q=searchInput.value.toLowerCase();
+for(let k in stories){
+if(stories[k].title.toLowerCase().includes(q)){showStory(k);return;}
+}
+alert("لم يتم العثور على النبي المطلوب!");
+}
+
+function changeFont(n){
+fontSize+=n;
+storyContent.style.fontSize=fontSize+"px";
+}
+
+document.querySelectorAll(".card").forEach(c=>{
+c.onclick=()=>showStory(c.dataset.key);
+});
+
+// مشاركة موحّدة عبر انستقرام
+function shareInstagram(text){
+  if(navigator.share){
+    navigator.share({text:text}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('تم نسخ النص 📋 افتح تطبيق انستقرام والصقه في قصة أو منشور جديد');
+      window.open('https://www.instagram.com/','_blank');
+    }).catch(()=>{
+      window.open('https://www.instagram.com/','_blank');
+    });
+  }
+}
+
+</script>
+</body>
+</html>

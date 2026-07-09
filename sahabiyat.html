@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصحابيات - فجر الإسلام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(to bottom,#fce4ec,#ffffff);color:#2f4f4f;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+header{background:linear-gradient(135deg,#880e4f,#ec407a);color:white;padding:50px 20px 80px 20px;text-align:center;border-bottom-left-radius:50px;border-bottom-right-radius:50px;position:relative;overflow:hidden;}
+header::after{content:"";background:url('header-bg.png') center/cover no-repeat;opacity:0.15;top:0;left:0;bottom:0;right:0;position:absolute;z-index:0;}
+header h1, header p, .nav{position:relative; z-index:1;}
+header h1{font-size:38px;margin-bottom:10px;}
+header p{font-size:18px;opacity:0.9;}
+.nav{margin-top:20px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
+.nav a{background:rgba(255,255,255,0.2);color:white;font-weight:bold;padding:8px 16px;border-radius:25px;transition:0.3s;}
+.nav a:hover{background:white;color:#ad1457;}
+.container{max-width:1200px;margin:auto;padding:40px 20px;}
+.search-bar{max-width:400px;margin:0 auto 30px;display:flex;border-radius:25px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.search-bar input{flex:1;padding:10px 15px;border:none;font-size:16px;}
+.search-bar button{background:#ad1457;color:white;border:none;padding:0 15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:0.3s;}
+.search-bar button:hover{background:#ec407a;}
+.cards{display:grid;gap:20px;justify-items:center;}
+.card{background:linear-gradient(145deg,#f48fb1,#ad1457);border-radius:50%;height:160px;width:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 0 10px 25px rgba(0,0,0,0.2);cursor:pointer;transition:transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;position:relative;padding:15px;color:white;font-weight:bold;font-size:16px;overflow:hidden;}
+.card i{font-size:36px;display:block;margin-bottom:8px;}
+.card::before{content:"";position:absolute;width:120%;height:120%;background:radial-gradient(circle,#ffffff20,#ffffff00);top:-10%;left:-10%;border-radius:50%;transition:all 0.5s ease;}
+.card:hover::before{transform:scale(1.3);background:radial-gradient(circle,#ffffff40,#ffffff00);}
+.card:hover{transform:translateY(-10px) scale(1.08);box-shadow: inset 0 0 20px rgba(0,0,0,0.15), 0 15px 35px rgba(0,0,0,0.3);}
+.story-box{display:none;margin-top:30px;background:white;border-radius:30px;padding:30px;box-shadow:0 8px 25px rgba(0,0,0,0.15);position:fixed;top:50%;left:50%;transform:translate(-50%, -150%);width:90%;max-width:600px;z-index:100;transition:transform 0.5s ease, opacity 0.5s ease;opacity:0;}
+.story-box.active{transform:translate(-50%, -50%);opacity:1;display:block;}
+.story-box h2{color:#ad1457;text-align:center;margin-bottom:20px;}
+.story-content{max-height:45vh;overflow-y:auto;font-size:17px;white-space:pre-line;text-align:justify;padding:0 5px;margin-bottom:15px;}
+.controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;}
+.controls button{border:none;padding:6px 12px;border-radius:10px;cursor:pointer;background:#ad1457;color:white;}
+.controls .font-range{width:120px;}
+.story-box .close-btn{position:absolute;top:15px;left:15px;background:#e53935;color:white;border:none;padding:8px 15px;border-radius:15px;font-weight:bold;cursor:pointer;transition:0.3s;}
+.story-box .close-btn:hover{background:#ef5350;}
+.share-buttons{display:flex;justify-content:center;gap:10px;margin-top:15px;flex-wrap:wrap;}
+.share-buttons a{color:white;padding:8px 12px;border-radius:12px;font-size:14px;display:flex;align-items:center;gap:6px;text-decoration:none;}
+#share-whatsapp{background:#25D366;}
+#share-facebook{background:#3b5998;}
+#share-instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.share-buttons a:hover{opacity:0.8;}
+footer{background:#880e4f;color:white;text-align:center;padding:20px;margin-top:50px;border-top-left-radius:30px;border-top-right-radius:30px;}
+footer p{margin-bottom:5px;font-size:15px;}
+footer small{opacity:0.7;font-size:13px;}
+@media(min-width:1200px){.cards{grid-template-columns:repeat(5,1fr);}}
+@media(min-width:992px) and (max-width:1199px){.cards{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:768px) and (max-width:991px){.cards{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:767px){.cards{grid-template-columns:repeat(3,1fr);}.card{width:140px;height:140px;font-size:15px;}.share-buttons a{font-size:13px;padding:6px 10px;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🌸 الصحابيات</h1>
+<p>أمهات المؤمنين وقدوات نسائية من نور</p>
+<nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="adhkar.html">الأذكار</a>
+    <a href="ayah.html">آية وتدبر</a>
+    <a href="hadith.html">الأحاديث</a>
+    <a href="prayer.html">الصلاة</a>
+    <a href="stories.html">قصص الأنبياء</a>
+    <a href="companions.html">الصحابة</a>
+    <a href="sahabiyat.html"> الصحابيات</a>
+    <a href="ghazawat.html"> المعارك والغزوات</a>
+    <a href="names.html"> أسماء الله الحسنى</a>
+    <a href="games.html"> عالم المعرفة</a>
+  </nav>
+</header>
+
+<div class="container">
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="ابحث عن صحابية...">
+<button onclick="searchCompanion()"><i class="fas fa-magnifying-glass"></i></button>
+</div>
+
+<div class="cards" id="cardsContainer">
+<div class="card" data-key="khadijah"><i class="fas fa-heart"></i>خديجة بنت خويلد</div>
+<div class="card" data-key="sawdah"><i class="fas fa-heart"></i>سودة بنت زمعة</div>
+<div class="card" data-key="aisha"><i class="fas fa-heart"></i>عائشة بنت أبي بكر</div>
+<div class="card" data-key="hafsah"><i class="fas fa-heart"></i>حفصة بنت عمر</div>
+<div class="card" data-key="zainabkh"><i class="fas fa-heart"></i>زينب بنت خزيمة</div>
+<div class="card" data-key="ummsalamah"><i class="fas fa-heart"></i>أم سلمة</div>
+<div class="card" data-key="zainabjahsh"><i class="fas fa-heart"></i>زينب بنت جحش</div>
+<div class="card" data-key="juwayriyyah"><i class="fas fa-heart"></i>جويرية بنت الحارث</div>
+<div class="card" data-key="ummhabibah"><i class="fas fa-heart"></i>أم حبيبة رملة بنت أبي سفيان</div>
+<div class="card" data-key="safiyyah"><i class="fas fa-heart"></i>صفية بنت حيي</div>
+<div class="card" data-key="maymunah"><i class="fas fa-heart"></i>ميمونة بنت الحارث</div>
+<div class="card" data-key="fatimah"><i class="fas fa-heart"></i>فاطمة الزهراء</div>
+<div class="card" data-key="asma"><i class="fas fa-heart"></i>أسماء بنت أبي بكر</div>
+<div class="card" data-key="ummsulaym"><i class="fas fa-heart"></i>أم سليم بنت ملحان</div>
+<div class="card" data-key="nusaybah"><i class="fas fa-heart"></i>نسيبة بنت كعب (أم عمارة)</div>
+<div class="card" data-key="safiyyahabdulmuttalib"><i class="fas fa-heart"></i>صفية بنت عبدالمطلب</div>
+<div class="card" data-key="khawlah"><i class="fas fa-heart"></i>خولة بنت الأزور</div>
+</div>
+</div>
+
+<div class="story-box" id="storyBox">
+<button class="close-btn" onclick="closeStory()">إغلاق</button>
+<h2 id="storyTitle"></h2>
+
+<div class="controls">
+  <div>
+  <label>الخط</label>
+  <input type="range" min="16" max="26" value="17" id="fontRange" class="font-range">
+  </div>
+</div>
+
+<div class="story-content" id="storyContent"></div>
+<div class="share-buttons" id="shareButtons"></div>
+</div>
+</div>
+
+<footer>
+<p>صدقة جارية لكل مسلم</p>
+<small>المصدر: كتب السيرة النبوية</small>
+</footer>
+
+<script>
+const companions={khadijah:{title:"خديجة بنت خويلد رضي الله عنها",content:"أول زوجات النبي ﷺ وأول من آمن به من الناس جميعاً، كانت تاجرة ناجحة ذات مكانة عالية في قريش، فعرضت الزواج على النبي ﷺ لأمانته وحسن خلقه.\n\nثبّتت النبي ﷺ حين نزل عليه الوحي أول مرة وواسته، وأنفقت كل مالها في نصرة الدعوة، ولم يتزوج عليها النبي ﷺ حتى توفيت، وبشّرها الله ببيت في الجنة من قصب لا صخب فيه ولا نصب."},
+sawdah:{title:"سودة بنت زمعة رضي الله عنها",content:"ثاني زوجات النبي ﷺ بعد وفاة خديجة، هاجرت مع زوجها الأول إلى الحبشة فراراً بدينها، ثم توفي زوجها فتزوجها النبي ﷺ تكريماً لها وحفظاً لها بعد الهجرتين.\n\nعُرفت بحسن خلقها ودعابتها اللطيفة، ووهبت يومها من النبي ﷺ لعائشة رضي الله عنها إرضاءً له وهي كبيرة في السن، وهذا من عظيم إيثارها وحسن تدبيرها."},
+aisha:{title:"عائشة بنت أبي بكر رضي الله عنها",content:"زوجة النبي ﷺ وابنة صديقه أبي بكر الصديق، عُرفت بذكائها الحاد وقوة حفظها، فحفظت آلاف الأحاديث النبوية ونقلتها للأمة، وكانت مرجعاً كبيراً في الفقه.\n\nكان النبي ﷺ يسألها ويستشيرها في أمور كثيرة، وعاشت بعده سنوات طويلة علّمت فيها العلماء والصحابة، وهي من أكثر النساء علماً وفقهاً في تاريخ الإسلام."},
+hafsah:{title:"حفصة بنت عمر رضي الله عنها",content:"ابنة عمر بن الخطاب، تزوجها النبي ﷺ بعد وفاة زوجها الأول في غزوة بدر، وعُرفت بشدة عبادتها وكثرة صيامها وقيامها لليل.\n\nحفظت أول مصحف مكتوب بعد جمعه في عهد أبيها، وبقي عندها حتى تولى عثمان رضي الله عنه نسخه للأمة، وكان لها دور مهم في حفظ القرآن الكريم."},
+zainabkh:{title:"زينب بنت خزيمة رضي الله عنها",content:"لُقّبت بأم المساكين لكثرة إحسانها وصدقتها على الفقراء والمحتاجين قبل زواجها من النبي ﷺ وبعده، وكانت معروفة بجودها وكرمها.\n\nتزوجها النبي ﷺ بعد استشهاد زوجها في غزوة أحد، لكنها توفيت بعد زواجها منه بفترة قصيرة، وهي إحدى أمهات المؤمنين القليلات اللواتي توفين في حياة النبي ﷺ."},
+ummsalamah:{title:"أم سلمة رضي الله عنها",content:"عُرفت بحكمتها البالغة، ومن أشهر مواقفها مشورتها للنبي ﷺ في صلح الحديبية حين تردد الصحابة في تنفيذ أمره، فأشارت عليه برأي حكيم نفّذه فحلّ الإشكال.\n\nهاجرت الهجرتين إلى الحبشة والمدينة، وعاشت طويلاً بعد وفاة النبي ﷺ وكانت مرجعاً للمسلمين في العلم والفتوى، وهي آخر أمهات المؤمنين وفاة."},
+zainabjahsh:{title:"زينب بنت جحش رضي الله عنها",content:"ابنة عمة النبي ﷺ، عُرفت بشدة عبادتها وتقواها وكرمها، وكانت تعمل بيدها في دباغة الجلود وتتصدق بكسبها على الفقراء والمساكين.\n\nكانت تفتخر بأن الله زوّجها للنبي ﷺ من فوق سبع سماوات كما ورد في القرآن الكريم، وقال عنها النبي ﷺ إنها أسرع زوجاته لحوقاً به بعد وفاته لطول يدها بالصدقة."},
+juwayriyyah:{title:"جويرية بنت الحارث رضي الله عنها",content:"كانت من سبايا بني المصطلق، فكاتبت النبي ﷺ لتحرير نفسها فتزوجها، فأعتق المسلمون قومها إكراماً لمصاهرة النبي ﷺ، فأسلم بذلك مئات من قومها.\n\nعُرفت بكثرة ذكرها لله وتسبيحها، ووصفتها عائشة بأنها كانت من أكثر النساء بركة على قومها، إذ كان زواجها سبباً في إسلام قبيلة كاملة."},
+ummhabibah:{title:"أم حبيبة رملة بنت أبي سفيان رضي الله عنها",content:"هاجرت مع زوجها الأول إلى الحبشة، فتنصّر زوجها هناك وثبتت هي على الإسلام، فتوفي زوجها فتزوجها النبي ﷺ وهي في الحبشة إكراماً لها وحفظاً لغربتها.\n\nكانت ابنة أبي سفيان قائد قريش قبل إسلامه، وهذا يدل على أن الإسلام لا يفرّق بين الأقارب في الحق، فثبتت على دينها رغم مخالفة أبيها لها في بداية الأمر."},
+safiyyah:{title:"صفية بنت حيي رضي الله عنها",content:"كانت من بني النضير، وتزوجها النبي ﷺ بعد غزوة خيبر وأعتقها وجعل عتقها صداقها، فأسلمت عن قناعة تامة بعد أن كانت من كبار عائلات يهود المدينة.\n\nعُرفت بحلمها وصبرها على من كان يعيّرها بأصلها اليهودي، وكان النبي ﷺ يدافع عنها بقوله: ألا قلت إن أبي هارون وعمي موسى وزوجي محمد؟ وهي رد جميل يدل على فقهها."},
+maymunah:{title:"ميمونة بنت الحارث رضي الله عنها",content:"آخر من تزوجها النبي ﷺ من أمهات المؤمنين، وكانت خالة خالد بن الوليد وعبدالله بن عباس، وعُرفت بتقواها الشديدة وصلة رحمها الواسعة.\n\nوهبت نفسها للنبي ﷺ ابتغاء الأجر والقربة من الله، وقد ذكر القرآن هذا النوع من الزواج تكريماً لمنزلتها، وعاشت حياة مليئة بالعبادة والصدقة."},
+fatimah:{title:"فاطمة الزهراء رضي الله عنها",content:"ابنة النبي ﷺ الصغرى، وأحب بناته إليه، لُقّبت بالزهراء لصفاء وجهها ونورها، تزوجت من علي بن أبي طالب رضي الله عنه، وأنجبت الحسن والحسين.\n\nكانت قريبة جداً من والدها النبي ﷺ، يقوم لها إذا دخلت عليه إجلالاً واحتراماً، وقال عنها: فاطمة بضعة مني، يؤذيني ما يؤذيها، وهي سيدة نساء أهل الجنة كما أخبر النبي ﷺ."},
+asma:{title:"أسماء بنت أبي بكر رضي الله عنها",content:"أخت عائشة أم المؤمنين، ولُقّبت بذات النطاقين لأنها شقّت نطاقها (حزامها) لتربط به طعام النبي ﷺ وأبي بكر ليلة الهجرة حين كانا مختبئين في غار ثور.\n\nعُرفت بشجاعتها الفائقة وثباتها، وعاشت حياة طويلة حتى بلغت المئة عام تقريباً، وربّت ابنها عبدالله بن الزبير على الشجاعة والتمسك بالحق مهما كلّف الأمر."},
+ummsulaym:{title:"أم سليم بنت ملحان رضي الله عنها",content:"والدة أنس بن مالك خادم النبي ﷺ، أسلمت مبكراً وجعلت إسلامها مهراً لها حين تزوجت زوجها الثاني، وكانت من أذكى نساء الصحابة وأكثرهن حكمة.\n\nثبتت ثباتاً عجيباً حين توفي ابنها الصغير فلم تخبر زوجها حتى أطعمته وهيّأت له نفسها، ثم أخبرته بلطف، فدعا لها النبي ﷺ حين علم بذلك، فاستجاب الله دعاءه."},
+nusaybah:{title:"نسيبة بنت كعب (أم عمارة) رضي الله عنها",content:"جاهدت في غزوة أحد بالسيف وحمت النبي ﷺ بجسدها حين انكشف الصحابة عنه، فأصيبت بجروح بالغة وهي تدافع عنه، فقال النبي ﷺ: ما التفتُّ يميناً ولا شمالاً إلا وأراها تقاتل دوني.\n\nعُرفت بشجاعتها النادرة بين النساء، وشهدت بعد ذلك معارك أخرى، وفقدت يدها في معركة اليمامة وهي تدافع عن دين الله، وهي مثال أعلى للمرأة المجاهدة الصابرة."},
+safiyyahabdulmuttalib:{title:"صفية بنت عبدالمطلب رضي الله عنها",content:"عمة النبي ﷺ ووالدة الزبير بن العوام، وكانت من نساء قريش الشجاعات القلائل اللواتي أتقنّ فنون القتال والدفاع في زمانها.\n\nشاركت في الدفاع عن حصن المسلمين في غزوة الخندق حين هاجم رجل من اليهود موضع النساء، فقتلته بنفسها دفاعاً عن المسلمات، وهي عمة النبي ﷺ الوحيدة التي أسلمت من عماته."},
+khawlah:{title:"خولة بنت الأزور رضي الله عنها",content:"فارسة مسلمة اشتهرت بشجاعتها الأسطورية في معارك فتح الشام، وقاتلت متنكرة بزي الفرسان الرجال في معركة اليرموك حين أُسر أخوها، فحررته بشجاعتها.\n\nعُرفت بمهارتها العالية في الفروسية واستخدام السيف والرمح، وشاركت في عدة معارك فاصلة، وهي رمز للمرأة المسلمة الفارسة المدافعة عن دينها ووطنها."}};
+
+let fontSize=17;
+
+function showStory(key){
+  if(!companions[key]) return alert("هذه القصة غير موجودة!");
+  const box = document.getElementById('storyBox');
+  const title = document.getElementById('storyTitle');
+  const content = document.getElementById('storyContent');
+  const shareDiv = document.getElementById('shareButtons');
+
+  title.innerText = companions[key].title;
+  content.innerText = companions[key].content;
+  content.style.fontSize = fontSize + "px";
+
+  const shareHTML = `
+    <a id="share-whatsapp" href="https://wa.me/?text=${encodeURIComponent(companions[key].title + ' - ' + companions[key].content + ' ' + location.href)}" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+    <a id="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}&quote=${encodeURIComponent(companions[key].title + ' - ' + companions[key].content)}" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+    <a id="share-instagram" href="javascript:void(0)" onclick="shareInstagram(companions[key].title + ' - ' + companions[key].content)"><i class="fab fa-instagram"></i> انستقرام</a>
+  `;
+  shareDiv.innerHTML = shareHTML;
+
+  box.style.display='block'; 
+  setTimeout(()=> box.classList.add('active'), 50);
+}
+
+document.getElementById("fontRange").oninput=()=>{
+  fontSize=document.getElementById("fontRange").value;
+  document.getElementById("storyContent").style.fontSize=fontSize+"px";
+};
+
+function closeStory(){
+  const box = document.getElementById('storyBox');
+  box.classList.remove('active');
+  setTimeout(()=> box.style.display='none', 500);
+}
+
+function searchCompanion(){
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  const keys = Object.keys(companions);
+  const found = keys.find(k => companions[k].title.toLowerCase().includes(query));
+  if(found){
+    showStory(found);
+  } else { alert("لم يتم العثور على الصحابية المطلوبة!"); }
+}
+
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('click',()=>showStory(c.dataset.key));
+});
+
+// مشاركة موحّدة عبر انستقرام
+function shareInstagram(text){
+  if(navigator.share){
+    navigator.share({text:text}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      alert('تم نسخ النص 📋 افتح تطبيق انستقرام والصقه في قصة أو منشور جديد');
+      window.open('https://www.instagram.com/','_blank');
+    }).catch(()=>{
+      window.open('https://www.instagram.com/','_blank');
+    });
+  }
+}
+
+</script>
+
+</body>
+</html>
