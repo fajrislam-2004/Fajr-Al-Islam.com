@@ -162,12 +162,35 @@ footer small{opacity:0.7}
 
 /* Responsive */
 @media (max-width:600px){
-  header h1{font-size:26px;}
-  .ayah-text{font-size:22px;}
-  .tafseer{font-size:15px;}
+  header{
+    padding:30px 15px 50px 15px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+  }
+  header h1{font-size:26px;margin-bottom:6px;}
+  header p{font-size:14px;}
+
+  .nav{gap:6px;margin-top:15px;}
+  .nav a{padding:5px 10px;font-size:12px;}
+
+  .container{padding:20px 12px;}
+  .ayah-card{padding:20px 14px;border-radius:18px;}
+  .ayah-text{font-size:20px;}
+  .tafseer{font-size:14px;}
+  .surah-ref{font-size:12px;}
   button{width:100%;}
-  .action-buttons button{flex:1;justify-content:center;}
-  .share-buttons a{flex:1;justify-content:center;}
+  .action-buttons{gap:12px;}
+  .action-buttons button{flex:1;justify-content:center;font-size:14px;padding:10px 12px;}
+  .share-buttons a{flex:1;justify-content:center;font-size:13px;padding:8px 10px;}
+
+  footer{
+    padding:16px 15px;
+    margin-top:30px;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+  }
+  footer p{font-size:13px;margin-bottom:4px;}
+  footer small{font-size:11px;display:block;line-height:1.5;}
 }
 </style>
 </head>

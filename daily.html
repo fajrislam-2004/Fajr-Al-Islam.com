@@ -361,7 +361,7 @@ function endGame(finishedAll){
     <div class="best-combo">🔥 أفضل كومبو: ${bestCombo}</div>
     <p>${msg}</p>
     <div class="share-box">
-      <a class="whatsapp" target="_blank" href="https://wa.me/?text=حصلت على ${score} نقطة في تحدي الثواني 💚 جربها: ${siteLink}"><i class="fab fa-whatsapp"></i></a>
+      <a class="whatsapp" target="_blank" href="https://wa.me/?text=حصلت على ${score} نقطة في نبض التحدي 💚 جربها: ${siteLink}"><i class="fab fa-whatsapp"></i></a>
       <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=${siteLink}"><i class="fab fa-facebook-f"></i></a>
       <a class="copy" onclick="copyResult(${score})"><i class="fa fa-link"></i></a>
     </div>
@@ -373,7 +373,7 @@ function endGame(finishedAll){
 }
 
 function copyResult(score){
-  navigator.clipboard.writeText(`حصلت على ${score} نقطة في تحدي الثواني 💚 جربها الآن: ${siteLink}`);
+  navigator.clipboard.writeText(`حصلت على ${score} نقطة في نبض التحدي 💚 جربها الآن: ${siteLink}`);
   alert("تم النسخ ✔");
 }
 

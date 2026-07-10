@@ -34,8 +34,9 @@ header::after{
   top:0; left:0; bottom:0; right:0;
   z-index:0;
 }
-header h1, .nav {position:relative; z-index:1;}
-header h1 {font-size:42px;margin-bottom:10px;}
+header h1, header p, .nav {position:relative; z-index:1;}
+header h1 {font-size:38px;margin-bottom:10px;}
+header p {font-size:18px;opacity:0.9;}
 
 /* شريط التنقل */
 .nav {
@@ -146,8 +147,39 @@ footer p {margin-bottom:5px;font-size:15px;}
 footer small {opacity:0.7;font-size:13px;}
 
 /* تجاوب الهاتف */
-@media screen and (max-width:768px){
-  header h1 {font-size:30px;}
+@media screen and (max-width:600px){
+  header{
+    padding:30px 15px 50px 15px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+  }
+  header h1{font-size:26px;margin-bottom:6px;}
+  header p{font-size:14px;}
+
+  .nav{gap:6px;margin-top:15px;}
+  .nav a{padding:5px 10px;font-size:12px;}
+
+  .container{padding:20px 12px;}
+
+  .games-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+  .game-card{padding:16px 10px;border-radius:16px;}
+  .game-card span{font-size:32px;margin-bottom:8px;}
+  .game-card h3{font-size:15px;margin-bottom:6px;}
+  .game-card p{font-size:11px;margin-bottom:10px;}
+  .game-card a{padding:7px 12px;font-size:12px;}
+  .soon-badge{font-size:9px;padding:3px 8px;top:8px;left:8px;}
+
+  footer{
+    padding:16px 15px;
+    margin-top:30px;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+  }
+  footer p{font-size:13px;margin-bottom:4px;}
+  footer small{font-size:11px;}
 }
 </style>
 </head>
